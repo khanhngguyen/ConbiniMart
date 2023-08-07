@@ -5,6 +5,10 @@ backend/appsettings.json
 backend/appsettings.*.json
 backend/obj/
 backend/bin/
+bin/
+obj/
+appsettings.json
+appsettings.Development.json
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
