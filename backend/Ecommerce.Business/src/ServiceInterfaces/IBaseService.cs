@@ -9,6 +9,7 @@ namespace Ecommerce.Business.src.ServiceInterfaces
     public interface IBaseService<T, TDto>
     {
         IEnumerable<TDto> GetAll(QueryOptions queryOptions);
+        TDto CreateOne(TDto entity);
         TDto GetOneById(Guid id);
         TDto UpdateOneById(Guid id, TDto updated);
         bool DeleteOneById(Guid id);
