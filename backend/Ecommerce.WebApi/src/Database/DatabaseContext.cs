@@ -13,6 +13,7 @@ namespace Ecommerce.WebApi.src.Database
         private readonly IConfiguration _config;
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public DatabaseContext(IConfiguration config)
         {

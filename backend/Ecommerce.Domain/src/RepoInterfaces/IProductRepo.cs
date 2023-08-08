@@ -7,11 +7,12 @@ using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Domain.src.RepoInterfaces
 {
-    public interface IUserRepo : IBaseRepo<User>
+    public interface IProductRepo : IBaseRepo<Product>
     {
-        IEnumerable<User> GetAll(QueryOptions queryOptions);
-        User CreateOne(User user);
-        User GetOneById(Guid id);
+        IEnumerable<Product> GetAll(QueryOptions queryOptions);
+        Product CreateOne(Product product);
+        Product GetOneById(Guid id);
+        Product UpdateOne(Product updateProduct);
         bool DeleteOneById(Guid id);
     }
 }
