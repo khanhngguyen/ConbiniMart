@@ -1,4 +1,9 @@
+using Ecommerce.WebApi.src.Database;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//add database into the application
+builder.Services.AddDbContext<DatabaseContext>();
 
 // Add services to the container.
 
