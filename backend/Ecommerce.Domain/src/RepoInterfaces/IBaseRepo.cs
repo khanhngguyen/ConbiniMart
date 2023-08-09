@@ -11,7 +11,7 @@ namespace Ecommerce.Domain.src.RepoInterfaces
         IEnumerable<T> GetAll(QueryOptions queryOptions);
         T CreateOne(T entity);
         T GetOneById(Guid id);
-        T UpdateOne(T updateEntity);
-        bool DeleteOneById(Guid id);
+        T UpdateOne(T originalEntity, T updateEntity);
+        bool DeleteOne(T entity);
     }
 }

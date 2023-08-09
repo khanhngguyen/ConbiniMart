@@ -8,12 +8,8 @@ using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Business.src.ServiceInterfaces
 {
-    public interface IProductService : IBaseService<Product, ProductDto>
+    public interface IProductService : IBaseService<Product, ProductCreateDto, ProductReadDto, ProductUpdateDto>
     {
-        IEnumerable<ProductDto> GetAll(QueryOptions queryOptions);
-        ProductDto CreateOne(ProductDto product);
-        ProductDto GetOneById(Guid id);
-        ProductDto UpdateOneById(Guid id, ProductDto updateProduct);
-        bool DeleteOneById(Guid id);
+        
     }
 }

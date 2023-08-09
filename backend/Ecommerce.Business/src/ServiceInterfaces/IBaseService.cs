@@ -6,12 +6,12 @@ using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Business.src.ServiceInterfaces
 {
-    public interface IBaseService<T, TDto>
+    public interface IBaseService<T, TCreateDto, TReadDto, TUpdateDto>
     {
-        IEnumerable<TDto> GetAll(QueryOptions queryOptions);
-        TDto CreateOne(TDto entity);
-        TDto GetOneById(Guid id);
-        TDto UpdateOneById(Guid id, TDto updated);
+        IEnumerable<TReadDto> GetAll(QueryOptions queryOptions);
+        TReadDto CreateOne(TCreateDto entity);
+        TReadDto GetOneById(Guid id);
+        TReadDto UpdateOneById(Guid id, TUpdateDto updated);
         bool DeleteOneById(Guid id);
     }
 }

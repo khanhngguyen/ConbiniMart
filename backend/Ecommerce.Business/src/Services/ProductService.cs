@@ -11,7 +11,7 @@ using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Business.src.Services
 {
-    public class ProductService : BaseService<Product, ProductDto>, IProductService
+    public class ProductService : BaseService<Product, ProductCreateDto, ProductReadDto, ProductUpdateDto>, IProductService
     {
         private readonly IProductRepo _productRepo;
 
@@ -21,33 +21,33 @@ namespace Ecommerce.Business.src.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<ProductDto> GetAll(QueryOptions queryOptions)
-        {
-            return _mapper.Map<IEnumerable<ProductDto>>(_productRepo.GetAll(queryOptions));
-        }
-        public ProductDto CreateOne(ProductDto productDto)
-        {
-            var product = _mapper.Map<Product>(productDto);
-            var createdProduct = _productRepo.CreateOne(product);
-            return _mapper.Map<ProductDto>(createdProduct);
-        }
-        public ProductDto GetOneById(Guid id)
-        {
-            var found = _productRepo.GetOneById(id);
-            return _mapper.Map<ProductDto>(found);
-        }
-        public ProductDto UpdateOneById(Guid id, ProductDto updateProduct)
-        {
-            throw new NotImplementedException();
-        }
-        bool DeleteOneById(Guid id)
-        {
-            var found = _productRepo.GetOneById(id);
-            if (found != null)
-            {
-                return _productRepo.DeleteOneById(found.Id);
-            }
-            return false;
-        }
+        // public IEnumerable<ProductReadDto> GetAll(QueryOptions queryOptions)
+        // {
+        //     return _mapper.Map<IEnumerable<ProductDto>>(_productRepo.GetAll(queryOptions));
+        // }
+        // public Product CreateOne(Product product)
+        // {
+        //     var product = _mapper.Map<Product>(productDto);
+        //     var createdProduct = _productRepo.CreateOne(product);
+        //     return _mapper.Map<ProductDto>(createdProduct);
+        // }
+        // public ProductDto GetOneById(Guid id)
+        // {
+        //     var found = _productRepo.GetOneById(id);
+        //     return _mapper.Map<ProductDto>(found);
+        // }
+        // public ProductDto UpdateOneById(Guid id, ProductDto updateProduct)
+        // {
+        //     throw new NotImplementedException();
+        // }
+        // bool DeleteOneById(Guid id)
+        // {
+        //     var found = _productRepo.GetOneById(id);
+        //     if (found != null)
+        //     {
+        //         return _productRepo.DeleteOneById(found.Id);
+        //     }
+        //     return false;
+        // }
     }
 }

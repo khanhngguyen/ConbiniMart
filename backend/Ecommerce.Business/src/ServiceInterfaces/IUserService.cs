@@ -7,7 +7,7 @@ using Ecommerce.Domain.src.Entities;
 
 namespace Ecommerce.Business.src.ServiceInterfaces
 {
-    public interface IUserService : IBaseService<User, UserDto>
+    public interface IUserService
     {
         
     }

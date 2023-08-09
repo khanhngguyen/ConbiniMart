@@ -22,23 +22,36 @@ namespace Ecommerce.WebApi.src.RepoImplementations
 
         public IEnumerable<T> GetAll(QueryOptions queryOptions)
         {
-            throw new NotImplementedException();
+            return _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize);
         }
         public T CreateOne(T entity)
         {
-            throw new NotImplementedException();
+            _dbSet.Add(entity);
+            return entity;
         }
         public T GetOneById(Guid id)
         {
-            throw new NotImplementedException();
+            return _dbSet.Find(id);
         }
-        public T UpdateOne(T updateEntity)
+        public T UpdateOne(T originalEntity, T updateEntity)
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
+            var found = _dbSet.Find(originalEntity);
+            if (found != null)
+            {
+                _context.Entry(found).CurrentValues.SetValues(updateEntity);
+            }
+            return found;
         }
-        public bool DeleteOneById(Guid id)
+        public bool DeleteOne(T entity)
         {
-            throw new NotImplementedException();
+            var found = _dbSet.Find(entity);
+            if (found != null)
+            {
+                _dbSet.Remove(found);
+                return true;
+            }
+            return false;
         }
     }
 }
