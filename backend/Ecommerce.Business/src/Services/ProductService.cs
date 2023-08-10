@@ -18,18 +18,20 @@ namespace Ecommerce.Business.src.Services
         public ProductService(IProductRepo productRepo, IMapper mapper) : base(productRepo, mapper)
         {
             _productRepo = productRepo;
-            _mapper = mapper;
+            // _mapper = mapper;
         }
 
         // public IEnumerable<ProductReadDto> GetAll(QueryOptions queryOptions)
         // {
         //     return _mapper.Map<IEnumerable<ProductDto>>(_productRepo.GetAll(queryOptions));
         // }
-        public new Product CreateOne(ProductCreateDto dto)
+        public override ProductReadDto CreateOne(ProductCreateDto dto)
         {
             var product = _mapper.Map<Product>(dto);
+            // product.Id = Guid.NewGuid();
             var createdProduct = _productRepo.CreateOne(product);
-            return createdProduct;
+            // var createdProduct = _productRepo.CreateOne(_mapper.Map<Product>(dto));
+            return _mapper.Map<ProductReadDto>(createdProduct);
         }
         // public ProductDto GetOneById(Guid id)
         // {

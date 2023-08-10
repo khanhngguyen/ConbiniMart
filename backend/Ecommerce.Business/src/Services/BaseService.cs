@@ -12,7 +12,7 @@ namespace Ecommerce.Business.src.Services
     public class BaseService<T, TCreateDto, TReadDto, TUpdateDto> : IBaseService<T, TCreateDto, TReadDto, TUpdateDto>
     {
         private readonly IBaseRepo<T> _baseRepo;
-        protected IMapper _mapper;
+        protected readonly IMapper _mapper;
 
         public BaseService(IBaseRepo<T> baseRepo, IMapper mapper)
         {
@@ -24,11 +24,10 @@ namespace Ecommerce.Business.src.Services
         {
             return _mapper.Map<IEnumerable<TReadDto>>(_baseRepo.GetAll(queryOptions));
         }
-        public T CreateOne(TCreateDto dto)
+        public virtual TReadDto CreateOne(TCreateDto dto)
         {
             var entity = _baseRepo.CreateOne(_mapper.Map<T>(dto));
-            // return _mapper.Map<TReadDto>(entity);
-            return entity;
+            return _mapper.Map<TReadDto>(entity);
         }
         public TReadDto GetOneById(Guid id)
         {

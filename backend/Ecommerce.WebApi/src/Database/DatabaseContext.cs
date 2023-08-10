@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecommerce.Domain.src.Entities;
+using Ecommerce.WebApi.src.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -23,6 +24,8 @@ namespace Ecommerce.WebApi.src.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.AddInterceptors(new TimeStampInterceptor());
+            // optionsBuilder.AddInterceptors(new IdInterceptor());
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
         // protected override void OnModelCreating(ModelBuilder modelBuilder)

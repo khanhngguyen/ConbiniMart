@@ -26,7 +26,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult<T> CreateOne([FromBody] TCreateDto dto)
+        public ActionResult<TReadDto> CreateOne([FromBody] TCreateDto dto)
         {
             var created = _baseService.CreateOne(dto);
             return CreatedAtAction("Created", created);

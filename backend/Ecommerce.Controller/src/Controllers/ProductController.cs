@@ -27,10 +27,10 @@ namespace Ecommerce.Controller.src.Controllers
             return Ok(base.GetAll(queryOptions));
         }
 
-        [HttpPost]
-        public override ActionResult<Product> CreateOne([FromBody] ProductCreateDto dto)
-        {
-            return Ok(base.CreateOne(dto));
-        }
+        // [HttpPost]
+        // public override ActionResult<Product> CreateOne([FromBody] ProductCreateDto dto)
+        // {
+        //     return Ok(base.CreateOne(dto));
+        // }
     }
 }
