@@ -28,6 +28,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         public T CreateOne(T entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
             return entity;
         }
         public T GetOneById(Guid id)

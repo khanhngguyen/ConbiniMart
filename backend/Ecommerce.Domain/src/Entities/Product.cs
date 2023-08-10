@@ -10,6 +10,7 @@ namespace Ecommerce.Domain.src.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public Category Category { get; set; }
         public int Inventory { get; set; }
         public List<Image> Images { get; set; }
     }

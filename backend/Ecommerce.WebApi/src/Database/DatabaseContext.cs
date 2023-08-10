@@ -14,7 +14,10 @@ namespace Ecommerce.WebApi.src.Database
         private readonly IConfiguration _config;
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProduct> OrderProducts { get; set; }
 
         public DatabaseContext(IConfiguration config)
         {
@@ -28,9 +31,12 @@ namespace Ecommerce.WebApi.src.Database
             // optionsBuilder.AddInterceptors(new IdInterceptor());
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
-        // protected override void OnModelCreating(ModelBuilder modelBuilder)
-        // {
-        //     base.OnModelCreating(modelBuilder);
-        // }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<OrderProduct>()
+            .HasOne(orderProduct => orderProduct.Order)
+            .WithMany(order => order.OrderProducts)
+            .OnDelete(DeleteBehavior.SetNull);
+        }
     }
 }
