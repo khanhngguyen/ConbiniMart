@@ -29,7 +29,7 @@ namespace Ecommerce.Controller.src.Controllers
         public ActionResult<TReadDto> CreateOne([FromBody] TCreateDto dto)
         {
             var created = _baseService.CreateOne(dto);
-            return CreatedAtAction("Created", created);
+            return CreatedAtAction("CreateOne", created);
         }
     }
 }

@@ -1,6 +1,8 @@
 using Ecommerce.Business.src.AutoMapper;
+using Ecommerce.Business.src.Dtos;
 using Ecommerce.Business.src.ServiceInterfaces;
 using Ecommerce.Business.src.Services;
+using Ecommerce.Domain.src.Entities;
 using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.WebApi.src.Database;
 using Ecommerce.WebApi.src.RepoImplementations;
@@ -15,11 +17,14 @@ builder.Services.AddControllers();
 
 // Add services for auto dependency injection
 // Repo
+// builder.Services.AddScoped<IBaseRepo<Product>, BaseRepo<Product>>();
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 // Service
+// builder.Services.AddScoped<IBaseService<Product, ProductCreateDto, ProductReadDto, ProductUpdateDto>, BaseService<Product, ProductCreateDto, ProductReadDto, ProductUpdateDto>>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
 // Add AutoMapper
+builder.Services.AddAutoMapper(config => config.AddProfile(typeof(AutoMapperProfile)));
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

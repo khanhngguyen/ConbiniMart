@@ -14,4 +14,14 @@ namespace Ecommerce.Domain.src.Entities
         public int Inventory { get; set; }
         public List<Image> Images { get; set; }
     }
+
+    public enum Category
+    {
+        Food,
+        Clothes,
+        Shoes,
+        Books,
+        Electronics,
+        Others
+    }
 }
