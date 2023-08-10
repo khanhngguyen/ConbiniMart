@@ -24,5 +24,12 @@ namespace Ecommerce.Controller.src.Controllers
         {
             return Ok(_baseService.GetAll(queryOptions));
         }
+
+        [HttpPost]
+        public virtual ActionResult<T> CreateOne([FromBody] TCreateDto dto)
+        {
+            var created = _baseService.CreateOne(dto);
+            return CreatedAtAction("Created", created);
+        }
     }
 }

@@ -24,10 +24,11 @@ namespace Ecommerce.Business.src.Services
         {
             return _mapper.Map<IEnumerable<TReadDto>>(_baseRepo.GetAll(queryOptions));
         }
-        public TReadDto CreateOne(TCreateDto dto)
+        public T CreateOne(TCreateDto dto)
         {
             var entity = _baseRepo.CreateOne(_mapper.Map<T>(dto));
-            return _mapper.Map<TReadDto>(entity);
+            // return _mapper.Map<TReadDto>(entity);
+            return entity;
         }
         public TReadDto GetOneById(Guid id)
         {

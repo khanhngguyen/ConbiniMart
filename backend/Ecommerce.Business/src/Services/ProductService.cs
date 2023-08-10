@@ -25,12 +25,12 @@ namespace Ecommerce.Business.src.Services
         // {
         //     return _mapper.Map<IEnumerable<ProductDto>>(_productRepo.GetAll(queryOptions));
         // }
-        // public Product CreateOne(Product product)
-        // {
-        //     var product = _mapper.Map<Product>(productDto);
-        //     var createdProduct = _productRepo.CreateOne(product);
-        //     return _mapper.Map<ProductDto>(createdProduct);
-        // }
+        public new Product CreateOne(ProductCreateDto dto)
+        {
+            var product = _mapper.Map<Product>(dto);
+            var createdProduct = _productRepo.CreateOne(product);
+            return createdProduct;
+        }
         // public ProductDto GetOneById(Guid id)
         // {
         //     var found = _productRepo.GetOneById(id);

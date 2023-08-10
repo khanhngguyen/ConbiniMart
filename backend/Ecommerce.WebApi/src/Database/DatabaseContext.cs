@@ -23,7 +23,7 @@ namespace Ecommerce.WebApi.src.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("DefaultConnection"));
-            optionsBuilder.UseNpgsql(builder.Build());
+            optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
         // protected override void OnModelCreating(ModelBuilder modelBuilder)
         // {

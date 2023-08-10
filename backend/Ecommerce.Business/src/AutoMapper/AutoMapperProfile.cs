@@ -14,10 +14,12 @@ namespace Ecommerce.Business.src.AutoMapper
         {
             CreateMap<UserDto, User>();
             CreateMap<User, UserDto>();
+
             CreateMap<Product, ProductReadDto>();
-            CreateMap<ProductReadDto, ProductReadDto>();
             CreateMap<Product, ProductUpdateDto>();
             CreateMap<ProductReadDto, ProductUpdateDto>();
+            CreateMap<ProductCreateDto, Product>();
+            CreateMap<Product, ProductCreateDto>();
         }
     }
 }

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Ecommerce.Domain.src.Entities;
 
 namespace Ecommerce.Business.src.Dtos
 {
+    [AutoMap(typeof(Product))]
     public class ProductReadDto
     {
         public string Title { get; set; }
@@ -16,6 +18,7 @@ namespace Ecommerce.Business.src.Dtos
         public DateTime UpdatedAt { get; set; }
     }
     
+    [AutoMap(typeof(Product))]
     public class ProductCreateDto
     {
         public string Title { get; set; }
@@ -25,6 +28,7 @@ namespace Ecommerce.Business.src.Dtos
         public List<Image> Images { get; set; }
     }
 
+    [AutoMap(typeof(Product))]
     public class ProductUpdateDto
     {
         public string Title { get; set; }

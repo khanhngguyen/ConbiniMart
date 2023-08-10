@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.Domain.src.Shared;
 using Ecommerce.WebApi.src.Database;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.WebApi.src.RepoImplementations
@@ -20,7 +21,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             _context = databaseContext;
         }
 
-        public IEnumerable<T> GetAll(QueryOptions queryOptions)
+        public IEnumerable<T> GetAll([FromQuery] QueryOptions queryOptions)
         {
             return _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize);
         }
