@@ -18,6 +18,11 @@ namespace Ecommerce.WebApi.src.Database
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
 
+        static DatabaseContext()
+        {
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+        }
+
         public DatabaseContext(IConfiguration config)
         {
             _config = config;
@@ -26,12 +31,15 @@ namespace Ecommerce.WebApi.src.Database
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("DefaultConnection"));
+            builder.MapEnum<Role>();
+            builder.MapEnum<Category>();
             optionsBuilder.AddInterceptors(new TimeStampInterceptor());
-            // optionsBuilder.AddInterceptors(new IdInterceptor());
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.HasPostgresEnum<Role>();
+            modelBuilder.HasPostgresEnum<Category>();
             modelBuilder.Entity<OrderProduct>()
             .HasOne(orderProduct => orderProduct.Order)
             .WithMany(order => order.OrderProducts)

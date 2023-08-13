@@ -19,8 +19,8 @@ namespace Ecommerce.WebApi.src.Interceptors
             {
                 if (entry.Entity is TimeStamp hasTimeStamp)
                 {
-                    hasTimeStamp.CreatedAt = new DateTime();
-                    hasTimeStamp.UpdatedAt = new DateTime();
+                    hasTimeStamp.CreatedAt = DateTimeOffset.UtcNow;
+                    hasTimeStamp.UpdatedAt = DateTimeOffset.UtcNow;
                 }
             }
 
@@ -30,7 +30,7 @@ namespace Ecommerce.WebApi.src.Interceptors
             foreach (var entry in modifiedEntries)
             if (entry.Entity is TimeStamp hasTimeStamp)
             {
-                hasTimeStamp.UpdatedAt = new DateTime();
+                hasTimeStamp.UpdatedAt = DateTimeOffset.UtcNow;
             }
 
             return base.SavingChanges(eventData, result);

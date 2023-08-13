@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.Domain.src.Shared;
@@ -12,8 +13,8 @@ namespace Ecommerce.WebApi.src.RepoImplementations
 {
     public class BaseRepo<T> : IBaseRepo<T> where T : class
     {
-        private readonly DbSet<T> _dbSet;
-        private readonly DatabaseContext _context;
+        protected readonly DbSet<T> _dbSet;
+        protected readonly DatabaseContext _context;
 
         public BaseRepo(DatabaseContext databaseContext)
         {
@@ -35,24 +36,41 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         {
             return _dbSet.Find(id);
         }
-        public T UpdateOne(T originalEntity, T updateEntity)
+        public virtual T UpdateOneById(Guid id, T updateEntity)
         {
-            // throw new NotImplementedException();
-            var found = _dbSet.Find(originalEntity);
-            if (found != null)
+            var found = _dbSet.Find(id);
+            // if (found != null)
+            // {
+            //     _context.Entry(found).CurrentValues.SetValues(updateEntity);
+            //     _context.SaveChanges();
+            //     return found;
+            // }
+            if (found is null) throw new Exception("Item not found");
+            else 
             {
                 _context.Entry(found).CurrentValues.SetValues(updateEntity);
+                _context.SaveChanges();
+                return found;
+            // _context.Entry(found).State = EntityState.Detached;
+            //     _context.Entry(found).State = EntityState.Modified;
+            //     _context.Update<T>(updateEntity);
+            //     _context.Entry(found).CurrentValues.SetValues(updateEntity);
+            //     _context.Attach(found);
+            //     _context.SaveChanges();
+            //     return found;
             }
-            return found;
+            //     _context.SaveChanges();
+            //     return found;
         }
-        public bool DeleteOne(T entity)
+        public bool DeleteOneById(Guid id)
         {
-            var found = _dbSet.Find(entity);
+            var found = _dbSet.Find(id);
             if (found != null)
             {
                 _dbSet.Remove(found);
                 return true;
             }
+            _context.SaveChanges();
             return false;
         }
     }

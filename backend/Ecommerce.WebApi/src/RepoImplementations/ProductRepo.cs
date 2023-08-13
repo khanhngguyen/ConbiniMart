@@ -31,10 +31,22 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         // {
         //     return _products.Find(id);
         // }
-        // public Product UpdateOne(Product updateProduct)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        public override Product UpdateOneById(Guid id, Product updateProduct)
+        {
+            var found = _dbSet.FirstOrDefault(p => p.Id == id);
+            if (found is null) throw new Exception("Item not found");
+            else 
+            {
+                found.Title = updateProduct.Title;
+                found.Description = updateProduct.Description;
+                found.Price = updateProduct.Price;
+                found.Category = updateProduct.Category;
+                found.Inventory = updateProduct.Inventory;
+                found.Images = updateProduct.Images;
+                _context.SaveChanges();
+                return found;
+            }
+        }
         // public bool DeleteOneById(Guid id)
         // {
         //     var found = GetOneById(id);
