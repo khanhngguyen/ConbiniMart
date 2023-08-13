@@ -31,9 +31,9 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         // {
         //     return _products.Find(id);
         // }
-        public override Product UpdateOneById(Guid id, Product updateProduct)
+        public override async Task<Product> UpdateOneById(Guid id, Product updateProduct)
         {
-            var found = _dbSet.FirstOrDefault(p => p.Id == id);
+            var found = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
             if (found is null) throw new Exception("Item not found");
             else 
             {
@@ -43,7 +43,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 found.Category = updateProduct.Category;
                 found.Inventory = updateProduct.Inventory;
                 found.Images = updateProduct.Images;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return found;
             }
         }

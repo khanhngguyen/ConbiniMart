@@ -22,23 +22,23 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             _context = databaseContext;
         }
 
-        public IEnumerable<T> GetAll([FromQuery] QueryOptions queryOptions)
+        public async Task<IEnumerable<T>> GetAll([FromQuery] QueryOptions queryOptions)
         {
-            return _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize);
+            return await _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize).ToListAsync();
         }
-        public T CreateOne(T entity)
+        public async Task<T> CreateOne(T entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return entity;
         }
-        public T GetOneById(Guid id)
+        public async Task<T> GetOneById(Guid id)
         {
-            return _dbSet.Find(id);
+            return await _dbSet.FindAsync(id);
         }
-        public virtual T UpdateOneById(Guid id, T updateEntity)
+        public virtual async Task<T> UpdateOneById(Guid id, T updateEntity)
         {
-            var found = _dbSet.Find(id);
+            var found = await _dbSet.FindAsync(id);
             // if (found != null)
             // {
             //     _context.Entry(found).CurrentValues.SetValues(updateEntity);
@@ -49,7 +49,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             else 
             {
                 _context.Entry(found).CurrentValues.SetValues(updateEntity);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 return found;
             // _context.Entry(found).State = EntityState.Detached;
             //     _context.Entry(found).State = EntityState.Modified;
@@ -64,13 +64,17 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         }
         public bool DeleteOneById(Guid id)
         {
-            var found = _dbSet.Find(id);
+            var found =  _dbSet.Find(id);
             if (found != null)
             {
+                Console.WriteLine("found");
+                _dbSet.Attach(found);
                 _dbSet.Remove(found);
                 return true;
             }
+            Console.WriteLine("not found before save");
             _context.SaveChanges();
+            Console.WriteLine("not found after save");
             return false;
         }
     }
