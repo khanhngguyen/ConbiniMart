@@ -8,10 +8,11 @@ namespace Ecommerce.Domain.src.RepoInterfaces
 {
     public interface IBaseRepo<T>
     {
-        IEnumerable<T> GetAll(QueryOptions queryOptions);
-        T CreateOne(T entity);
-        T GetOneById(Guid id);
-        T UpdateOne(T originalEntity, T updateEntity);
-        bool DeleteOne(T entity);
+        Task<IEnumerable<T>> GetAll(QueryOptions queryOptions);
+        Task<T> CreateOne(T entity);
+        Task<T> GetOneById(Guid id);
+        T GetOneByIdSync(Guid id);
+        Task<T> UpdateOneById(Guid id, T updateEntity);
+        Task<bool> DeleteOneById(Guid id);
     }
 }

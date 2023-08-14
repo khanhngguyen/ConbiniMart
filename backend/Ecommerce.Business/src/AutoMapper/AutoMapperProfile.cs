@@ -14,8 +14,14 @@ namespace Ecommerce.Business.src.AutoMapper
         {
             CreateMap<Product, ProductCreateDto>().ReverseMap();
             CreateMap<Product, ProductReadDto>().ReverseMap();
+            CreateMap<Product, ProductUpdateDto>().ReverseMap();
 
-            CreateMap<Image, ImageCreateDto>().ReverseMap();
+            // CreateMap<Image, ImageCreateDto>().ReverseMap();
+            // CreateMap<Image, ImageReadDto>().ReverseMap();
+
+            CreateMap<ProductImage, ProductImageCreateDto>().ReverseMap();
+            CreateMap<ProductImage, ProductImageReadDto>().ReverseMap();
+            CreateMap<ProductImageCreateDto, ProductImageReadDto>().ReverseMap();
         }
     }
 }

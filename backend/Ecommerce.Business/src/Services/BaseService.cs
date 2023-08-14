@@ -20,36 +20,38 @@ namespace Ecommerce.Business.src.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<TReadDto> GetAll(QueryOptions queryOptions)
+        public async Task<IEnumerable<TReadDto>> GetAll(QueryOptions queryOptions)
         {
-            return _mapper.Map<IEnumerable<TReadDto>>(_baseRepo.GetAll(queryOptions));
+            return  _mapper.Map<IEnumerable<TReadDto>>(await _baseRepo.GetAll(queryOptions)).ToList();
         }
-        public TReadDto CreateOne(TCreateDto dto)
+        public async Task<TReadDto> CreateOne(TCreateDto dto)
         {
-            var entity = _baseRepo.CreateOne(_mapper.Map<T>(dto));
+            var entity = await _baseRepo.CreateOne(_mapper.Map<T>(dto));
             return _mapper.Map<TReadDto>(entity);
         }
-        public TReadDto GetOneById(Guid id)
+        public async Task<TReadDto> GetOneById(Guid id)
         {
-            return _mapper.Map<TReadDto>(_baseRepo.GetOneById(id));
+            return _mapper.Map<TReadDto>(await _baseRepo.GetOneById(id));
         }
-        public TReadDto UpdateOneById(Guid id, TUpdateDto updated)
+        public virtual async Task<TReadDto> UpdateOneById(Guid id, TUpdateDto updated)
         {
-            var found = _baseRepo.GetOneById(id);
+            var found = await _baseRepo.GetOneById(id);
             if (found is null)
             {
-                _baseRepo.DeleteOne(found);
+                _baseRepo.DeleteOneById(id);
                 throw new Exception("Item not found");
             }
-            var updatedEntity = _baseRepo.UpdateOne(found, _mapper.Map<T>(updated));
+            var updatedEntity = await _baseRepo.UpdateOneById(id, _mapper.Map<T>(updated));
             return _mapper.Map<TReadDto>(updatedEntity);
         }
-        public bool DeleteOneById(Guid id)
+        public async Task<bool> DeleteOneById(Guid id)
         {
-            var found = _baseRepo.GetOneById(id);
+            // var found = _baseRepo.GetOneByIdSync(id);
+            var found = await _baseRepo.GetOneById(id);
             if (found != null)
             {
-                return _baseRepo.DeleteOne(found);
+                await _baseRepo.DeleteOneById(id);
+                return true;
             }
             return false;
         }

@@ -21,11 +21,11 @@ namespace Ecommerce.Controller.src.Controllers
             _productService = productService;
         }
 
-        [HttpGet]        
-        public override ActionResult<IEnumerable<ProductReadDto>> GetAll([FromQuery]QueryOptions queryOptions)
-        {
-            return Ok(base.GetAll(queryOptions));
-        }
+        // [HttpGet]        
+        // public override ActionResult<IEnumerable<ProductReadDto>> GetAll([FromQuery]QueryOptions queryOptions)
+        // {
+        //     return Ok(base.GetAll(queryOptions));
+        // }
 
         // [HttpPost]
         // public override ActionResult<Product> CreateOne([FromBody] ProductCreateDto dto)

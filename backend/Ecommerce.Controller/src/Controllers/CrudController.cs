@@ -20,16 +20,40 @@ namespace Ecommerce.Controller.src.Controllers
         }
         
         [HttpGet]
-        public virtual ActionResult<IEnumerable<TReadDto>> GetAll([FromQuery] QueryOptions queryOptions)
+        public virtual async Task<ActionResult<IEnumerable<TReadDto>>> GetAll([FromQuery] QueryOptions queryOptions)
         {
-            return Ok(_baseService.GetAll(queryOptions));
+            if (queryOptions.PageNumber < 0 || queryOptions.PageSize < 0) return BadRequest("Page number & Page size must be positive integers");
+            return Ok(await _baseService.GetAll(queryOptions));
         }
 
         [HttpPost]
-        public ActionResult<TReadDto> CreateOne([FromBody] TCreateDto dto)
+        public async Task<ActionResult<TReadDto>> CreateOne([FromBody] TCreateDto dto)
         {
-            var created = _baseService.CreateOne(dto);
+            var created = await _baseService.CreateOne(dto);
             return CreatedAtAction("CreateOne", created);
+        }
+
+        [HttpGet("{id:Guid}")]
+        public async Task<ActionResult<TReadDto>> GetOneById([FromRoute] Guid id)
+        {
+            if (await _baseService.GetOneById(id) is null)
+            {
+                return NotFound();
+            }
+            return Ok(await _baseService.GetOneById(id));
+        }
+
+        [HttpPatch("{id:Guid}")]
+        public async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, TUpdateDto update)
+        {
+            return Ok(await _baseService.UpdateOneById(id, update));
+        }
+
+        [HttpDelete("{id:Guid}")]
+        public async Task<ActionResult<bool>> DeleteOneById([FromRoute] Guid id)
+        {
+            // return StatusCode(204, _baseService.DeleteOneById(id));
+            return Ok(await _baseService.DeleteOneById(id));
         }
     }
 }

@@ -14,9 +14,9 @@ namespace Ecommerce.Business.src.Dtos
         public string Description { get; set; }
         public float Price { get; set; }
         public Category Category { get; set; }
-        public List<Image> Images { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public ProductImageReadDto Image { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
+        public DateTimeOffset UpdatedAt { get; set; }
     }
     
     // [AutoMap(typeof(Product))]
@@ -27,7 +27,7 @@ namespace Ecommerce.Business.src.Dtos
         public float Price { get; set; }
         public Category Category { get; set; }
         public int Inventory { get; set; }
-        public List<ImageCreateDto> Images { get; set; }
+        public ProductImageCreateDto Image { get; set; }
     }
 
     [AutoMap(typeof(Product))]
@@ -36,7 +36,7 @@ namespace Ecommerce.Business.src.Dtos
         public string Title { get; set; }
         public string Description { get; set; }
         public float Price { get; set; }
+        public Category Category { get; set; }
         public int Inventory { get; set; }
-        public List<Image> Images { get; set; }
     }
 }

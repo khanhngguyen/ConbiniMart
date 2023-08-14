@@ -12,7 +12,7 @@ namespace Ecommerce.Domain.src.Entities
         public float Price { get; set; }
         public Category Category { get; set; }
         public int Inventory { get; set; }
-        public List<Image> Images { get; set; }
+        public ProductImage Image { get; set; }
     }
 
     public enum Category

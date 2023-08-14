@@ -9,4 +9,19 @@ namespace Ecommerce.Business.src.Dtos
     {
         public string Link { get; set; }
     }
+
+    public class ImageReadDto
+    {
+        public string Link { get; set; }
+    }
+
+    public class ProductImageReadDto
+    {
+        public string Link {get; set; } 
+    }
+
+    public class ProductImageCreateDto
+    {
+        public string Link {get; set; } 
+    }
 }

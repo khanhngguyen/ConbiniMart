@@ -38,10 +38,22 @@ namespace Ecommerce.Business.src.Services
         //     var found = _productRepo.GetOneById(id);
         //     return _mapper.Map<ProductDto>(found);
         // }
-        // public ProductDto UpdateOneById(Guid id, ProductDto updateProduct)
-        // {
-        //     throw new NotImplementedException();
-        // }
+        public override async Task<ProductReadDto> UpdateOneById(Guid id, ProductUpdateDto updateProduct)
+        {
+            var found = await _productRepo.GetOneById(id);
+            if (found is null)
+            {
+                _productRepo.DeleteOneById(id);
+                throw new Exception("Product not found");
+            }
+            if (updateProduct.Title == null || updateProduct.Title == "") updateProduct.Title = found.Title;
+            if (updateProduct.Description == null || updateProduct.Description == "") updateProduct.Description = found.Description;
+            if (updateProduct.Price == 0 || updateProduct.Price < 0) updateProduct.Price = found.Price;
+            if (updateProduct.Category.ToString() == null || updateProduct.Category.ToString() == "") updateProduct.Category = found.Category;
+            if (updateProduct.Inventory.ToString() == null || updateProduct.Inventory.ToString() == "") updateProduct.Inventory = found.Inventory;
+            var update = await _productRepo.UpdateOneById(id, _mapper.Map<Product>(updateProduct));
+            return _mapper.Map<ProductReadDto>(update);
+        }
         // bool DeleteOneById(Guid id)
         // {
         //     var found = _productRepo.GetOneById(id);
