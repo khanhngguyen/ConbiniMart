@@ -17,6 +17,8 @@ namespace Ecommerce.WebApi.src.Database
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProducts { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<UserImage> UserImages { get; set; }
 
         static DatabaseContext()
         {
@@ -40,6 +42,19 @@ namespace Ecommerce.WebApi.src.Database
         {
             modelBuilder.HasPostgresEnum<Role>();
             modelBuilder.HasPostgresEnum<Category>();
+
+            // modelBuilder.Entity<Product>()
+            // .HasMany(p => p.Image)
+            // .WithOne(p => p.ProductId)
+            // .HasForeignKey(p => p.ProductId)
+            // .OnDelete(DeleteBehavior.Cascade);
+
+            // modelBuilder.Entity<ProductImage>()
+            // .HasOne(x => x.Id)
+            // .WithMany(x => x.Product)
+            // .HasForeignKey(x => x.ProductId)
+            // .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<OrderProduct>()
             .HasOne(orderProduct => orderProduct.Order)
             .WithMany(order => order.OrderProducts)

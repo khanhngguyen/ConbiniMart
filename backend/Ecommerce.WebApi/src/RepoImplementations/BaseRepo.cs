@@ -34,7 +34,18 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         }
         public async Task<T> GetOneById(Guid id)
         {
+            // var found = await _dbSet.FindAsync(id);
+            // if (found is null)
+            // {
+            //     Console.WriteLine("base Repo can not find");
+            //     throw new Exception("Item not found");
+            // }
+            // else return found;
             return await _dbSet.FindAsync(id);
+        }
+        public T GetOneByIdSync(Guid id)
+        {
+            return _dbSet.Find(id);
         }
         public virtual async Task<T> UpdateOneById(Guid id, T updateEntity)
         {
@@ -62,19 +73,16 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             //     _context.SaveChanges();
             //     return found;
         }
-        public bool DeleteOneById(Guid id)
+        public async Task<bool> DeleteOneById(Guid id)
         {
-            var found =  _dbSet.Find(id);
+            var found =  await _dbSet.FindAsync(id);
             if (found != null)
             {
-                Console.WriteLine("found");
                 _dbSet.Attach(found);
                 _dbSet.Remove(found);
+                await _context.SaveChangesAsync();
                 return true;
             }
-            Console.WriteLine("not found before save");
-            _context.SaveChanges();
-            Console.WriteLine("not found after save");
             return false;
         }
     }

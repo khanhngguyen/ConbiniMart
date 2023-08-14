@@ -42,7 +42,6 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 found.Price = updateProduct.Price;
                 found.Category = updateProduct.Category;
                 found.Inventory = updateProduct.Inventory;
-                found.Images = updateProduct.Images;
                 await _context.SaveChangesAsync();
                 return found;
             }

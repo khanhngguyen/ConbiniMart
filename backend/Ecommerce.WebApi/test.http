@@ -1,0 +1,13 @@
+POST http://localhost:5251/api/v1/Products
+Content-Type: application/application/json
+
+{
+  "title": "brioche bread",
+  "description": "brioche bread",
+  "price": 3.4,
+  "category": 0,
+  "inventory": 50,
+  "image": {
+    "link": "brioche image"
+  }
+}
