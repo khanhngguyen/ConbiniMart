@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ecommerce.Domain.src.Entities;
-using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Domain.src.RepoInterfaces
 {
-    public interface IUserRepo : IBaseRepo<User>
+    public interface IOrderRepo : IBaseRepo<Order>
     {
-        Task<User> CreateAdmin(User user);
-        Task<bool> CheckEmail(string email);
+        
     }
 }

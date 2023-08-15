@@ -26,7 +26,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         {
             return await _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize).ToListAsync();
         }
-        public async Task<T> CreateOne(T entity)
+        public virtual async Task<T> CreateOne(T entity)
         {
             _dbSet.Add(entity);
             await _context.SaveChangesAsync();

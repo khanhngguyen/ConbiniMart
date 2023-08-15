@@ -24,7 +24,7 @@ namespace Ecommerce.Business.src.Services
         {
             return  _mapper.Map<IEnumerable<TReadDto>>(await _baseRepo.GetAll(queryOptions)).ToList();
         }
-        public async Task<TReadDto> CreateOne(TCreateDto dto)
+        public virtual async Task<TReadDto> CreateOne(TCreateDto dto)
         {
             var entity = await _baseRepo.CreateOne(_mapper.Map<T>(dto));
             return _mapper.Map<TReadDto>(entity);

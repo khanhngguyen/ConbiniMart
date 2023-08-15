@@ -14,13 +14,11 @@ namespace Ecommerce.Business.src.Dtos
 
     public class OrderCreateDto
     {
-        public OrderStatus OrderStatus { get; set; }
         public List<OrderProduct> OrderProducts { get; set; }
     }
 
     public class OrderUpdateDto
     {
-        public OrderStatus OrderStatus { get; set; }
         public List<OrderProduct> OrderProducts { get; set; }
     }
 }

@@ -7,9 +7,8 @@ using Ecommerce.Domain.src.Entities;
 
 namespace Ecommerce.Business.src.ServiceInterfaces
 {
-    public interface IUserService : IBaseService<User, UserCreateDto, UserReadDto, UserUpdateDto>
+    public interface IOrderService : IBaseService<Order, OrderCreateDto, OrderReadDto, OrderUpdateDto>
     {
-        Task<UserReadDto> CreateAdmin(UserCreateDto dto);
-        Task<bool> CheckEmail(string email);
+        
     }
 }
