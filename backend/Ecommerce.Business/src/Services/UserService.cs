@@ -63,5 +63,13 @@ namespace Ecommerce.Business.src.Services
             var updated = await _userRepo.UpdateOneById(id, _mapper.Map<User>(updateUser));
             return _mapper.Map<UserReadDto>(updated);
         }
+        public async Task<UserReadDto> UpdatePassword(Guid id, string newPassword)
+        {
+            var found = await _userRepo.GetOneById(id) ?? throw new Exception("User not found");
+            PasswordService.HashPassword(found.Password, out var hashedPassword, out var salt);
+            found.Password = hashedPassword;
+            found.Salt = salt;
+            return _mapper.Map<UserReadDto>(await _userRepo.UpdatePassword(found));
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Ecommerce.Business.src.Dtos;
 using Ecommerce.Business.src.ServiceInterfaces;
@@ -37,5 +38,22 @@ namespace Ecommerce.Controller.src.Controllers
             }
             return Ok(await _userService.GetOneById(id));
         }
+
+        [HttpPatch("{id:Guid}/update")]
+        public async Task<ActionResult<UserReadDto>> UpdatePassword([FromRoute] Guid id, [FromBody] string newPassword)
+        {
+            if (await _userService.GetOneById(id) is null)
+            {
+                return NotFound();
+            }
+            return Ok(await _userService.UpdatePassword(id, newPassword));
+        }
+
+        // [HttpGet("profile")]
+        // public async Task<ActionResult<UserReadDto>> GetProfile()
+        // {
+        //     var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        //     return Ok(await _userService.GetOneById(new Guid(id)));
+        // }
     }
 }

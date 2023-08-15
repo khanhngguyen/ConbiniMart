@@ -11,5 +11,6 @@ namespace Ecommerce.Business.src.ServiceInterfaces
     {
         Task<UserReadDto> CreateAdmin(UserCreateDto dto);
         Task<bool> CheckEmail(string email);
+        Task<UserReadDto> UpdatePassword(Guid id, string newPassword);
     }
 }

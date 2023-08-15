@@ -12,5 +12,6 @@ namespace Ecommerce.Domain.src.RepoInterfaces
         Task<User> CreateAdmin(User user);
         Task<bool> CheckEmail(string email);
         Task<User?> FindByEmail(string email);
+        Task<User> UpdatePassword(User user);
     }
 }
