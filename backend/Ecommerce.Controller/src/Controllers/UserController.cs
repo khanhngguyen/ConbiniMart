@@ -28,7 +28,6 @@ namespace Ecommerce.Controller.src.Controllers
             return CreatedAtAction(nameof(CreateAdmin), await _userService.CreateAdmin(dto));
         }
 
-        // [HttpGet]
         [AllowAnonymous]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
         {
