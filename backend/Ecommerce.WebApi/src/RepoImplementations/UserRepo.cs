@@ -47,5 +47,10 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 return found;
             }
         }
+
+        public async Task<User?> FindByEmail(string email)
+        {
+            return await _dbSet.FirstOrDefaultAsync(x => x.Email == email);
+        }
     }
 }

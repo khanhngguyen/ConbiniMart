@@ -34,7 +34,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<TReadDto>> GetOneById([FromRoute] Guid id)
+        public virtual async Task<ActionResult<TReadDto>> GetOneById([FromRoute] Guid id)
         {
             if (await _baseService.GetOneById(id) is null)
             {

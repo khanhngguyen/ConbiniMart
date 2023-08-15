@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Ecommerce.Business.src.Dtos;
 using Ecommerce.Business.src.ServiceInterfaces;
 using Ecommerce.Domain.src.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controller.src.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/v1/[controller]s")]
     public class UserController : CrudController<User, UserCreateDto, UserReadDto, UserUpdateDto>
     {
@@ -24,6 +26,17 @@ namespace Ecommerce.Controller.src.Controllers
         public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
         {
             return CreatedAtAction(nameof(CreateAdmin), await _userService.CreateAdmin(dto));
+        }
+
+        // [HttpGet]
+        [AllowAnonymous]
+        public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
+        {
+            if (await _userService.GetOneById(id) is null)
+            {
+                return NotFound();
+            }
+            return Ok(await _userService.GetOneById(id));
         }
     }
 }

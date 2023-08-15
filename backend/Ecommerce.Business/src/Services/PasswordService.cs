@@ -18,7 +18,7 @@ namespace Ecommerce.Business.src.Services
 
         public static bool VerifyPassword(string original, string hashed, byte[] salt)
         {
-            var hmac = new HMACSHA256();
+            var hmac = new HMACSHA256(salt);
             var hashedOriginal = Encoding.UTF8.GetString(hmac.ComputeHash(Encoding.UTF8.GetBytes(original)));
             return hashedOriginal == hashed;
         }

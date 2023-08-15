@@ -1,3 +1,4 @@
+using System.Text;
 using Ecommerce.Business.src.AutoMapper;
 using Ecommerce.Business.src.Dtos;
 using Ecommerce.Business.src.ServiceInterfaces;
@@ -6,6 +7,8 @@ using Ecommerce.Domain.src.Entities;
 using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.WebApi.src.Database;
 using Ecommerce.WebApi.src.RepoImplementations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -43,6 +46,26 @@ builder.Services.AddSwaggerGen(options =>
         In = ParameterLocation.Header
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
+});
+
+//config route
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true;
+});
+
+//config authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = "ecommerce-backend",
+        ValidateAudience = false,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-security-key")),
+        ValidateIssuerSigningKey = true
+    };
 });
 
 var app = builder.Build();
