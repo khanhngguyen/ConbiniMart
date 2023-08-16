@@ -58,8 +58,9 @@ namespace Ecommerce.Business.src.Services
                 await _userRepo.DeleteOneById(id);
                 throw new Exception("User not found");
             }
-            if (updateUser.FirstName is null || updateUser.FirstName == "") updateUser.FirstName = found.FirstName;
-            if (updateUser.LastName is null || updateUser.LastName == "") updateUser.LastName = found.Lastname;
+            if (updateUser.FirstName is null || updateUser.FirstName == "" || updateUser.FirstName == "string") updateUser.FirstName = found.FirstName;
+            if (updateUser.LastName is null || updateUser.LastName == "" || updateUser.LastName  == "string") updateUser.LastName = found.Lastname;
+            if (updateUser.Email is null || updateUser.Email == "" || updateUser.Email == "string") updateUser.Email = found.Email;
             var updated = await _userRepo.UpdateOneById(id, _mapper.Map<User>(updateUser));
             return _mapper.Map<UserReadDto>(updated);
         }

@@ -43,6 +43,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             {
                 found.FirstName = updateUser.FirstName;
                 found.Lastname = updateUser.Lastname;
+                found.Email = updateUser.Email;
                 await _context.SaveChangesAsync();
                 return found;
             }

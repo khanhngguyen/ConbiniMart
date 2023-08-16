@@ -1,0 +1,73 @@
+### CreateOne
+POST http://localhost:5251/api/v1/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@mail.com",
+  "avatar": {
+    "link": "image"
+  },
+  "password": "john123"
+}
+
+###CreateAdmin
+POST http://localhost:5251/api/v1/users/admin
+Content-Type: application/json
+
+{
+  "firstName": "Kim",
+  "lastName": "Nguyen",
+  "email": "kim@mail.com",
+  "avatar": {
+    "link": "image"
+  },
+  "password": "kim123"
+}
+
+### Log In
+POST http://localhost:5251/api/v1/auth
+Content-Type: application/json
+
+{
+  "email": "jane@mail.com",
+  "password": "john123"
+}
+
+### GetAll
+GET http://localhost:5251/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxODM2NCwiZXhwIjoxNjkyMjE5NTY0LCJpYXQiOjE2OTIyMTgzNjQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.i1N_cKPWbMgDrqDm6RoXrb6ZzbKeA0H492iPpU3OJnk
+
+### GetOneById
+GET http://localhost:5251/api/v1/users/2f89096a-586e-4a7d-93a3-f3ec0a3ff711
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxNzM5NCwiZXhwIjoxNjkyMjE4NTk0LCJpYXQiOjE2OTIyMTczOTQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.vgmobyU-FSedyRLV_SL8MbJZGngeNQ3pwzhhaa9ro4w
+
+### GetProfile
+GET http://localhost:5251/api/v1/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxNzM5NCwiZXhwIjoxNjkyMjE4NTk0LCJpYXQiOjE2OTIyMTczOTQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.vgmobyU-FSedyRLV_SL8MbJZGngeNQ3pwzhhaa9ro4w
+
+### UpdateOneByid
+PATCH http://localhost:5251/api/v1/users/40da6d6e-766e-425f-90d3-be9a6eb4da2c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0MGRhNmQ2ZS03NjZlLTQyNWYtOTBkMy1iZTlhNmViNGRhMmMiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoiamFuZUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxOTM3MywiZXhwIjoxNjkyMjIwNTczLCJpYXQiOjE2OTIyMTkzNzMsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.5iq7H56JhC_-2W_Rz3MbqJuuPEDAamGHS_fYWATRIX4
+
+{
+  "firstName": "John",
+  "lastName": "string",
+  "email": "john@mail.com"
+}
+
+
+### DeleteOneByid
+DELETE http://localhost:5251/api/v1/users/40da6d6e-766e-425f-90d3-be9a6eb4da2c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0MGRhNmQ2ZS03NjZlLTQyNWYtOTBkMy1iZTlhNmViNGRhMmMiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoiamFuZUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxOTM3MywiZXhwIjoxNjkyMjIwNTczLCJpYXQiOjE2OTIyMTkzNzMsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.5iq7H56JhC_-2W_Rz3MbqJuuPEDAamGHS_fYWATRIX4
+
+
+# ### UpdatePassword
+# PATCH http://localhost:5251/api/v1/users/update/c9b50e1c-1b6e-4cf2-b467-9fc54a00e4da
+# Content-Type: text/plain
+
+# {
+#     "newpassword"
+# }

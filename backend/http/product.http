@@ -1,0 +1,47 @@
+//CreateOne
+###
+POST http://localhost:5251/api/v1/products
+Content-Type: application/json
+
+{
+  "title": "t-shirt",
+  "description": "short-sleeved t-shirt",
+  "price": 24.99,
+  "category": 1,
+  "inventory": 150,
+  "image": {
+    "link": "https://productimages.biltema.com/v1/image/imagebyfilename/21-2880_xl_1.jpg"
+  }
+}
+
+//GetAll
+###
+GET http://localhost:5251/api/v1/Products
+
+//GetOneById
+###
+GET http://localhost:5251/api/v1/Products/0ac27890-e425-42c5-97d7-5a2f9424a789
+
+//UpdateOneById
+###
+PATCH http://localhost:5251/api/v1/Products/0ac27890-e425-42c5-97d7-5a2f9424a789
+Content-Type: application/json
+
+{
+  "title": "white t-shirt",
+  "description": "string",
+  "price": 0,
+  "category": 0,
+  "inventory": 0
+}
+
+//DeleteOneById
+###
+DELETE http://localhost:5251/api/v1/Products/bda128af-5560-4e34-9d83-7a43658a9043
+
+
+
+
+
+
+

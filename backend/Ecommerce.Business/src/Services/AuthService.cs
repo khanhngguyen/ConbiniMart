@@ -27,7 +27,7 @@ namespace Ecommerce.Business.src.Services
         {
             var found = await _userRepo.FindByEmail(credentials.Email) ?? throw new Exception("Email not found");
             var isAuthenticated = PasswordService.VerifyPassword(credentials.Password, found.Password, found.Salt);
-            if (!isAuthenticated) throw new AuthenticationException("Unauthenticated credentials");
+            if (!isAuthenticated) throw new AuthenticationException("Password incorrect");
             return GenerateToken(found);
         }
         private string GenerateToken(User user)
@@ -38,7 +38,7 @@ namespace Ecommerce.Business.src.Services
                 new Claim(ClaimTypes.Email, user.Email)
             };
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-security-key"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-authservice-security-key"));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var securityTokenDescriptor = new SecurityTokenDescriptor{
@@ -50,7 +50,8 @@ namespace Ecommerce.Business.src.Services
 
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-            return token.ToString();
+            // return token.ToString();
+            return jwtSecurityTokenHandler.WriteToken(token);
         }
     }
 }

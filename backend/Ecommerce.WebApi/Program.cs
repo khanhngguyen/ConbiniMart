@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Text;
 using Ecommerce.Business.src.AutoMapper;
 using Ecommerce.Business.src.Dtos;
@@ -30,6 +31,7 @@ builder.Services.AddScoped<IOrderRepo, OrderRepo>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(config => config.AddProfile(typeof(AutoMapperProfile)));
@@ -63,9 +65,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateIssuer = true,
         ValidIssuer = "ecommerce-backend",
         ValidateAudience = false,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-security-key")),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-authservice-security-key")),
         ValidateIssuerSigningKey = true
     };
+});
+
+//add authorization policy
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
 });
 
 var app = builder.Build();
