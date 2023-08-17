@@ -49,7 +49,7 @@ namespace Ecommerce.Controller.src.Controllers
 
         [HttpPatch("{id:Guid}")]
         [ProducesResponseType(statusCode: 200)]
-        public async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, TUpdateDto update)
+        public virtual async Task<ActionResult<TReadDto>> UpdateOneById([FromRoute] Guid id, TUpdateDto update)
         {
             return Ok(await _baseService.UpdateOneById(id, update));
         }

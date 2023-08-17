@@ -2,15 +2,32 @@
 ###
 POST http://localhost:5251/api/v1/products
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjI1Nzk4NSwiZXhwIjoxNjkyMjU5MTg1LCJpYXQiOjE2OTIyNTc5ODUsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.cMetzIgXxOmYcwtHpXZBU9qtI1jPuGgXotE3WR_XK1A
 
 {
-  "title": "t-shirt",
-  "description": "short-sleeved t-shirt",
-  "price": 24.99,
-  "category": 1,
-  "inventory": 150,
+  "title": "book",
+  "description": "book",
+  "price": 349.99,
+  "category": 4,
+  "inventory": 50,
   "image": {
-    "link": "https://productimages.biltema.com/v1/image/imagebyfilename/21-2880_xl_1.jpg"
+    "link": "https://www.gigantti.fi/image/dv_web_D180001002743559/304656/jbl-tour-one-langattomat-around-ear-kuulokkeet-musta--pdp_zoom-3000.jpg"
+  }
+}
+
+###
+POST http://localhost:5251/api/v1/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIyMDQ3MCwiZXhwIjoxNjkyMjIxNjcwLCJpYXQiOjE2OTIyMjA0NzAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.3-2vJEZpzzz9Bk0q0YpEJiMtClN_5YAJ9xn_gEsVbso
+
+{
+  "title": "string",
+  "description": "string",
+  "price": 0,
+  "category": 0,
+  "inventory": 0,
+  "image": {
+    "link": "string"
   }
 }
 
@@ -26,9 +43,10 @@ GET http://localhost:5251/api/v1/Products/0ac27890-e425-42c5-97d7-5a2f9424a789
 ###
 PATCH http://localhost:5251/api/v1/Products/0ac27890-e425-42c5-97d7-5a2f9424a789
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIyMDQ3MCwiZXhwIjoxNjkyMjIxNjcwLCJpYXQiOjE2OTIyMjA0NzAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.3-2vJEZpzzz9Bk0q0YpEJiMtClN_5YAJ9xn_gEsVbso
 
 {
-  "title": "white t-shirt",
+  "title": "black t-shirt",
   "description": "string",
   "price": 0,
   "category": 0,
@@ -37,7 +55,9 @@ Content-Type: application/json
 
 //DeleteOneById
 ###
-DELETE http://localhost:5251/api/v1/Products/bda128af-5560-4e34-9d83-7a43658a9043
+DELETE http://localhost:5251/api/v1/Products/5abd52b9-04bf-40c5-8e30-4225dcd54748
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIyMDQ3MCwiZXhwIjoxNjkyMjIxNjcwLCJpYXQiOjE2OTIyMjA0NzAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.3-2vJEZpzzz9Bk0q0YpEJiMtClN_5YAJ9xn_gEsVbso
+
 
 
 
