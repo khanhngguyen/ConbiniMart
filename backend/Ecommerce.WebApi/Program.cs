@@ -26,14 +26,14 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IOrderRepo, OrderRepo>();
-builder.Services.AddScoped<IOrderProductRepo, OrderProductRepo>();
+builder.Services.AddTransient<IOrderProductRepo, OrderProductRepo>();
 
 // Service
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IOrderProductService, OrderProductService>();
+builder.Services.AddTransient<IOrderProductService, OrderProductService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(config => config.AddProfile(typeof(AutoMapperProfile)));

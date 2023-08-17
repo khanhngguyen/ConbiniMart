@@ -13,7 +13,7 @@ namespace Ecommerce.Domain.src.Entities
         public Product Product { get; set; }
         public Order Order { get; set; }
         // [ForeignKey(nameof(ProductId))]
-        // public Guid ProductId { get; set; }
+        public Guid ProductId { get; set; }
         // [ForeignKey(nameof(OrderId))]
         public Guid OrderId { get; set; }
         public int Amount { get; set; }

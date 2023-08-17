@@ -9,12 +9,13 @@ namespace Ecommerce.Business.src.Dtos
     public class OrderReadDto
     {
         public OrderStatus OrderStatus { get; set; }
-        public List<OrderProduct> OrderProducts { get; set; }
+        // public List<OrderProduct> OrderProducts { get; set; }
+        public List<OrderProductReadDto> OrderProducts { get; set; }
     }
 
     public class OrderCreateDto
     {
-        public List<OrderProduct> OrderProducts { get; set; }
+        public List<OrderProductCreateDto> OrderProducts { get; set; }
     }
 
     public class OrderUpdateDto

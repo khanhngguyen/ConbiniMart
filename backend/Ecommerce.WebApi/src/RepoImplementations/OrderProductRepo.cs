@@ -20,11 +20,11 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             _dbSet = _context.OrderProducts;
         }
 
-        public async Task<IEnumerable<OrderProduct>> CreateOrderProduct(params OrderProduct[] orderProducts)
+        public async Task<OrderProduct> CreateOrderProduct(OrderProduct orderProduct)
         {
-            await _dbSet.AddRangeAsync(orderProducts);
+            await _dbSet.AddAsync(orderProduct);
             await _context.SaveChangesAsync();
-            return orderProducts;
+            return orderProduct;
         }
     }
 }

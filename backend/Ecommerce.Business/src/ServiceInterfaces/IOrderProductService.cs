@@ -7,8 +7,8 @@ using Ecommerce.Domain.src.Entities;
 
 namespace Ecommerce.Business.src.ServiceInterfaces
 {
-    public interface IOrderService
+    public interface IOrderProductService
     {
-        Task<OrderReadDto> PlaceOrder(Guid userId, OrderCreateDto dto);
+        Task<OrderProductReadDto> CreateOrderProduct(OrderProduct orderProduct);
     }
 }
