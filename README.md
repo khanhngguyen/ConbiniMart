@@ -16,13 +16,15 @@ This project involves creating a Fullstack project with React and Redux on the f
 You can follow the same topics as your backend project or choose the alternative one, between E-commerce and Library. You can reuse the previous frontend project, with necessary modification, or make a new layout to fit your backend server.
 
 ## Table of Contents
-
+Introduction: 
 1. [Features](#features)
    - [Mandatory features](#mandatory-features)
    - [Extra features](#extra-features)
 2. [Requirements](#requirements)
 3. [Getting Started](#getting-started)
 4. [Testing](#testing)
+
+Project Result:
 
 ## Features
 
@@ -93,3 +95,6 @@ Testing should be done along the development circle, early and regularly.
 ## Testing
 
 Unit testing, and optionally integration testing, must be included for both frontend and backend code. Aim for high test coverage and ensure all major functionalities are covered.
+
+
+# Project Result
