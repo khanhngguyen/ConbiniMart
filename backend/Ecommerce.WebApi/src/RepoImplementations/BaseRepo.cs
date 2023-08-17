@@ -34,13 +34,6 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         }
         public async Task<T> GetOneById(Guid id)
         {
-            // var found = await _dbSet.FindAsync(id);
-            // if (found is null)
-            // {
-            //     Console.WriteLine("base Repo can not find");
-            //     throw new Exception("Item not found");
-            // }
-            // else return found;
             return await _dbSet.FindAsync(id);
         }
         public T GetOneByIdSync(Guid id)

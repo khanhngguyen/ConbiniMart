@@ -13,5 +13,12 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         public OrderRepo(DatabaseContext databaseContext) : base(databaseContext)
         {
         }
+
+        public async Task<Order> CreateOne(Order order)
+        {
+            _dbSet.Add(order);
+            _context.SaveChangesAsync();
+            return order;
+        }
     }
 }
