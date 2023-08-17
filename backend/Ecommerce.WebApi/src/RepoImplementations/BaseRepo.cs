@@ -22,7 +22,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             _context = databaseContext;
         }
 
-        public async Task<IEnumerable<T>> GetAll([FromQuery] QueryOptions queryOptions)
+        public virtual async Task<IEnumerable<T>> GetAll([FromQuery] QueryOptions queryOptions)
         {
             return await _dbSet.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize).ToListAsync();
         }
