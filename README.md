@@ -21,12 +21,17 @@ Introduction:
 [Features](#features)
    - [Mandatory features](#mandatory-features)
    - [Extra features](#extra-features)
-[Requirements](#requirements)
-[Getting Started](#getting-started)
-[Testing](#testing)
+   - [Requirements](#requirements)
 
 Project Result:
 
+[Backend](#project-result--backend)
+   - [Project Design](#project-design)
+   - [Features](#features-1)
+   - [Backend Demo](#backend-demo)
+   - [Testing](#testing)
+
+[Frontend](#project-result--frontend)
 
 
 ## Features
