@@ -68,39 +68,10 @@ And any other extra features that you want to implement ...
 3. Document with Swagger: Make sure to annotate your API endpoints and generate a Swagger UI for easier testing and documentation.
 4. Project should have proper file structure, naming convention, and comply with Rest API.
 5. `README` file should sufficiently describe the project, as well as the deployment.
-
-## Getting Started
-
-1. Your full stack project should have one git repo to manage both frontend and backend. The shared .git in the root directory is used to push commits to the remote repo. In case you need to deploy frontend and backend to different server, you can inittiate another `.git` folder in each repository. Syntax: `cd frontend` -> `git init` (similar to backend folder). Remember to add `.gitignore` for each folder when you intiate `git` repo.
-2. `frontend` folder is for the react frontend. Start with `backend` first before moving to `frontend`.
-3. In the `backend`, here is the recommended order:
-
-   - Plan Your Database Schema before start coding
-
-   - Set Up the Project Structure
-
-   - Build the models
-
-   - Create the Repositories
-
-   - Build the Services
-
-   - Set Up Authentication & Authorization
-
-   - Build the Controllers
-
-   - Implement Error Handling Middleware
-
-4. You should focus on the mandatory features first. Make sure you have minimal working project before opting for advanced functionalities.
-
-Testing should be done along the development circle, early and regularly.
-
-## Testing
-
-Unit testing, and optionally integration testing, must be included for both frontend and backend code. Aim for high test coverage and ensure all major functionalities are covered.
+6. Unit testing, and optionally integration testing, must be included for both frontend and backend code. Aim for high test coverage and ensure all major functionalities are covered.
 
 
-# Project Result
+# Project Result : Backend
 !!!Current status: incomplete
 
 ## Project Design
@@ -135,9 +106,30 @@ User log in with credentials --> Verify credentials --> if success, token is ret
 
 ![CLEAN Architecture](./projectDesign/CLEAN%20Architecture.png)
 
-## Testing out the project
+## Features
+!!! Only working features are listed here
+
+#### User Functionalities
+
+- Users can register for an account, email for each user is unique, no email is used for 2 accounts. Users can.not register as an Admin/
+- Users can log in and access certain endpoints, e.g. get their profile, update password, update their profile (name, email), delete their own account.
+
+#### Product Functionalities
+- Browse Products: anyone can browse available products and single product. Users can also search and sort products.
+
+#### Admin Functionalities
+
+- User Management: Admins can view all users, or view a sigle user. Admin can create new admin account.
+- Product Management: only Admins can create, edit, and delete products.
+
+## Backend demo
 
 - [Swagger Docs](https://kim-fs15-ecommerce-backend.azurewebsites.net/swagger/index.html) 
 
 - Backend base URL: https://kim-fs15-ecommerce-backend.azurewebsites.net/
 
+## Testing
+xUnit is used for testing
+
+# Project Result : Frontend
+!!! Status: not implemented yet
