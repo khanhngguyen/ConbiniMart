@@ -17,14 +17,17 @@ You can follow the same topics as your backend project or choose the alternative
 
 ## Table of Contents
 Introduction: 
-1. [Features](#features)
+
+[Features](#features)
    - [Mandatory features](#mandatory-features)
    - [Extra features](#extra-features)
-2. [Requirements](#requirements)
-3. [Getting Started](#getting-started)
-4. [Testing](#testing)
+[Requirements](#requirements)
+[Getting Started](#getting-started)
+[Testing](#testing)
 
 Project Result:
+
+
 
 ## Features
 
@@ -98,3 +101,43 @@ Unit testing, and optionally integration testing, must be included for both fron
 
 
 # Project Result
+!!!Current status: incomplete
+
+## Project Design
+
+#### Entities design
+
+![ERD](./projectDesign/ERD.png)
+
+Brief:
+   - User: has Role either Admin or User
+   - Product: belongs to a Category type
+   - Order: has Status, has 1-to-many relationship with OrderProduct
+   - OrderProduct: has Order's id & Product's id as Foreign Keys, has 1-to-many relationship with Product
+   --> User can make many Orders
+   --> Each Order can have many OrderProducts
+
+#### Endpoints design
+!!!!Current status: incomplete, only endpoints for User & Product are working
+
+![Endpoints design](./projectDesign/Endpoints.png)
+
+Brief:
+   - Most endpoints are protected, only the one without any mark are accessible to everyone
+   - Authentication mark: means that User have to log in to acess these endpoints
+   - Authorization: Only user with Admin Role can access to these endpoints
+
+#### Authentication strategy
+
+User log in with credentials --> Verify credentials --> if success, token is returned back to user --> use token to authenticate
+
+#### Architecture : CLEAN 
+
+![CLEAN Architecture](./projectDesign/CLEAN%20Architecture.png)
+
+## Testing out the project
+
+- [Swagger Docs](https://kim-fs15-ecommerce-backend.azurewebsites.net/swagger/index.html) 
+
+- Backend base URL: https://kim-fs15-ecommerce-backend.azurewebsites.net/
+
