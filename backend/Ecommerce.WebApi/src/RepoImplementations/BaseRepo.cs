@@ -43,12 +43,6 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         public virtual async Task<T> UpdateOneById(Guid id, T updateEntity)
         {
             var found = await _dbSet.FindAsync(id);
-            // if (found != null)
-            // {
-            //     _context.Entry(found).CurrentValues.SetValues(updateEntity);
-            //     _context.SaveChanges();
-            //     return found;
-            // }
             if (found is null) throw new Exception("Item not found");
             else 
             {
@@ -63,8 +57,6 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             //     _context.SaveChanges();
             //     return found;
             }
-            //     _context.SaveChanges();
-            //     return found;
         }
         public async Task<bool> DeleteOneById(Guid id)
         {

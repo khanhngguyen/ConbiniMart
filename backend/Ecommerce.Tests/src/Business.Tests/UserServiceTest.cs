@@ -20,6 +20,23 @@ namespace Ecommerce.Tests.src.Business.Tests
         private readonly IUserService _userService;
         private readonly Mock<IUserRepo> _userRepoMock;
         private readonly IMapper _mapper;
+        private readonly UserCreateDto _userCreateDto = new UserCreateDto { 
+            FirstName = "Kim",
+            LastName = "Nguyen",
+            Email = "kim@mail.com",
+            Avatar = new UserImageCreateDto {},
+            Password = "kim123"
+        };
+        private readonly User _returnedUser = new User {
+            Id = new Guid(),
+            FirstName = "Kim",
+            Lastname = "Nguyen",
+            Email = "kim@mail.com",
+            Avatar = new UserImage {},
+            Password = "kim123",
+            Salt = new byte[32],
+            Role = Role.User
+        };
 
         public UserServiceTest()
         {
@@ -37,35 +54,20 @@ namespace Ecommerce.Tests.src.Business.Tests
         public async Task CreateNewUser_ValidUser_CreateSuccess()
         {
             //Arrange
-            var userCreateDto = new UserCreateDto { 
-                FirstName = "Mary",
-                LastName = "Jane",
-                Email = "mary@mail.com",
-                Avatar = new UserImageCreateDto {},
-                Password = "mary123"
-            };
-            var returnedUser = new User {
-                Id = new Guid(),
-                FirstName = "Mary",
-                Lastname = "Jane",
-                Email = "mary@mail.com",
-                Avatar = new UserImage {},
-                Password = "mary123",
-                Salt = new byte[32],
-                Role = Role.User
-            };
-            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(returnedUser);
+            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(_returnedUser);
 
             //Act
-            var createdUser = await _userService.CreateOne(userCreateDto);
+            var createdUser = await _userService.CreateOne(_userCreateDto);
             
             //Assert
             Assert.NotNull(createdUser);
             Assert.IsType<UserReadDto>(createdUser);
-            Assert.Equal(userCreateDto.FirstName, createdUser.FirstName);
-            Assert.Equal(userCreateDto.LastName, createdUser.Lastname);
-            Assert.Equal(userCreateDto.Email, createdUser.Email);
+            Assert.Equal(_userCreateDto.FirstName, createdUser.FirstName);
+            Assert.Equal(_userCreateDto.LastName, createdUser.Lastname);
+            Assert.Equal(_userCreateDto.Email, createdUser.Email);
             Assert.Equal(Role.User, createdUser.Role);
+            _userRepoMock.Verify(x => x.CreateOne(It.IsAny<User>()), Times.Once);
+            _userRepoMock.Verify(x => x.CreateAdmin(It.IsAny<User>()), Times.Never);
         }
 
         [Fact]
@@ -101,6 +103,222 @@ namespace Ecommerce.Tests.src.Business.Tests
             Assert.Equal(userCreateDto.LastName, createdAdmin.Lastname);
             Assert.Equal(userCreateDto.Email, createdAdmin.Email);
             Assert.Equal(Role.Admin, createdAdmin.Role);
+            _userRepoMock.Verify(x => x.CreateAdmin(It.IsAny<User>()), Times.Once);
+            _userRepoMock.Verify(x => x.CreateOne(It.IsAny<User>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task GetAllUser_ValidUsers_ReturnSuccess()
+        {
+            //Arrange
+            IEnumerable<User> result = new List<User> { _returnedUser };
+            var queryOptions = new QueryOptions();
+            _userRepoMock.Setup(x => x.GetAll(It.IsAny<QueryOptions>())).Returns(Task.FromResult(result));
+
+            //Act
+            await _userService.CreateOne(_userCreateDto);
+            var users = await _userService.GetAll(queryOptions);
+
+            //Assert
+            Assert.NotEmpty(users);
+            Assert.Equal(1, users.Count());
+            Assert.Equal(_returnedUser.FirstName, users.ElementAt(0).FirstName);
+            _userRepoMock.Verify(x => x.GetAll(It.IsAny<QueryOptions>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task GetOneById_ValidId_ReturnValidUser()
+        {
+            //Arrange
+            var userReadDto = new UserReadDto {
+                FirstName = "Kim",
+                Lastname = "Nguyen",
+                Email = "kim@mail.com",
+                Avatar = new UserImageReadDto {},
+                Role = Role.User,
+            };
+            _userRepoMock.Setup(x => x.GetOneById(It.IsAny<Guid>())).Returns(Task.FromResult(_returnedUser));
+
+            //Act
+            var createdUser = await _userService.CreateOne(_userCreateDto);
+            // var result = new UserReadDto();
+            var id = new Guid();
+            if (createdUser != null)
+            {
+                id = createdUser.Id;
+                // result = await _userService.GetOneById(createdUser.Id);
+            }
+            var result = await _userService.GetOneById(id);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<UserReadDto>(result);
+            Assert.Equal(userReadDto.FirstName, result.FirstName);
+            Assert.Equal(userReadDto.Email, result.Email);
+            _userRepoMock.Verify(x => x.GetOneById(It.IsAny<Guid>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task GetOneById_InvalidId_ReturnNull()
+        {
+            //Arrange
+            var id = new Guid();
+            await _userService.CreateOne(_userCreateDto);
+
+            //Act
+            var result = await _userService.GetOneById(id);
+
+            //Assert
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public async Task UpdateOneByid_ValidId_UpdateSuccess()
+        {
+            // Arrange
+            var userUpdate = new UserUpdateDto {
+                FirstName = "Khanh",
+                LastName = "",
+                Email = ""
+            };
+            var returnedUser = new User {
+                Id = new Guid(),
+                FirstName = "Khanh",
+                Lastname = "Nguyen",
+                Email = "kim@mail.com",
+                Avatar = new UserImage {},
+                Password = "kim123",
+                Salt = new byte[32],
+                Role = Role.User
+            };
+            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(_returnedUser);
+            _userRepoMock.Setup(x => x.GetOneById(It.IsAny<Guid>())).Returns(Task.FromResult(_returnedUser));
+            _userRepoMock.Setup(x => x.UpdateOneById(It.IsAny<Guid>(), It.IsAny<User>())).ReturnsAsync(returnedUser);
+
+            //Act
+            var createdUser = await _userService.CreateOne(_userCreateDto);
+            var id = new Guid();
+            if (createdUser != null) 
+            {
+                id = createdUser.Id;
+            }
+            var result = await _userService.UpdateOneById(id, userUpdate);
+            Console.WriteLine("user create last name: " + userUpdate.LastName);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<UserReadDto>(result);
+            Assert.Equal(userUpdate.FirstName, result.FirstName);
+            Assert.NotEqual("", result.Lastname);
+            _userRepoMock.Verify(x => x.UpdateOneById(It.IsAny<Guid>(), It.IsAny<User>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdateOneById_InvalidId_ThrowException()
+        {
+            //Arrange
+            var id = new Guid();
+            await _userService.CreateOne(_userCreateDto);
+            var userUpdate = new UserUpdateDto {
+                FirstName = "Khanh",
+                LastName = "",
+                Email = ""
+            };
+
+            //Act
+            Exception exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.UpdateOneById(id, userUpdate));
+
+            //Assert
+            Assert.ThrowsAsync<Exception>(async () => await _userService.UpdateOneById(id, userUpdate));
+            Assert.Equal("User not found", exception.Message);
+            _userRepoMock.Verify(x => x.UpdateOneById(It.IsAny<Guid>(), It.IsAny<User>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task UpdatePassword_ValidId_UpdateSuccess()
+        {
+            //Arrange
+            var returnedUser = new User {
+                Id = new Guid(),
+                FirstName = "Kim",
+                Lastname = "Nguyen",
+                Email = "kim@mail.com",
+                Avatar = new UserImage {},
+                Password = "newpassword",
+                Salt = new byte[32],
+                Role = Role.User
+            };
+            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(_returnedUser);
+            _userRepoMock.Setup(x => x.GetOneById(It.IsAny<Guid>())).Returns(Task.FromResult(_returnedUser));
+            _userRepoMock.Setup(x => x.UpdatePassword(It.IsAny<User>())).ReturnsAsync(returnedUser);
+
+            //Act
+            var createdUser = await _userService.CreateOne(_userCreateDto);
+            var id = new Guid();
+            if (createdUser != null) 
+            {
+                id = createdUser.Id;
+            }
+            var result = await _userService.UpdatePassword(id, "newpassword");
+            // var updatedUser = await _userRepoMock.Object.GetOneById(id);
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsType<UserReadDto>(result);
+            _userRepoMock.Verify(x => x.UpdatePassword(It.IsAny<User>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task UpdatePassword_InvalidId_ThrowException()
+        {
+            //Arrange
+            var id = new Guid();
+            await _userService.CreateOne(_userCreateDto);
+
+            //Act
+            Exception exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.UpdatePassword(id, "newpassword"));
+
+            //Assert
+            Assert.ThrowsAsync<Exception>(async () => await _userService.UpdatePassword(id, "newpassword"));
+            Assert.Equal("User not found", exception.Message);
+            _userRepoMock.Verify(x => x.UpdatePassword(It.IsAny<User>()), Times.Never);
+        }
+
+        [Fact]
+        public async Task DeleteOneById_ValidId_ReturnTrue()
+        {
+            //Arrange
+            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(_returnedUser);
+            _userRepoMock.Setup(x => x.GetOneById(It.IsAny<Guid>())).Returns(Task.FromResult(_returnedUser));
+            _userRepoMock.Setup(x => x.DeleteOneById(It.IsAny<Guid>())).Returns(Task.FromResult(true));
+
+            //Act
+            var createdUser = await _userService.CreateOne(_userCreateDto);
+            var id = new Guid();
+            if (createdUser != null) 
+            {
+                id = createdUser.Id;
+            }
+            var result = await _userService.DeleteOneById(id);
+
+            //Assert
+            Assert.True(result);
+            _userRepoMock.Verify(x => x.DeleteOneById(It.IsAny<Guid>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteOneById_InValidId_ReturnFalse()
+        {
+            //Arrange
+            var id = new Guid();
+            // await _userService.CreateOne(_userCreateDto);
+
+            //Act
+            var result = await _userService.DeleteOneById(id);
+
+            //Assert
+            Assert.False(result);
+            _userRepoMock.Verify(x => x.DeleteOneById(It.IsAny<Guid>()), Times.Never);
         }
     }
 }
