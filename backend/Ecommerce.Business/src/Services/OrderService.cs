@@ -46,7 +46,8 @@ namespace Ecommerce.Business.src.Services
             //find products from dto's ProductId (type OrderProductCreatedto)
 
             //map OrderProductCreateDto to OrderProduct
-            var orderProducts = _mapper.Map<List<OrderProduct>>(dto.OrderProducts);
+            // var orderProducts = _mapper.Map<List<OrderProduct>>(dto.OrderProducts);
+            var orderProducts = createdOrder.OrderProducts;
             // foreach (var item in orderProducts)
             // {
             //     item.Order = createdOrder;
@@ -58,7 +59,7 @@ namespace Ecommerce.Business.src.Services
             {
                 orderProducts[i].Order = createdOrder;
                 orderProducts[i].OrderId = createdOrder.Id;
-                orderProducts[i].Product = _productRepo.GetOneByIdSync(dto.OrderProducts[i].ProductId);
+                orderProducts[i].Product = await _productRepo.GetOneById(dto.OrderProducts[i].ProductId);
 
                 await _orderProductRepo.CreateOrderProduct(orderProducts[i]);
             }

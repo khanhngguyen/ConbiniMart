@@ -31,8 +31,8 @@ POST http://localhost:5251/api/v1/auth
 Content-Type: application/json
 
 {
-  "email": "mary@mail.com",
-  "password": "mary123"
+  "email": "john@mail.com",
+  "password": "john123"
 }
 
 ### Log In as Admin

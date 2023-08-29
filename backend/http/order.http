@@ -1,12 +1,12 @@
 ### PlaceOrder
 POST http://localhost:5251/api/v1/order
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyZjg5MDk2YS01ODZlLTRhN2QtOTNhMy1mM2VjMGEzZmY3MTEiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoibWFyeUBtYWlsLmNvbSIsIm5iZiI6MTY5MjMwOTcxMCwiZXhwIjoxNjkyMzEwOTEwLCJpYXQiOjE2OTIzMDk3MTAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.RpPshhQ_CTdf6-nJP8xBk1vl8SlYBUAbkDU4pMRx2mM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI1YmM2MTUyOC03MmRmLTRhMzgtODhmYi00M2M3ZjBjMmE2NzQiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsIm5iZiI6MTY5MzM0NDkxMCwiZXhwIjoxNjkzMzQ2MTEwLCJpYXQiOjE2OTMzNDQ5MTAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.gPmdUOBe_IEi-j1f28RfNu-ZAPndDY4ryWeEJIysawQ
 
 {
   "orderProducts": [
     {
-      "productId": "fcca6f44-25b7-46ab-b62c-0c98b7694b92",
+      "productId": "bc1a7415-30cb-4cf0-b28e-273b61f49513",
       "amount": 3
     }
   ]

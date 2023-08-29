@@ -22,15 +22,16 @@ namespace Ecommerce.Controller.src.Controllers
             _orderService = orderService;
         }
 
-        // [Authorize]
-        // [HttpPost]
-        // [ProducesResponseType(statusCode: 201)]
-        // public async Task<ActionResult<OrderReadDto>> PlaceOrder([FromBody] OrderCreateDto dto)
-        // {
-        //     if (dto.OrderProducts.Any(o => o.Amount <= 0)) return BadRequest("Amount can not be less than 0");
-        //     var userId = new Guid(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        //     var orderRead = await _orderService.PlaceOrder(userId, dto);
-        //     return CreatedAtAction(nameof(PlaceOrder), orderRead);
-        // }
+        [Authorize]
+        [HttpPost]
+        [ProducesResponseType(statusCode: 201)]
+        [ProducesResponseType(statusCode: 400)]
+        public async Task<ActionResult<OrderReadDto>> PlaceOrder([FromBody] OrderCreateDto dto)
+        {
+            if (dto.OrderProducts.Any(o => o.Amount <= 0)) return BadRequest("Amount can not be less than 0");
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+            var orderRead = await _orderService.PlaceOrder(new Guid(userId), dto);
+            return CreatedAtAction(nameof(PlaceOrder), orderRead);
+        }
     }
 }

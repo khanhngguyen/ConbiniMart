@@ -26,7 +26,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IProductRepo, ProductRepo>();
 builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IOrderRepo, OrderRepo>();
-builder.Services.AddTransient<IOrderProductRepo, OrderProductRepo>();
+builder.Services.AddScoped<IOrderProductRepo, OrderProductRepo>();
 
 // Service
 builder.Services.AddScoped<IProductService, ProductService>();

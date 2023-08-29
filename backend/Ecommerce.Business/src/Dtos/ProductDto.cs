@@ -19,7 +19,6 @@ namespace Ecommerce.Business.src.Dtos
         public DateTimeOffset UpdatedAt { get; set; }
     }
     
-    // [AutoMap(typeof(Product))]
     public class ProductCreateDto
     {
         public string Title { get; set; }

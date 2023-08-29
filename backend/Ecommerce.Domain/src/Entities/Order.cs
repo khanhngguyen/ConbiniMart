@@ -7,7 +7,7 @@ namespace Ecommerce.Domain.src.Entities
 {
     public class Order : BaseEntity
     {
-        public OrderStatus OrderStatus { get; set; }
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public User User { get; set; }
         public List<OrderProduct> OrderProducts { get; set; }
     }

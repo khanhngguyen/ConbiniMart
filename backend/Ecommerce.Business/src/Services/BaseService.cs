@@ -38,7 +38,6 @@ namespace Ecommerce.Business.src.Services
             var found = await _baseRepo.GetOneById(id);
             if (found is null)
             {
-                _baseRepo.DeleteOneById(id);
                 throw new Exception("Item not found");
             }
             var updatedEntity = await _baseRepo.UpdateOneById(id, _mapper.Map<T>(updated));
