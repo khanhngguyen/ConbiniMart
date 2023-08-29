@@ -108,6 +108,30 @@ namespace Ecommerce.Tests.src.Business.Tests
         }
 
         [Fact]
+        public async Task CreateNewUser_ExistedEmail_ThrowException()
+        {
+            //Arrange
+            _userRepoMock.Setup(x => x.CreateOne(It.IsAny<User>())).ReturnsAsync(_returnedUser);
+            _userRepoMock.Setup(x => x.CheckEmail(It.IsAny<string>())).ReturnsAsync(true);
+            UserCreateDto _existedEmail = new UserCreateDto { 
+                FirstName = "Test",
+                LastName = "Test",
+                Email = "kim@mail.com",
+                Avatar = new UserImageCreateDto {},
+                Password = "test123"
+            };
+
+            //Act
+            var exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.CreateOne(_existedEmail));
+
+            //Assert
+            Assert.ThrowsAsync<Exception>(async () => await _userService.CreateOne(_existedEmail));
+            Assert.Equal("Email is already used", exception.Message);
+            _userRepoMock.Verify(x => x.CheckEmail(It.IsAny<string>()), Times.AtLeastOnce);
+            _userRepoMock.Verify(x => x.CreateOne(It.IsAny<User>()), Times.Never);
+        }
+
+        [Fact]
         public async Task GetAllUser_ValidUsers_ReturnSuccess()
         {
             //Arrange
@@ -203,7 +227,6 @@ namespace Ecommerce.Tests.src.Business.Tests
                 id = createdUser.Id;
             }
             var result = await _userService.UpdateOneById(id, userUpdate);
-            Console.WriteLine("user create last name: " + userUpdate.LastName);
 
             //Assert
             Assert.NotNull(result);
@@ -260,7 +283,6 @@ namespace Ecommerce.Tests.src.Business.Tests
                 id = createdUser.Id;
             }
             var result = await _userService.UpdatePassword(id, "newpassword");
-            // var updatedUser = await _userRepoMock.Object.GetOneById(id);
 
             //Assert
             Assert.NotNull(result);
@@ -311,7 +333,6 @@ namespace Ecommerce.Tests.src.Business.Tests
         {
             //Arrange
             var id = new Guid();
-            // await _userService.CreateOne(_userCreateDto);
 
             //Act
             var result = await _userService.DeleteOneById(id);

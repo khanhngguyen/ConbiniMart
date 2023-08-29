@@ -32,8 +32,8 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         public async Task<bool> CheckEmail(string email)
         {
             var found = await _dbSet.FirstOrDefaultAsync(x => x.Email == email);
-            if (found != null) return true;
-            else return false;
+            if (found != null) return false;
+            else return true;
         }
         public override async Task<User> UpdateOneById(Guid id, User updateUser)
         {

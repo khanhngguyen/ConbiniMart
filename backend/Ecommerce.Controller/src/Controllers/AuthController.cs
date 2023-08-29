@@ -21,7 +21,7 @@ namespace Ecommerce.Controller.src.Controllers
 
         [HttpPost]
         [ProducesResponseType(statusCode: 200)]
-        [ProducesResponseType(statusCode: 500)]
+        [ProducesResponseType(statusCode: 401)]
         public async Task<ActionResult<string>> VerifyCredentials([FromBody] UserCredentialsDto credentials)
         {
             return Ok(await _authService.VerifyCredentials(credentials));
