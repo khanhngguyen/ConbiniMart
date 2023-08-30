@@ -42,6 +42,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         [Authorize(Policy = "AdminOnly")]
+        // [AllowAnonymous]
         [HttpPost("admin")]
         [ProducesResponseType(statusCode: 201)]
         public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
@@ -50,8 +51,8 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         [Authorize(Policy = "AdminOnly")]
-        // [ProducesResponseType(statusCode: 200)]
-        // [ProducesResponseType(statusCode: 404)]
+        [ProducesResponseType(statusCode: 200)]
+        [ProducesResponseType(statusCode: 404)]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
         {
             if (await _userService.GetOneById(id) is null)

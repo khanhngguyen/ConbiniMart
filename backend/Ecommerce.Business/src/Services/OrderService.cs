@@ -72,6 +72,18 @@ namespace Ecommerce.Business.src.Services
             return _mapper.Map<OrderReadDto>(createdOrder);
         }
 
+        public async Task<IEnumerable<OrderReadDto>> GetAllByUserId(Guid userId)
+        {
+            var result = await _orderRepo.GetAllByUserId(userId);
+            return _mapper.Map<IEnumerable<OrderReadDto>>(result);
+        }
+
+        public async Task<OrderReadDto> GetOneById(Guid id)
+        {
+            var result = await _orderRepo.GetOneById(id);
+            return _mapper.Map<OrderReadDto>(result);
+        }
+
         public Task<OrderReadDto> UpdateOneById(Guid id, OrderUpdateDto updated)
         {
             throw new NotImplementedException();

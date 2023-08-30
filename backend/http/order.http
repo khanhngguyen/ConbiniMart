@@ -1,31 +1,23 @@
 ### PlaceOrder
-POST http://localhost:5251/api/v1/order
+POST http://localhost:5251/api/v1/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI1YmM2MTUyOC03MmRmLTRhMzgtODhmYi00M2M3ZjBjMmE2NzQiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsIm5iZiI6MTY5MzM0NDkxMCwiZXhwIjoxNjkzMzQ2MTEwLCJpYXQiOjE2OTMzNDQ5MTAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.gPmdUOBe_IEi-j1f28RfNu-ZAPndDY4ryWeEJIysawQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzYTk0YjM5Ni1lZTkyLTRkMmMtODczNi1kYjllYzYxZjhhYzQiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoibWFyeUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM5MTM2NSwiZXhwIjoxNjkzMzkyNTY1LCJpYXQiOjE2OTMzOTEzNjUsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.t67DkU4ZEGCY7XdmZ3mnJXp-VzWm-hQxlTyzGR2jueo
 
 {
   "orderProducts": [
     {
-      "productId": "bc1a7415-30cb-4cf0-b28e-273b61f49513",
-      "amount": 3
+      "productId": "fa420142-6bb5-4a56-8f03-00a82e551136",
+      "amount": 5
     }
   ]
 }
 
-# {
-#   "orderProducts": [
-#     {
-#       "product": {
-#         "title": "brioche bread",
-#         "description": "brioche bread",
-#         "price": 3.4,
-#         "category": 0,
-#         "image": null,
-#         "createdAt": "0001-01-01T00:00:00+00:00",
-#         "updatedAt": "0001-01-01T00:00:00+00:00"
-#         },
-#       "orderId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-#       "amount": 0
-#     }
-#   ]
-# }
+### GetAllByUserId
+GET http://localhost:5251/api/v1/orders/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzYTk0YjM5Ni1lZTkyLTRkMmMtODczNi1kYjllYzYxZjhhYzQiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoibWFyeUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM5ODI3OSwiZXhwIjoxNjkzMzk5NDc5LCJpYXQiOjE2OTMzOTgyNzksImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.cyeMAa9cevegQVNhHA8AZGldqVmM9lECg0EU79GcHqg
+
+### GetOneById
+GET http://localhost:5251/api/v1/orders/405309b6-bac9-43e4-9a2f-bfc30e44d4ea
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzYTk0YjM5Ni1lZTkyLTRkMmMtODczNi1kYjllYzYxZjhhYzQiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoibWFyeUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM5ODI3OSwiZXhwIjoxNjkzMzk5NDc5LCJpYXQiOjE2OTMzOTgyNzksImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.cyeMAa9cevegQVNhHA8AZGldqVmM9lECg0EU79GcHqg

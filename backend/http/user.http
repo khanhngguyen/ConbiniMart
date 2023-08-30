@@ -31,6 +31,24 @@ POST http://localhost:5251/api/v1/auth
 Content-Type: application/json
 
 {
+  "email": "mary@mail.com",
+  "password": "mary123"
+}
+
+###
+POST http://localhost:5251/api/v1/auth
+Content-Type: application/json
+
+{
+  "email": "john@mail.com",
+  "password": "john123"
+}
+
+###
+POST http://localhost:5251/api/v1/auth
+Content-Type: application/json
+
+{
   "email": "john@mail.com",
   "password": "john123"
 }
@@ -46,15 +64,15 @@ Content-Type: application/json
 
 ### GetAll
 GET http://localhost:5251/api/v1/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxODM2NCwiZXhwIjoxNjkyMjE5NTY0LCJpYXQiOjE2OTIyMTgzNjQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.i1N_cKPWbMgDrqDm6RoXrb6ZzbKeA0H492iPpU3OJnk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYmNkNzAzZi0zZTU0LTQ5YjItOGNmYy04ODQ3OGJlZTgxNGUiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM4ODQzNiwiZXhwIjoxNjkzMzg5NjM2LCJpYXQiOjE2OTMzODg0MzYsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.bB4M-b5K6rd5CbsV_GiBN8VFOttf7-qb7L3Zl8uZPWw
 
 ### GetOneById
-GET http://localhost:5251/api/v1/users/5bc61528-72df-4a38-88fb-43c7f0c2a674
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjI1NDExNCwiZXhwIjoxNjkyMjU1MzE0LCJpYXQiOjE2OTIyNTQxMTQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.lx7oMvJhBU3egYl4PDM6xXr5VsUJ1yhtB0Cs3CwCZpY
+GET http://localhost:5251/api/v1/users/fbff4262-661d-460a-af39-8797408ec191
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYmNkNzAzZi0zZTU0LTQ5YjItOGNmYy04ODQ3OGJlZTgxNGUiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM4ODc1MSwiZXhwIjoxNjkzMzg5OTUxLCJpYXQiOjE2OTMzODg3NTEsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.W5kEoj19DN33S2jdZbs7X1oaanrhIjZQsemUF6Rw7W4
 
 ### GetProfile
 GET http://localhost:5251/api/v1/users/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIxNzM5NCwiZXhwIjoxNjkyMjE4NTk0LCJpYXQiOjE2OTIyMTczOTQsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.vgmobyU-FSedyRLV_SL8MbJZGngeNQ3pwzhhaa9ro4w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJmYmZmNDI2Mi02NjFkLTQ2MGEtYWYzOS04Nzk3NDA4ZWMxOTEiLCJyb2xlIjoiVXNlciIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsIm5iZiI6MTY5MzM4ODg3MywiZXhwIjoxNjkzMzkwMDczLCJpYXQiOjE2OTMzODg4NzMsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.jEEYJEJgVmhKEYIhlT-JYr5ulwqUBRXvKYHu97FFhY4
 
 ### UpdateOneByid
 PATCH http://localhost:5251/api/v1/users/40da6d6e-766e-425f-90d3-be9a6eb4da2c

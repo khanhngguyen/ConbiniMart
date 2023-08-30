@@ -8,6 +8,6 @@ namespace Ecommerce.Domain.src.RepoInterfaces
 {
     public interface IOrderRepo : IBaseRepo<Order>
     {
-        
+        Task<IEnumerable<Order>> GetAllByUserId(Guid userId);
     }
 }

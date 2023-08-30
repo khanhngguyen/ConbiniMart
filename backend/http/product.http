@@ -2,11 +2,11 @@
 ###
 POST http://localhost:5251/api/v1/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjI1Nzk4NSwiZXhwIjoxNjkyMjU5MTg1LCJpYXQiOjE2OTIyNTc5ODUsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.cMetzIgXxOmYcwtHpXZBU9qtI1jPuGgXotE3WR_XK1A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYmNkNzAzZi0zZTU0LTQ5YjItOGNmYy04ODQ3OGJlZTgxNGUiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM4ODQzNiwiZXhwIjoxNjkzMzg5NjM2LCJpYXQiOjE2OTMzODg0MzYsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.bB4M-b5K6rd5CbsV_GiBN8VFOttf7-qb7L3Zl8uZPWw
 
 {
-  "title": "book",
-  "description": "book",
+  "title": "JBL Tour One M2",
+  "description": "JBL headphones",
   "price": 349.99,
   "category": 4,
   "inventory": 50,
@@ -18,14 +18,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZ
 ###
 POST http://localhost:5251/api/v1/products
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiOGIxZTI1YS1mMDY5LTRiNjAtOTVkZi04MjJkOTExMDRhNDgiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MjIyMDQ3MCwiZXhwIjoxNjkyMjIxNjcwLCJpYXQiOjE2OTIyMjA0NzAsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.3-2vJEZpzzz9Bk0q0YpEJiMtClN_5YAJ9xn_gEsVbso
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhYmNkNzAzZi0zZTU0LTQ5YjItOGNmYy04ODQ3OGJlZTgxNGUiLCJyb2xlIjoiQWRtaW4iLCJlbWFpbCI6ImtpbUBtYWlsLmNvbSIsIm5iZiI6MTY5MzM4ODQzNiwiZXhwIjoxNjkzMzg5NjM2LCJpYXQiOjE2OTMzODg0MzYsImlzcyI6ImVjb21tZXJjZS1iYWNrZW5kIn0.bB4M-b5K6rd5CbsV_GiBN8VFOttf7-qb7L3Zl8uZPWw
 
 {
-  "title": "string",
-  "description": "string",
-  "price": 0,
-  "category": 0,
-  "inventory": 0,
+  "title": "Sweatshirt",
+  "description": "sweatshirt in beige",
+  "price": 34.55,
+  "category": 1,
+  "inventory": 15,
   "image": {
     "link": "string"
   }

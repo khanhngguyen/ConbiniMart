@@ -8,6 +8,7 @@ namespace Ecommerce.Business.src.Dtos
 {
     public class OrderReadDto
     {
+        public Guid Id { get; set; }
         public OrderStatus OrderStatus { get; set; }
         // public List<OrderProduct> OrderProducts { get; set; }
         public List<OrderProductReadDto> OrderProducts { get; set; }

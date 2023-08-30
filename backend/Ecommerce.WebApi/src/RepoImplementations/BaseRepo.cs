@@ -32,7 +32,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             await _context.SaveChangesAsync();
             return entity;
         }
-        public async Task<T> GetOneById(Guid id)
+        public virtual async Task<T> GetOneById(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
