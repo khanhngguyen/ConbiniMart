@@ -43,16 +43,7 @@ namespace Ecommerce.Business.src.Services
 
             var createdOrder = await _orderRepo.CreateOne(order);
 
-            //find products from dto's ProductId (type OrderProductCreatedto)
-
-            //map OrderProductCreateDto to OrderProduct
-            // var orderProducts = _mapper.Map<List<OrderProduct>>(dto.OrderProducts);
             var orderProducts = createdOrder.OrderProducts;
-            // foreach (var item in orderProducts)
-            // {
-            //     item.Order = createdOrder;
-            //     item.OrderId = createdOrder.Id;
-            // }
             // map each props inside OrderProduct from OrderProducfCreateDto (productId --> product)
             // map OrderProductCreateDto.productId => OrderProduct.Product
             for (int i = 0; i < orderProducts.Count; i++)

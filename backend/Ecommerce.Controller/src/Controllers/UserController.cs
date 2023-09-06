@@ -42,7 +42,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         [Authorize(Policy = "AdminOnly")]
-        // [AllowAnonymous]
+        [AllowAnonymous]
         [HttpPost("admin")]
         [ProducesResponseType(statusCode: 201)]
         public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
