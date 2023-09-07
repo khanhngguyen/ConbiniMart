@@ -22,7 +22,7 @@ namespace Ecommerce.Controller.src.Controllers
             _productService = productService;
         }
 
-        [Authorize(Policy = "AdminOnly")]
+        // [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(statusCode: 201)]
         [ProducesResponseType(statusCode: 403)]
         public override async Task<ActionResult<ProductReadDto>> CreateOne([FromBody] ProductCreateDto dto)

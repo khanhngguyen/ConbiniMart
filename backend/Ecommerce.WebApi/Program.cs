@@ -78,6 +78,18 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
 });
 
+//add Cors
+builder.Services.AddCors(options =>
+{
+    // options.AddPolicy("AllowOrigin", policy => policy.WithOrigins("https://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+    // options.AddDefaultPolicy(policy => policy.WithOrigins("https://localhost:3000").AllowAnyHeader().AllowAnyMethod());
+    options.AddDefaultPolicy(
+        builder => {
+            builder.WithOrigins("https://localhost:3000").AllowAnyHeader().AllowAnyOrigin();
+        }
+    );
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

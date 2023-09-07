@@ -41,7 +41,7 @@ namespace Ecommerce.Controller.src.Controllers
             return CreatedAtAction(nameof(CreateOne), await _userService.CreateOne(dto));
         }
 
-        [Authorize(Policy = "AdminOnly")]
+        // [Authorize(Policy = "AdminOnly")]
         [AllowAnonymous]
         [HttpPost("admin")]
         [ProducesResponseType(statusCode: 201)]

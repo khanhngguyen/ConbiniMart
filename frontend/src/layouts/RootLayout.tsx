@@ -6,6 +6,7 @@ const RootLayout = () => {
             <div>
                 <div>Nav bar</div>
                 <NavLink to="/">Home</NavLink>
+                <NavLink to="products">All Products</NavLink>
             </div>
             <div>
                 <Outlet />
