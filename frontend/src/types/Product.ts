@@ -1,5 +1,6 @@
 import { Guid } from "guid-typescript";
 import { Category } from "./Category";
+import { Image } from "./Image";
 
 export interface Product {
     id: Guid;
@@ -8,6 +9,7 @@ export interface Product {
     price: number;
     category: Category;
     inventory: number;
+    image: Image
 }
 
 export interface ProductCreateDto {
@@ -16,4 +18,5 @@ export interface ProductCreateDto {
     price: number;
     category: Category;
     inventory: number;
+    image: Image
 }

@@ -1,4 +1,5 @@
 {
     "FSharp.suggestGitignore": false,
-    "dotnet.defaultSolution": "backend/Ecommerce.sln"
+    "dotnet.defaultSolution": "backend/Ecommerce.sln",
+    "appService.defaultWebAppToDeploy": "None"
 }

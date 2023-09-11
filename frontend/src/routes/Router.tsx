@@ -4,7 +4,7 @@ import { Route, createBrowserRouter, createRoutesFromElements } from "react-rout
 import PageNotFound from "../pages/PageNotFound";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
-import ProductDetails from "../pages/ProductDetails";
+import ProductDetails, { productDetailsLoader } from "../pages/ProductDetails";
 import LogIn from "../pages/LogIn";
 
 const Router = createBrowserRouter(
@@ -16,7 +16,7 @@ const Router = createBrowserRouter(
         >
             <Route path="/" element={<Home />} />
             <Route path="products" element={<Products />} />
-            <Route path="products/:id" element={<ProductDetails />} />
+            <Route path="products/:id" element={<ProductDetails />} loader={productDetailsLoader} />
             <Route path="login" element={<LogIn />} />
         </Route>
     )

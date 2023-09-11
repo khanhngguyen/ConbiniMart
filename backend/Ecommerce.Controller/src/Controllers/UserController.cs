@@ -24,7 +24,8 @@ namespace Ecommerce.Controller.src.Controllers
             _userService = userService;
         }
 
-        [Authorize(Policy = "AdminOnly")]
+        // [Authorize(Policy = "AdminOnly")]
+        [AllowAnonymous]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 403)]
         [ProducesResponseType(statusCode: 40)]

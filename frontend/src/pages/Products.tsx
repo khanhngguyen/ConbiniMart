@@ -10,8 +10,7 @@ const Products = () => {
             {products.map((p) => (
                 <li key={p.id.toString()}>
                     <p>{p.title}</p>
-                    <p>{p.price}</p>
-                    <p>{p.category.name}</p>
+                    <p>{p.price.toLocaleString()}</p>
                     <p>{p.description}</p>
                 </li>
             ))}

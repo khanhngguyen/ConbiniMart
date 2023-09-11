@@ -66,6 +66,7 @@ const productsSlice = createSlice({
             if (action.payload instanceof AxiosError)
             {
                 state.error = action.payload.message;
+                state.products = [];
             } else {
                 state.products = action.payload;
                 console.log(action.payload);
