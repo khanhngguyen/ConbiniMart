@@ -26,6 +26,9 @@ namespace Ecommerce.Controller.src.Controllers
         {
             if (queryOptions.PageNumber < 0 || queryOptions.PageSize < 0) return BadRequest("Page number & Page size must be positive integers");
             return Ok(await _baseService.GetAll(queryOptions));
+            // var result = await _baseService.GetAll(queryOptions);
+            // if (result is null) throw CustomException.NotFoundException();
+            // return Ok(result);
         }
 
         [HttpPost]

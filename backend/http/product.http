@@ -37,7 +37,7 @@ GET http://localhost:5251/api/v1/Products
 
 //GetOneById
 ###
-GET http://localhost:5251/api/v1/Products/3a06ff0b-c9eb-4567-b15d-023267e03d1d
+GET http://localhost:5251/api/v1/Products/fa420142-6bb5-4a56-8f03-00a82e551136
 
 //UpdateOneById
 ###
