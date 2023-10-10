@@ -1,7 +1,16 @@
 import { useAppSelector } from "../../hooks/useAppSelector";
+import Error from "../Shared/Error";
+import Loading from "../Shared/Loading";
 
 const Categories = () => {
-    const { categories } = useAppSelector(state => state.productsReducer);
+    const { loading, error, categories } = useAppSelector(state => state.productsReducer);
+
+    if (loading) {
+        return (<><Loading /></>)
+    } else if (error) {
+        return (<><Error error={error} /></>)
+    }
+
   return (
     <div>
         <p>Categories:</p>

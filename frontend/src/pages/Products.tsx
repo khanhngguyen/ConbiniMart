@@ -1,8 +1,17 @@
 import React from 'react'
 import { useAppSelector } from '../hooks/useAppSelector'
+import Loading from '../components/Shared/Loading';
+import Error from '../components/Shared/Error';
 
 const Products = () => {
-    const { products } = useAppSelector(state => state.productsReducer);
+    const { loading, error, products } = useAppSelector(state => state.productsReducer);
+    
+    if (loading) {
+        return (<><Loading /></>)
+    } else if (error) {
+        return (<><Error error={error}/></>)
+    }
+    
   return (
     <div>
         <h1>All Products:</h1>

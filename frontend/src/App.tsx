@@ -10,7 +10,8 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchAllProducts());
-  }, [])
+  }, [dispatch])
+
   return (
     <>
       <RouterProvider router={Router} />
