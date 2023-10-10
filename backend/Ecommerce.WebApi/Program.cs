@@ -2,6 +2,7 @@ using System.Security.Claims;
 using System.Text;
 using Ecommerce.Business.src.AutoMapper;
 using Ecommerce.Business.src.Dtos;
+using Ecommerce.Business.src.Middleware;
 using Ecommerce.Business.src.ServiceInterfaces;
 using Ecommerce.Business.src.Services;
 using Ecommerce.Domain.src.Entities;
@@ -9,6 +10,7 @@ using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.WebApi.src.Database;
 using Ecommerce.WebApi.src.RepoImplementations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -28,12 +30,13 @@ builder.Services.AddScoped<IUserRepo, UserRepo>();
 builder.Services.AddScoped<IOrderRepo, OrderRepo>();
 builder.Services.AddScoped<IOrderProductRepo, OrderProductRepo>();
 
-// Service
+// Services
+builder.Services.AddScoped<ErrorHandlerMiddleware>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddTransient<IOrderProductService, OrderProductService>();
+builder.Services.AddScoped<IOrderProductService, OrderProductService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(config => config.AddProfile(typeof(AutoMapperProfile)));
@@ -107,6 +110,8 @@ var app = builder.Build();
 app.UseCors();
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseAuthorization();
 

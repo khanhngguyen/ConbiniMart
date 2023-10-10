@@ -37,8 +37,20 @@ namespace Ecommerce.WebApi.src.Database
             builder.MapEnum<Category>();
             builder.MapEnum<OrderStatus>();
             optionsBuilder.AddInterceptors(new TimeStampInterceptor());
+            optionsBuilder.EnableDetailedErrors();
+            // optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
+            optionsBuilder.UseNpgsql(builder =>
+            {
+                builder.EnableRetryOnFailure(
+                    maxRetryCount: 10,
+                    maxRetryDelay: TimeSpan.FromSeconds(5),
+                    errorCodesToAdd: null
+                );
+            
+            });
             optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
         }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<Role>();
