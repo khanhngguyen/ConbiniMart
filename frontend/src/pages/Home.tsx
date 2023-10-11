@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Categories from '../components/Home Page/Categories';
 
 const Home = () => {

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useLoaderData, useParams } from 'react-router-dom'
-import { Product } from '../types/Product'
 import axios, { AxiosError } from 'axios';
+
+import { Product } from '../types/Product'
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { fetchOneProductById } from '../redux/reducers/productsReducer';

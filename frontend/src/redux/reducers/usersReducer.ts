@@ -39,6 +39,7 @@ export const authenticate = createAsyncThunk(
                     Authorization: `Bearer ${token}`
                 }
             });
+            console.log(response.data);
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -51,7 +52,7 @@ export const login = createAsyncThunk(
     'login',
     async ({ email, password } : UserCredential, { dispatch }) => {
         try {
-            const response = await axios.post(`${baseURL}/auth`);
+            const response = await axios.post(`${baseURL}/auth`, { email, password });
 
             const authentication = await dispatch(authenticate(response.data));
 
@@ -163,6 +164,7 @@ const usersSlice = createSlice({
                 state.error = action.payload.message;
             } else {
                 state.users.push(action.payload);
+                state.currentUser = action.payload;
             }
             state.loading = false;
         })
@@ -191,7 +193,9 @@ const usersSlice = createSlice({
         .addCase(login.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
                 state.error = action.payload.message;
+                // state.currentUser = undefined;
             } else {
+                console.log("log in successfully");
                 state.currentUser = action.payload;
             }
             state.loading = false;
