@@ -36,14 +36,14 @@ const ProductDetails = () => {
 
 export default ProductDetails;
 
-export const productDetailsLoader = async ({ params } : any) => {
-  const { id } = params;
-  try {
-    const response = await axios.get<Product>(`https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/products/${id}`);
-    console.log(response.data);
-    return response.data;
-  } catch (e) {
-    const error = e as AxiosError;
-    return error.message;
-  }
-}
+// export const productDetailsLoader = async ({ params } : any) => {
+//   const { id } = params;
+//   try {
+//     const response = await axios.get<Product>(`https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/products/${id}`);
+//     console.log(response.data);
+//     return response.data;
+//   } catch (e) {
+//     const error = e as AxiosError;
+//     return error.message;
+//   }
+// }

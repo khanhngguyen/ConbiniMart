@@ -4,7 +4,7 @@ import { Route, createBrowserRouter, createRoutesFromElements } from "react-rout
 import PageNotFound from "../pages/PageNotFound";
 import Home from "../pages/Home";
 import Products from "../pages/Products";
-import ProductDetails, { productDetailsLoader } from "../pages/ProductDetails";
+import ProductDetails from "../pages/ProductDetails";
 import LogIn from "../pages/LogIn";
 
 const Router = createBrowserRouter(

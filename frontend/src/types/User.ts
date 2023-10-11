@@ -6,12 +6,12 @@ export enum Role {
 }
 
 export interface User {
-    id: Guid,
+    id: Guid;
     firstName: string;
     lastName: string;
     email: string;
     avatar: string;
-    password: string;
+    password: string
     role: Role
 }
 
@@ -24,7 +24,15 @@ export interface UserCreateDto {
 }
 
 export interface UserUpdateDto {
-    firstName: string;
-    lastName: string;
-    email: string;
+    id: Guid;
+    update: {
+        firstName: string;
+        lastName: string;
+        email: string;
+    }
+}
+
+export interface UserUpdatePassword {
+    id: Guid;
+    password: string
 }

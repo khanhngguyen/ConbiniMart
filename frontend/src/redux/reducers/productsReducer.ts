@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 
-import { Product } from "../../types/Product";
+import { Product, ProductCreateDto, ProductUpdateDto } from "../../types/Product";
 import { Category } from "../../types/Category";
 
 const initialState: {
@@ -13,7 +13,7 @@ const initialState: {
 } = {
     products : [],
     categories: [],
-    product: undefined,
+    // product: undefined,
     loading: false,
     error: ''
 }
@@ -60,6 +60,65 @@ export const fetchOneProductById = createAsyncThunk(
     }
 )
 
+export const createNewProduct = createAsyncThunk(
+    'createNewProduct',
+    async (newProduct : ProductCreateDto) => {
+        try {
+            const token = localStorage.getItem("token");
+            const response = await axios.post(`${baseURL}/products`,
+                newProduct,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+            return response.data;
+        } catch (e) {
+            const error = e as AxiosError;
+            return error;
+        }
+    }
+)
+
+export const updateProduct = createAsyncThunk(
+    'updateProduct',
+    async (update : ProductUpdateDto) => {
+        try {
+            const token = localStorage.getItem("token");
+            const response = await axios.patch(`${baseURL}/products/${update.id}`,
+                update.update,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+            return response.data;
+        } catch (e) {
+            const error = e as AxiosError;
+            return error;
+        }
+    }
+)
+
+export const deleteProduct = createAsyncThunk(
+    'deleteProduct',
+    async (id : string) => {
+        try {
+            const token = localStorage.getItem("token");
+            const response = await axios.delete(`${baseURL}/products/${id}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                })
+            return { response: response.data, id: id };
+        } catch (e) {
+            const error = e as AxiosError;
+            return error;
+        }
+    }
+)
+
 const productsSlice = createSlice({
     name: 'products',
     initialState,
@@ -71,9 +130,9 @@ const productsSlice = createSlice({
                 state.categories = [];
             } else {
                 state.categories = action.payload;
-                state.loading = false;
                 console.log(action.payload);
             }
+            state.loading = false;
         })
         .addCase(fetchCategories.pending, (state) => {
             state.loading = true;
@@ -87,12 +146,11 @@ const productsSlice = createSlice({
             {
                 state.error = action.payload.message;
                 state.products = [];
-                state.loading = false;
             } else {
                 state.products = action.payload;
-                state.loading = false;
                 console.log(action.payload);
             }
+            state.loading = false;
         })
         .addCase(fetchAllProducts.pending, (state) => {
             state.loading = true;
@@ -107,14 +165,71 @@ const productsSlice = createSlice({
                 state.error = action.payload.message;
             } else {
                 state.product = action.payload;
-                state.loading = false;
             }
+            state.loading = false;
         })
         .addCase(fetchOneProductById.pending, (state) => {
             state.loading = true;
         })
         .addCase(fetchOneProductById.rejected, (state) => {
             state.error = "can not load product";
+            state.loading = false;
+        })
+        .addCase(createNewProduct.fulfilled, (state, action) => {
+            if (action.payload instanceof AxiosError)
+            {
+                state.error = action.payload.message;
+            } else {
+                state.products.push(action.payload);
+            }
+            state.loading = false;
+        })
+        .addCase(createNewProduct.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(createNewProduct.rejected, (state) => {
+            state.error = "can not create new product";
+            state.loading = false;
+        })
+        .addCase(updateProduct.fulfilled, (state, action) => {
+            if (action.payload instanceof AxiosError)
+            {
+                state.error = action.payload.message;
+            } else {
+                const updatedProducts = state.products.map(p => {
+                    if (p.id === action.payload.id) {
+                        return { ...p, ...action.payload };
+                    }
+                    return p;
+                })
+                state.products = updatedProducts;
+            }
+            state.loading = false;
+        })
+        .addCase(updateProduct.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(updateProduct.rejected, (state) => {
+            state.error = "can not update product";
+            state.loading = false;
+        })
+        .addCase(deleteProduct.fulfilled, (state, action) => {
+            if (action.payload instanceof AxiosError)
+            {
+                state.error = action.payload.message;
+            } else {
+                const deleteProductId = action.payload.id;
+                state.products = state.products.filter(
+                    p => p.id.toString() !== deleteProductId
+                );
+            }
+            state.loading = false;
+        })
+        .addCase(deleteProduct.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(deleteProduct.rejected, (state) => {
+            state.error = "can not delete product";
             state.loading = false;
         })
     }

@@ -20,3 +20,15 @@ export interface ProductCreateDto {
     inventory: number;
     image: Image
 }
+
+export interface ProductUpdateDto {
+    id: Guid;
+    update: {
+        title: string;
+        description: string;
+        price: number;
+        category: Category;
+        inventory: number;
+        image: Image
+    }
+}
