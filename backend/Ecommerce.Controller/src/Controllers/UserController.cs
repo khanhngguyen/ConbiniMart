@@ -70,7 +70,7 @@ namespace Ecommerce.Controller.src.Controllers
         {
             if (await _userService.GetOneById(id) is null)
             {
-                return NotFound();
+                throw CustomException.NotFoundException("User not found");
             }
             return Ok(await _userService.UpdatePassword(id, newPassword));
         }

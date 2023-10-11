@@ -7,6 +7,7 @@ using Ecommerce.Business.src.Dtos;
 using Ecommerce.Business.src.ServiceInterfaces;
 using Ecommerce.Domain.src.Entities;
 using Ecommerce.Domain.src.RepoInterfaces;
+using Ecommerce.Domain.src.Shared;
 
 namespace Ecommerce.Business.src.Services
 {
@@ -66,7 +67,7 @@ namespace Ecommerce.Business.src.Services
         }
         public async Task<UserReadDto> UpdatePassword(Guid id, string newPassword)
         {
-            var found = await _userRepo.GetOneById(id) ?? throw new Exception("User not found");
+            var found = await _userRepo.GetOneById(id) ?? throw CustomException.NotFoundException("User not found");
             PasswordService.HashPassword(found.Password, out var hashedPassword, out var salt);
             found.Password = hashedPassword;
             found.Salt = salt;

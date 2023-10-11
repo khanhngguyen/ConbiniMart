@@ -10,10 +10,15 @@ namespace Ecommerce.Domain.src.Shared
         public int StatusCode { get; set; }
         public string Message { get; set; }
 
-        public CustomException(int statusCode, string message)
+        public CustomException(string message, int statusCode = 500)
         {
             StatusCode = statusCode;
             Message = message;
+        }
+
+        public static CustomException NotFoundException(string message = "Item can not be found")
+        {
+            return new CustomException(message, 404);
         }
     }
 }

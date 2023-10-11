@@ -29,7 +29,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             {
                 results = results.OrderBy(p => p.UpdatedAt);
             }
-            else if (queryOptions.OrderBy == "Oldesr first")
+            else if (queryOptions.OrderBy == "Oldest first")
             {
                 results = results.OrderByDescending(p => p.CreatedAt);
             }
@@ -61,6 +61,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 found.Price = updateProduct.Price;
                 found.Category = updateProduct.Category;
                 found.Inventory = updateProduct.Inventory;
+                found.Image = updateProduct.Image;
                 await _context.SaveChangesAsync();
                 return found;
             }

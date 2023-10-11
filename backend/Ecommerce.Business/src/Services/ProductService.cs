@@ -34,6 +34,7 @@ namespace Ecommerce.Business.src.Services
             if (updateProduct.Price == 0 || updateProduct.Price < 0) updateProduct.Price = found.Price;
             if (updateProduct.Category.ToString() == null || updateProduct.Category.ToString() == "") updateProduct.Category = found.Category;
             if (updateProduct.Inventory.ToString() == null || updateProduct.Inventory.ToString() == "") updateProduct.Inventory = found.Inventory;
+            if (updateProduct.Image.Link == null || updateProduct.Image.Link == "" || updateProduct.Image.Link == "string") updateProduct.Image.Link = found.Image.Link;
             var update = await _productRepo.UpdateOneById(id, _mapper.Map<Product>(updateProduct));
             return _mapper.Map<ProductReadDto>(update);
         }

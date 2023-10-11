@@ -38,5 +38,6 @@ namespace Ecommerce.Business.src.Dtos
         public float Price { get; set; }
         public Category Category { get; set; }
         public int Inventory { get; set; }
+        public ProductImageCreateDto Image { get; set; }
     }
 }
