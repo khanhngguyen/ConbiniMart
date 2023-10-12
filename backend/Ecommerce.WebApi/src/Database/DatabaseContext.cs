@@ -25,31 +25,31 @@ namespace Ecommerce.WebApi.src.Database
             AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
         }
 
-        public DatabaseContext(IConfiguration config)
+        public DatabaseContext(DbContextOptions options, IConfiguration config) : base(options)
         {
             _config = config;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("DefaultConnection"));
-            builder.MapEnum<Role>();
-            builder.MapEnum<Category>();
-            builder.MapEnum<OrderStatus>();
-            optionsBuilder.AddInterceptors(new TimeStampInterceptor());
-            optionsBuilder.EnableDetailedErrors();
-            // optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
-            optionsBuilder.UseNpgsql(builder =>
-            {
-                builder.EnableRetryOnFailure(
-                    maxRetryCount: 10,
-                    maxRetryDelay: TimeSpan.FromSeconds(5),
-                    errorCodesToAdd: null
-                );
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     var builder = new NpgsqlDataSourceBuilder(_config.GetConnectionString("DefaultConnection"));
+        //     builder.MapEnum<Role>();
+        //     builder.MapEnum<Category>();
+        //     builder.MapEnum<OrderStatus>();
+        //     optionsBuilder.AddInterceptors(new TimeStampInterceptor());
+        //     optionsBuilder.EnableDetailedErrors();
+        //     // optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
+        //     optionsBuilder.UseNpgsql(builder =>
+        //     {
+        //         builder.EnableRetryOnFailure(
+        //             maxRetryCount: 10,
+        //             maxRetryDelay: TimeSpan.FromSeconds(5),
+        //             errorCodesToAdd: null
+        //         );
             
-            });
-            optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
-        }
+        //     });
+        //     optionsBuilder.UseNpgsql(builder.Build()).UseSnakeCaseNamingConvention();
+        // }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
