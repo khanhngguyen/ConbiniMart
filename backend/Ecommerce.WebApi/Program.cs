@@ -20,26 +20,27 @@ using Swashbuckle.AspNetCore.Filters;
 var builder = WebApplication.CreateBuilder(args);
 
 //add database into the application
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-var npgsqlBuilder = new NpgsqlDataSourceBuilder(connectionString);
-npgsqlBuilder.MapEnum<Role>();
-npgsqlBuilder.MapEnum<Category>();
-npgsqlBuilder.MapEnum<OrderStatus>();
+// var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+// var npgsqlBuilder = new NpgsqlDataSourceBuilder(connectionString);
+// npgsqlBuilder.MapEnum<Role>();
+// npgsqlBuilder.MapEnum<Category>();
+// npgsqlBuilder.MapEnum<OrderStatus>();
+// var modifiedConnectionStrings = npgsqlBuilder.Build();
 
-builder.Services.AddDbContext<DatabaseContext>(options => 
-{
-    options.AddInterceptors(new TimeStampInterceptor());
-    options.EnableDetailedErrors();
-    options.UseNpgsql(builder => 
-    {
-        builder.EnableRetryOnFailure(
-            maxRetryCount: 10,
-            maxRetryDelay: TimeSpan.FromSeconds(5),
-            errorCodesToAdd: null
-        );
-    });
-    options.UseNpgsql(npgsqlBuilder.Build()).UseSnakeCaseNamingConvention();
-});
+// builder.Services.AddDbContext<DatabaseContext>(options => 
+// {
+//     options.AddInterceptors(new TimeStampInterceptor());
+//     options.EnableDetailedErrors();
+//     options.UseNpgsql(builder => 
+//     {
+//         builder.EnableRetryOnFailure(
+//             maxRetryCount: 10,
+//             maxRetryDelay: TimeSpan.FromSeconds(5),
+//             errorCodesToAdd: null
+//         );
+//     });
+//     options.UseNpgsql(modifiedConnectionStrings).UseSnakeCaseNamingConvention();
+// });
 
 builder.Services.AddDbContext<DatabaseContext>();
 
