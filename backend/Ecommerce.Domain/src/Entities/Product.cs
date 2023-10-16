@@ -17,11 +17,9 @@ namespace Ecommerce.Domain.src.Entities
 
     public enum Category
     {
-        Food,
-        Clothes,
-        Shoes,
-        Books,
-        Electronics,
+        Vegetables,
+        Meat,
+        Dairy,
         Others
     }
 }

@@ -21,6 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 //add database into the application
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+Console.WriteLine("connection string" + connectionString);
 var npgsqlBuilder = new NpgsqlDataSourceBuilder(connectionString);
 npgsqlBuilder.MapEnum<Role>();
 npgsqlBuilder.MapEnum<Category>();
@@ -38,10 +39,11 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
             errorCodesToAdd: null
         );
     });
-    options.UseNpgsql(npgsqlBuilder.Build()).UseSnakeCaseNamingConvention();
+    // options.UseNpgsql(modifiedConnectionString).UseSnakeCaseNamingConvention();
+    options.UseNpgsql(connectionString).UseCamelCaseNamingConvention();
 });
 
-builder.Services.AddDbContext<DatabaseContext>();
+// builder.Services.AddDbContext<DatabaseContext>();
 
 // Add services to the container.
 builder.Services.AddControllers();

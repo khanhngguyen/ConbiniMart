@@ -18,12 +18,10 @@ namespace Ecommerce.Controller.src.Controllers
         private List<CategoryDisplay> _categoriesList = new List<CategoryDisplay>();
         private readonly string[] _images = new []
         {
-            "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?w=1800&t=st=1693387006~exp=1693387606~hmac=5e7108c28fe45554ff458a1f35da62e946a729360a2d82dce46ecb3dadc789cb",
-            "https://img.freepik.com/free-photo/close-up-clothes-hanging-rack_171337-7196.jpg?w=1800&t=st=1693387035~exp=1693387635~hmac=91068147dd26af8dc185dbb68e4b5ad75c2f8efe82ef703b0cbb3d06b20b583c",
-            "https://img.freepik.com/premium-photo/variety-summer-women-s-shoes-sneakers-sandals-roman-sandals-slippers-light-background-top-view_624178-494.jpg",
-            "https://img.freepik.com/free-photo/top-view-books-arrangement_23-2148882754.jpg?t=st=1693387191~exp=1693387791~hmac=fdfbbc33149453b05cbcaec75b95e9765f7f4a3fd3448a1dacad13a912e31778",
-            "https://img.freepik.com/premium-photo/gamer-workspace_127657-18683.jpg?w=1800",
-            "https://img.freepik.com/free-photo/flat-lay-natural-self-care-products-composition_23-2148990019.jpg?w=1800&t=st=1693387292~exp=1693387892~hmac=34abaaf8372ef05d6276ff55024558743e0acec5ad360eb7dac68370c9848287"
+            "https://img.freepik.com/free-photo/front-view-vegetable_140725-103355.jpg?w=1800&t=st=1697198481~exp=1697199081~hmac=5564cf62d976b08ca6e986cee187c3fb0073a3317e9f10352d2d57b36518689e",
+            "https://img.freepik.com/free-photo/frozen-food-table-arrangement_23-2148969458.jpg?w=1380&t=st=1697198453~exp=1697199053~hmac=6b963476698b6a9209d9e868204ad1750145eec8568a7e729a959e79528973f3",
+            "https://img.freepik.com/free-photo/close-up-organic-milk-with-gourmet-cheese_23-2148610557.jpg?w=1800&t=st=1697198506~exp=1697199106~hmac=caf5f0610ec6f39e7bf6a91276335c71b5a00f22023b7aa1235966c97acd20bc",
+            "https://img.freepik.com/free-photo/view-table-with-articles-food-family_1398-5025.jpg?w=1800&t=st=1697198539~exp=1697199139~hmac=b31d156fbadc7edbcc435126a1f0cd16c825433df297f3d39e37a2374f556d31"
         };
 
         [HttpGet]
