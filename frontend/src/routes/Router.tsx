@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Products from "../pages/Products";
 import ProductDetails from "../pages/ProductDetails";
 import LogIn from "../pages/LogIn";
+import About from "../pages/About";
 
 const Router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +16,7 @@ const Router = createBrowserRouter(
             errorElement={<PageNotFound />}
         >
             <Route path="/" element={<Home />} />
+            <Route path="about" element={<About />} />
             <Route path="products" element={<Products />} />
             {/* <Route path="products/:id" element={<ProductDetails />} loader={productDetailsLoader} /> */}
             <Route path="products/:id" element={<ProductDetails />} />
