@@ -1,0 +1,124 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+
+footer {
+    background-image: 
+        url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
+        url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    background-color: colors.$charleston-green;
+    background-repeat: no-repeat;
+    background-position: bottom left, bottom right;
+    color: colors.$light-gray;
+    .footer {
+        &__top {
+            padding-block: 60px;
+            &__container {
+                display: grid;
+                grid-template-columns: 1.3fr 0.6fr 1fr 1fr;
+                gap: 30px;
+                padding-inline: 40px;
+                &__brand {
+                    color: colors.$white;
+                    h1 {
+                        font-family: fonts.$font-primary;
+                        font-size: 3.2rem;
+                        font-weight: fonts.$fw-700;
+                    }
+                    .span {
+                        font-family: fonts.$font-primary;
+                        display: inline-block;
+                        color: colors.$emerald;
+                    }
+                    p {
+                        line-height: 2;
+                        margin-block: 20px 15px;
+                        color: colors.$light-gray;
+                    }
+                    &__social-list {
+                        display: flex;
+                        gap: 15px;
+                        align-items: center;
+                        li {
+                            border: 1px solid colors.$light-gray;
+                            border-radius: 50%;
+                            padding: 5px;
+                            display: flex;
+                            &:hover, &:focus {
+                                border: 1px solid colors.$emerald;
+                            }
+                            svg {
+                                fill: colors.$light-gray;
+                            }
+                            &:hover, &:focus {
+                                border: 1px solid colors.$emerald_70;
+                                svg {
+                                    fill: colors.$emerald_70;
+                                }
+                            }
+                        }
+                    }
+                }
+                &__list {
+                    &__title {
+                        color: colors.$white;
+                        font-size: fonts.$fs-2;
+                        font-weight: fonts.$fw-700;
+                        margin-block-end: 25px;
+                    }
+                    &__text {
+                        font-size: fonts.$fs-5;
+                        margin-block-start: 16px;
+                        &:hover {
+                            color: colors.$emerald_70;
+                        }
+                    }
+                    &__newsletter {
+                        line-height: 1.8;
+                        margin-block-end: 25px;
+                    }
+                    form {
+                        position: relative;
+                        input {
+                            background-color: colors.$white;
+                            color: colors.$battleship-gray;
+                            font-size: fonts.$fs-6;
+                            padding: 16px 20px;
+                            padding-inline-end: 50px;
+                            border-radius: others.$radius-4;
+                        }
+                        button {
+                            position: absolute;
+                            top: 50%;
+                            right: 15px;
+                            transform: translateY(-50%);
+                            svg {
+                                fill: colors.$emerald;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &__bottom {
+            background-color: colors.$gunmetal-1;
+            padding-block: 15px;
+            font-size: fonts.$fs-7;
+            &__container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-inline: 20px;
+                &__copyright {
+                    text-align: center;
+                    line-height: 1.7;
+                }
+                &__list {
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                }
+            }
+        }
+    }
+}

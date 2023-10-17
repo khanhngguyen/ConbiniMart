@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User, UserCreateDto, UserUpdateDto, UserUpdatePassword } from "../../types/User"
 import axios, { AxiosError } from "axios";
 import { UserCredential } from "../../types/UserCredential";
-import { stat } from "fs";
 
 const initialState: {
     users: User[],

@@ -1,4 +1,3 @@
-import path from "path";
 import RootLayout from "../layouts/RootLayout";
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import PageNotFound from "../pages/PageNotFound";

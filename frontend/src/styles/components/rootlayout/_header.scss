@@ -1,0 +1,84 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+
+header {
+    .header {
+        &__top-bar {
+            background-color: colors.$gunmetal-2;
+            color: colors.$emerald;
+            font-size: fonts.$fs-7;
+            font-weight: fonts.$fw-500;
+            text-align: center;
+            padding-block: 10px;
+            animation: glow 1s ease-in-out infinite alternate;
+            -webkit-animation: glow 1s ease-in-out infinite alternate;
+            -moz-animation: glow 1s ease-in-out infinite alternate;
+        }
+        &__navbar-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            row-gap: 20px;
+            padding-inline: 5%;
+            padding-block: 20px;
+            &__logo {
+                color: colors.$gunmetal-2;
+                font-family: fonts.$font-primary;
+                // font-size: 3rem;
+                text-align: center;
+                h1 {
+                    min-width: 100%;
+                    font-size: 3rem;
+                }
+                .span {
+                    display: inline-block;
+                    color: colors.$emerald;
+                }
+            }
+            &__nav {
+                &__list {
+                    display: flex;
+                    gap: 10px;
+                    color: colors.$gunmetal-2;
+                    padding: 0 5px;
+                    font-size: fonts.$fs-5;
+                    font-weight: fonts.$fw-600;
+                }
+            }
+            &__actions {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 15px;
+                // min-width: 70%;
+                &__button {
+                    position: relative;
+                    background-color: colors.$mint-cream;
+                    // color: colors.$space-cadet;
+                    font-size: 2rem;
+                    padding: 12px;
+                    border-radius: 50%;
+                    svg {
+                        fill: colors.$space-cadet;
+                    }
+                    &:hover, &:focus {
+                        outline: 1.5px solid colors.$emerald_70;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//glowing animation
+@keyframes glow {
+    from {
+        text-shadow: 
+            0 0 10px #fff, 
+            0 0 20px colors.$emerald;
+    }
+    to {
+        text-shadow: 0 0 20px hsl(152, 73%, 30%);
+    }
+}

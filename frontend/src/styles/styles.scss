@@ -1,6 +1,7 @@
 @use "./variables/colors";
 @use "./variables/fonts";
-@use "./components/header";
+@use "./components/rootlayout/header";
+@use "./components/rootlayout/footer";
 
 *,
 *::before,

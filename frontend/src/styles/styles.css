@@ -6,6 +6,9 @@ header .header__top-bar {
   font-weight: 500;
   text-align: center;
   padding-block: 10px;
+  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
 }
 header .header__navbar-wrapper {
   display: flex;
@@ -13,17 +16,17 @@ header .header__navbar-wrapper {
   justify-content: space-between;
   align-items: center;
   row-gap: 20px;
-  padding-inline: 10%;
+  padding-inline: 5%;
   padding-block: 20px;
 }
 header .header__navbar-wrapper__logo {
   color: hsl(206, 21%, 15%);
   font-family: "Merriweather", serif;
-  font-size: 3rem;
   text-align: center;
 }
 header .header__navbar-wrapper__logo h1 {
   min-width: 100%;
+  font-size: 3rem;
 }
 header .header__navbar-wrapper__logo .span {
   display: inline-block;
@@ -36,6 +39,148 @@ header .header__navbar-wrapper__nav__list {
   padding: 0 5px;
   font-size: 1.7rem;
   font-weight: 600;
+}
+header .header__navbar-wrapper__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+header .header__navbar-wrapper__actions__button {
+  position: relative;
+  background-color: hsl(96, 36%, 95%);
+  font-size: 2rem;
+  padding: 12px;
+  border-radius: 50%;
+}
+header .header__navbar-wrapper__actions__button svg {
+  fill: hsl(222, 36%, 22%);
+}
+header .header__navbar-wrapper__actions__button:hover, header .header__navbar-wrapper__actions__button:focus {
+  outline: 1.5px solid hsla(152, 95%, 39%, 0.7);
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px hsl(152, 95%, 39%);
+  }
+  to {
+    text-shadow: 0 0 20px hsl(152, 73%, 30%);
+  }
+}
+footer {
+  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-color: hsl(206, 20%, 14%);
+  background-repeat: no-repeat;
+  background-position: bottom left, bottom right;
+  color: hsl(0, 0%, 82%);
+}
+footer .footer__top {
+  padding-block: 60px;
+}
+footer .footer__top__container {
+  display: grid;
+  grid-template-columns: 1.3fr 0.6fr 1fr 1fr;
+  gap: 30px;
+  padding-inline: 40px;
+}
+footer .footer__top__container__brand {
+  color: hsl(0, 0%, 100%);
+}
+footer .footer__top__container__brand h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+footer .footer__top__container__brand .span {
+  font-family: "Merriweather", serif;
+  display: inline-block;
+  color: hsl(152, 95%, 39%);
+}
+footer .footer__top__container__brand p {
+  line-height: 2;
+  margin-block: 20px 15px;
+  color: hsl(0, 0%, 82%);
+}
+footer .footer__top__container__brand__social-list {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+footer .footer__top__container__brand__social-list li {
+  border: 1px solid hsl(0, 0%, 82%);
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+}
+footer .footer__top__container__brand__social-list li:hover, footer .footer__top__container__brand__social-list li:focus {
+  border: 1px solid hsl(152, 95%, 39%);
+}
+footer .footer__top__container__brand__social-list li svg {
+  fill: hsl(0, 0%, 82%);
+}
+footer .footer__top__container__brand__social-list li:hover, footer .footer__top__container__brand__social-list li:focus {
+  border: 1px solid hsla(152, 95%, 39%, 0.7);
+}
+footer .footer__top__container__brand__social-list li:hover svg, footer .footer__top__container__brand__social-list li:focus svg {
+  fill: hsla(152, 95%, 39%, 0.7);
+}
+footer .footer__top__container__list__title {
+  color: hsl(0, 0%, 100%);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-block-end: 25px;
+}
+footer .footer__top__container__list__text {
+  font-size: 1.7rem;
+  margin-block-start: 16px;
+}
+footer .footer__top__container__list__text:hover {
+  color: hsla(152, 95%, 39%, 0.7);
+}
+footer .footer__top__container__list__newsletter {
+  line-height: 1.8;
+  margin-block-end: 25px;
+}
+footer .footer__top__container__list form {
+  position: relative;
+}
+footer .footer__top__container__list form input {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 53%);
+  font-size: 1.5rem;
+  padding: 16px 20px;
+  padding-inline-end: 50px;
+  border-radius: 4px;
+}
+footer .footer__top__container__list form button {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}
+footer .footer__top__container__list form button svg {
+  fill: hsl(152, 95%, 39%);
+}
+footer .footer__bottom {
+  background-color: hsl(207, 21%, 17%);
+  padding-block: 15px;
+  font-size: 1.4rem;
+}
+footer .footer__bottom__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 20px;
+}
+footer .footer__bottom__container__copyright {
+  text-align: center;
+  line-height: 1.7;
+}
+footer .footer__bottom__container__list {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
 *,
