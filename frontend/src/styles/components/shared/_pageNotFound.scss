@@ -1,0 +1,45 @@
+@use "../../variables/fonts";
+@use "../../variables/colors";
+
+.notfound__container {
+    position: relative;
+    height: 100vh;
+    &__notfound {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        &__title {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 150px;
+            width: 200px;
+            z-index: -1;
+            h1 {
+                font-family: fonts.$font-secondary;
+                font-size: 238px;
+                font-weight: fonts.$fw-700;
+                color: colors.$mint-cream;
+                letter-spacing: 7px;
+                position: absolute;
+                top: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        h2 {
+            font-family: fonts.$font-secondary;
+            font-size: fonts.$fs-2;
+            font-weight: fonts.$fw-400;
+            color: colors.$black_50;
+            text-transform: uppercase;
+            margin-top: 12px;
+            margin-bottom: 15px;
+        }
+        &__reroute {
+            display: flex;
+            align-items: center;
+        }
+    }
+}

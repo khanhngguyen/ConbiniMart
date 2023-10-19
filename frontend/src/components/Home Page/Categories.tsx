@@ -4,7 +4,6 @@ import Loading from "../Shared/Loading";
 
 const Categories = () => {
     const { loading, error, categories } = useAppSelector(state => state.productsReducer);
-
     if (loading) {
         return (<><Loading /></>)
     } else if (error) {

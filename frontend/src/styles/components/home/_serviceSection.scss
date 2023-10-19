@@ -1,0 +1,38 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+
+.service {
+    background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+    background-color: colors.$shamrock-green;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-blend-mode: soft-light;
+    // padding: others.$section-padding;
+    padding: 50px;
+    &__container {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            &__item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                &__icon {
+                    max-width: max-content;
+                    background-color: colors.$white_25;
+                    border-radius: 50%;
+                    padding: 20px;
+                }
+                h3 {
+                    color: colors.$white;
+                    font-family: fonts.$font-primary;
+                    font-size: fonts.$fs-2;
+                    letter-spacing: 1.5px;
+                }
+            }
+        }
+    }
+}

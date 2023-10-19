@@ -34,11 +34,14 @@ header .header__navbar-wrapper__logo .span {
 }
 header .header__navbar-wrapper__nav__list {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   color: hsl(206, 21%, 15%);
-  padding: 0 5px;
+  padding: 0 10px;
   font-size: 1.7rem;
   font-weight: 600;
+}
+header .header__navbar-wrapper__nav__list a:hover {
+  color: hsl(152, 95%, 31%);
 }
 header .header__navbar-wrapper__actions {
   display: flex;
@@ -181,6 +184,196 @@ footer .footer__bottom__container__list {
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+
+.hero {
+  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-color: hsl(96, 36%, 95%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left bottom, right top;
+  padding-block: 40px;
+}
+.hero__container {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+  justify-items: center;
+  padding-inline: 1rem;
+  margin-inline: 3rem;
+}
+.hero__container__content__subtitle {
+  color: hsl(152, 95%, 39%);
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 2px;
+  margin-block-end: 20px;
+}
+.hero__container__content__title {
+  color: hsl(206, 21%, 15%);
+  font-size: 3rem;
+  margin-block-end: 15px;
+}
+.hero__container__content__title span {
+  display: inline-block;
+  color: hsl(152, 95%, 39%);
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+.hero__container__content__text {
+  color: hsl(223, 6%, 55%);
+  font-size: 1.7rem;
+  line-height: 1.8;
+  margin-block-end: 30px;
+}
+.hero__container__content button {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+}
+.hero__container__content button:hover, .hero__container__content button:focus {
+  background-color: hsl(152, 95%, 33%);
+}
+.hero__container__banner {
+  display: block;
+  margin: auto;
+}
+.hero__container__banner__slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 400px;
+}
+.hero__container__banner__slideshow__slide {
+  white-space: nowrap;
+}
+.hero__container__banner__slideshow__slide img {
+  display: inline-block;
+}
+
+.service {
+  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+  background-color: hsl(152, 95%, 31%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-blend-mode: soft-light;
+  padding: 50px;
+}
+.service__container__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.service__container__list__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.service__container__list__item__icon {
+  max-width: max-content;
+  background-color: hsla(0, 0%, 100%, 0.25);
+  border-radius: 50%;
+  padding: 20px;
+}
+.service__container__list__item h3 {
+  color: hsl(0, 0%, 100%);
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  letter-spacing: 1.5px;
+}
+
+.loading__container {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.loading__container__loading {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.loading__container__loading div {
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid hsl(152, 95%, 33%);
+  border-radius: 50%;
+  animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: hsl(152, 95%, 33%) transparent transparent transparent;
+}
+.loading__container__loading div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.loading__container__loading div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.loading__container__loading div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.notfound__container {
+  position: relative;
+  height: 100vh;
+}
+.notfound__container__notfound {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+.notfound__container__notfound__title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 150px;
+  width: 200px;
+  z-index: -1;
+}
+.notfound__container__notfound__title h1 {
+  font-family: "Lato", sans-serif;
+  font-size: 238px;
+  font-weight: 700;
+  color: hsl(96, 36%, 95%);
+  letter-spacing: 7px;
+  position: absolute;
+  top: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.notfound__container__notfound h2 {
+  font-family: "Lato", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: hsla(0, 0%, 0%, 0.5);
+  text-transform: uppercase;
+  margin-top: 12px;
+  margin-bottom: 15px;
+}
+.notfound__container__notfound__reroute {
+  display: flex;
+  align-items: center;
 }
 
 *,

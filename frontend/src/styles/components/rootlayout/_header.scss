@@ -39,11 +39,16 @@ header {
             &__nav {
                 &__list {
                     display: flex;
-                    gap: 10px;
+                    gap: 20px;
                     color: colors.$gunmetal-2;
-                    padding: 0 5px;
+                    padding: 0 10px;
                     font-size: fonts.$fs-5;
                     font-weight: fonts.$fw-600;
+                    a {
+                        &:hover {
+                            color: colors.$shamrock-green;
+                        }
+                    }
                 }
             }
             &__actions {

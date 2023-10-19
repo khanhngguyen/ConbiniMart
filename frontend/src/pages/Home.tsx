@@ -1,11 +1,14 @@
 import React from 'react'
 
 import Categories from '../components/Home Page/Categories';
+import HeroSection from '../components/Home Page/HeroSection';
+import ServiceSection from '../components/Home Page/ServiceSection';
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <HeroSection />
+      <ServiceSection />
       <Categories />
     </div>
   )

@@ -40,7 +40,7 @@ const Footer = () => {
           
           <div className='footer__top__container__list'>
               <p className='footer__top__container__list__title'>Contact</p>
-              <p className='footer__top__container__list__text'><address>Helsinki, Helsinki, 00011, Finland</address></p>
+              <address className='footer__top__container__list__text'>Helsinki, Helsinki, 00011, Finland</address>
               <p className='footer__top__container__list__text'>+001293090234</p>
               <p className='footer__top__container__list__text'>conbinimart@mail.com</p>
           </div>

@@ -2,6 +2,10 @@
 @use "./variables/fonts";
 @use "./components/rootlayout/header";
 @use "./components/rootlayout/footer";
+@use "./components/home/heroSection";
+@use "./components/home/serviceSection";
+@use "./components/shared/loading";
+@use "./components/shared/pageNotFound";
 
 *,
 *::before,

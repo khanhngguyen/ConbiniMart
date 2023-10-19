@@ -1,0 +1,20 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/others";
+
+@mixin button {
+    background-color: colors.$emerald;
+    color: colors.$white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    font-size: fonts.$fs-4;
+    font-weight: fonts.$fw-700;
+    padding: 18px 50px;
+    border-radius: 50px;
+    transition: others.$transition-2;
+    &:hover, &:focus {
+        background-color: colors.$green-pigment;
+    }
+}
