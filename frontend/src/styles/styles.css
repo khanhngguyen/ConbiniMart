@@ -376,6 +376,61 @@ footer .footer__bottom__container__list {
   align-items: center;
 }
 
+.about {
+  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-color: hsl(96, 36%, 95%);
+  background-repeat: no-repeat, no-repeat;
+  background-position: left top, right top;
+  padding-top: 40px;
+}
+.about__title, .about h2 {
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  color: hsl(152, 95%, 39%);
+  text-align: center;
+  font-style: italic;
+}
+.about__content {
+  display: grid;
+  grid-template-columns: repeat(2, 50rem);
+  font-family: "Lato", sans-serif;
+  font-size: 1.8rem;
+  gap: 30px;
+  padding: 30px;
+  justify-content: center;
+  color: hsl(207, 21%, 17%);
+  line-height: 3rem;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+.about__partners {
+  background-color: hsl(152, 95%, 39%);
+}
+.about__partners__container {
+  margin-inline: auto;
+  padding-inline: 15px;
+  padding: 30px;
+}
+.about__partners__container h2 {
+  color: hsl(0, 0%, 100%);
+}
+.about__partners__container ul {
+  display: flex;
+  overflow-x: auto;
+  padding-block: 30px;
+  scroll-snap-type: inline mandatory;
+  gap: 5rem;
+  width: 70%;
+  margin: auto;
+}
+.about__partners__container ul li {
+  scroll-snap-align: center;
+}
+.about__partners__container ul li img {
+  max-width: max-content;
+  margin-inline: auto;
+}
+
 *,
 *::before,
 *::after {

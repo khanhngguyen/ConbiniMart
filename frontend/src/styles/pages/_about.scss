@@ -1,0 +1,63 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/others";
+
+.about {
+    background-image: 
+    url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
+    url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    background-color: colors.$mint-cream;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left top, right top;
+    padding-top: 40px;
+    &__title, h2 {
+        font-family: fonts.$font-primary;
+        font-size: fonts.$fs-2;
+        color: colors.$emerald;
+        text-align: center;
+        font-style: italic;
+        // margin-block-end: 50px;
+    }
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(2, 50rem);
+        font-family: fonts.$font-secondary;
+        font-size: fonts.$fs-4;
+        gap: 30px;
+        padding: 30px;
+        justify-content: center;
+        color: colors.$gunmetal-1;
+        line-height: fonts.$fs-1;
+        font-style: italic;
+        margin-bottom: 30px;
+    }
+    &__partners {
+        background-color: colors.$emerald;
+        &__container {
+            margin-inline: auto;
+            padding-inline: 15px;
+            padding: 30px;
+            h2 {
+                color: colors.$white;
+            }
+            ul {
+                display: flex;
+                overflow-x: auto;
+                // padding-block-end: 30px;
+                // margin-block-end: -30px;
+                padding-block: 30px;
+                scroll-snap-type: inline mandatory;
+                gap: 5rem;
+                width: 70%;
+                margin: auto;
+                li {
+                    scroll-snap-align: center;
+                    img {
+                        max-width: max-content;
+                        margin-inline: auto;
+                    }
+                }
+            }
+        }
+    }
+}

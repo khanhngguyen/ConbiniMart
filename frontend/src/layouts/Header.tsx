@@ -22,6 +22,7 @@ const Header = () => {
 
             <nav className='header__navbar-wrapper__nav'>
                 <ul className='header__navbar-wrapper__nav__list'>
+                    <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="about">About</NavLink></li>
                     <li><NavLink to="products">All Products</NavLink></li>
                     <li><NavLink to="login">Log In/Sign Up</NavLink></li>
