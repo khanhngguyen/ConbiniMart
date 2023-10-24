@@ -405,6 +405,9 @@ footer .footer__bottom__container__list {
 }
 .about__partners {
   background-color: hsl(152, 95%, 39%);
+  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+  background-repeat: no-repeat;
+  background-position: bottom left;
 }
 .about__partners__container {
   margin-inline: auto;

@@ -28,7 +28,7 @@ const LogInForm = () => {
     reset();
   }
   const { error, currentUser } = useAppSelector(state => state.usersReducer);
-  if (currentUser) navigate("/profile");
+  // if (currentUser) navigate("profile");
 
   return (
     <div>

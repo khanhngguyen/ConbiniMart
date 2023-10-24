@@ -33,6 +33,10 @@
     }
     &__partners {
         background-color: colors.$emerald;
+        background-image:
+            url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+        background-repeat: no-repeat;
+        background-position: bottom left;
         &__container {
             margin-inline: auto;
             padding-inline: 15px;

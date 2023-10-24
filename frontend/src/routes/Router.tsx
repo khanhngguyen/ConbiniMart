@@ -6,6 +6,7 @@ import Products from "../pages/Products";
 import ProductDetails from "../pages/ProductDetails";
 import LogIn from "../pages/LogIn";
 import About from "../pages/About";
+import Profile from "../pages/Profile";
 
 const Router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +21,7 @@ const Router = createBrowserRouter(
             {/* <Route path="products/:id" element={<ProductDetails />} loader={productDetailsLoader} /> */}
             <Route path="products/:id" element={<ProductDetails />} />
             <Route path="login" element={<LogIn />} />
+            <Route path="profile" element={<Profile />} />
         </Route>
     )
 );

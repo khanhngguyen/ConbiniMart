@@ -1,7 +1,9 @@
+import axios, { AxiosError } from "axios";
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User, UserCreateDto, UserUpdateDto, UserUpdatePassword } from "../../types/User"
-import axios, { AxiosError } from "axios";
 import { UserCredential } from "../../types/UserCredential";
+import axiosinstance from "../../components/Shared/axiosinstance";
 
 const initialState: {
     users: User[],
@@ -33,7 +35,7 @@ export const authenticate = createAsyncThunk(
     'authenticate',
     async (token: string) => {
         try {
-            const response = await axios.get<User>(`${baseURL}/profile`, {
+            const response = await axios.get<User>(`${baseURL}/users/profile`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -51,7 +53,11 @@ export const login = createAsyncThunk(
     'login',
     async ({ email, password } : UserCredential, { dispatch }) => {
         try {
-            const response = await axios.post(`${baseURL}/auth`, { email, password });
+            // const response = await axios.post(`${baseURL}/auth`, { email, password });
+            const response = await axiosinstance.post(`${baseURL}/auth`, { email, password });
+            // if (response.status === 404) return new AxiosError("Email not found");
+            console.log("response from post /auth");
+            console.log(response);
 
             const authentication = await dispatch(authenticate(response.data));
 
@@ -61,6 +67,16 @@ export const login = createAsyncThunk(
             return authentication.payload as User;
         } catch (e) {
             const error = e as AxiosError;
+            // if (error.response) {
+            //     console.log("error from response");
+            //     console.log(error.response.status + error.response.statusText);
+            // } else if (error.request) {
+            //     console.log("error from request");
+            //     console.log(error.request);
+            // } else {
+            //     console.log("error from elsewhere");
+            //     console.log(error.message);
+            // }
             return error;
         }
     }
