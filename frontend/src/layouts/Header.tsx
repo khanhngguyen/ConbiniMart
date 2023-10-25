@@ -2,8 +2,11 @@ import { Badge } from '@mui/material'
 import { FavoriteBorder, ShoppingCart, AccountCircleOutlined } from '@mui/icons-material';
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useAppSelector } from '../hooks/useAppSelector';
 
 const Header = () => {
+    const { currentUser } = useAppSelector(state => state.usersReducer);
+
   return (
     <header className='header'>
         <div className='header__top-bar'>
@@ -25,7 +28,8 @@ const Header = () => {
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="about">About</NavLink></li>
                     <li><NavLink to="products">All Products</NavLink></li>
-                    <li><NavLink to="login">Log In/Sign Up</NavLink></li>
+                    {(!currentUser) && <li><NavLink to="login">Login/Sign Up</NavLink></li>}
+                    {/* <li><NavLink to="login">Log In/Sign Up</NavLink></li> */}
                 </ul>
             </nav>
 
@@ -46,14 +50,39 @@ const Header = () => {
                         <ShoppingCart fontSize='large'/>
                     </Badge>
                 </button>
-                <button
+
+                {(!currentUser) && <NavLink to="login">
+                    <button
+                        aria-label='user-profile'
+                        className='header__navbar-wrapper__actions__button'
+                    >
+                        <Badge>
+                            <AccountCircleOutlined fontSize='large'/>
+                        </Badge>
+                    </button>
+                </NavLink>}
+
+                {currentUser && <NavLink to="profile">
+                    <button
+                        aria-label='user-profile'
+                        className='header__navbar-wrapper__actions__button'
+                    >
+                        <Badge>
+                            <AccountCircleOutlined fontSize='large'/>
+                        </Badge>
+                    </button>
+                </NavLink>}
+
+                {/* <button
                     aria-label='user-profile'
                     className='header__navbar-wrapper__actions__button'
                 >
+                    {(!currentUser) && <NavLink to="login"></NavLink>}
+                    {currentUser && <NavLink to="profile"></NavLink>}
                     <Badge>
                         <AccountCircleOutlined fontSize='large'/>
                     </Badge>
-                </button>
+                </button> */}
             </div>
             
         </div>

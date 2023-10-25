@@ -3,7 +3,6 @@ import axios, { AxiosError } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User, UserCreateDto, UserUpdateDto, UserUpdatePassword } from "../../types/User"
 import { UserCredential } from "../../types/UserCredential";
-import axiosinstance from "../../components/Shared/axiosinstance";
 
 const initialState: {
     users: User[],
@@ -53,12 +52,9 @@ export const login = createAsyncThunk(
     'login',
     async ({ email, password } : UserCredential, { dispatch }) => {
         try {
-            // const response = await axios.post(`${baseURL}/auth`, { email, password });
-            const response = await axiosinstance.post(`${baseURL}/auth`, { email, password });
-            // if (response.status === 404) return new AxiosError("Email not found");
-            console.log("response from post /auth");
-            console.log(response);
-
+            const response = await axios.post(`${baseURL}/auth`, { email, password });
+            // const response = await axiosinstance.post(`${baseURL}/auth`, { email, password });
+    
             const authentication = await dispatch(authenticate(response.data));
 
             localStorage.setItem("token", response.data);
@@ -67,16 +63,6 @@ export const login = createAsyncThunk(
             return authentication.payload as User;
         } catch (e) {
             const error = e as AxiosError;
-            // if (error.response) {
-            //     console.log("error from response");
-            //     console.log(error.response.status + error.response.statusText);
-            // } else if (error.request) {
-            //     console.log("error from request");
-            //     console.log(error.request);
-            // } else {
-            //     console.log("error from elsewhere");
-            //     console.log(error.message);
-            // }
             return error;
         }
     }
@@ -207,8 +193,11 @@ const usersSlice = createSlice({
         })
         .addCase(login.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
-                state.error = action.payload.message;
-                // state.currentUser = undefined;
+                if (action.payload.response?.data === "Exception of type 'Ecommerce.Domain.src.Shared.CustomException' was thrown.") {
+                    state.error = "Email is not registered";
+                } else if (action.payload.response?.data === "Password incorrect") {
+                    state.error = "Password incorrect";
+                }
             } else {
                 console.log("log in successfully");
                 state.currentUser = action.payload;

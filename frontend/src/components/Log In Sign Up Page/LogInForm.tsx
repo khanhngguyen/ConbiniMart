@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { login } from '../../redux/reducers/usersReducer';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
 const LogInForm = () => {
+  const { error, currentUser } = useAppSelector(state => state.usersReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const {
@@ -27,8 +28,8 @@ const LogInForm = () => {
     }));
     reset();
   }
-  const { error, currentUser } = useAppSelector(state => state.usersReducer);
-  // if (currentUser) navigate("profile");
+  
+  if (currentUser) navigate("profile");
 
   return (
     <div>
@@ -42,6 +43,7 @@ const LogInForm = () => {
             required
           />
           {errors.email?.message}
+
           <input
             aria-label='password'
             type='password'
@@ -51,6 +53,7 @@ const LogInForm = () => {
           />
           {errors.password?.message}
           {error && <p>{error}</p>}
+
           <button
             aria-label='log in'
             type='submit'
