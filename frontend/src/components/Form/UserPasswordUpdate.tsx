@@ -23,7 +23,8 @@ const UserPasswordUpdate = () => {
     console.log(data);
     dispatch(updatePassword({
       id: currentUser?.id as Guid,
-      password: data.password
+      password: data.password,
+      confirm: data.confirm
     }));
     reset();
   }
@@ -35,10 +36,21 @@ const UserPasswordUpdate = () => {
         <input
           aria-label='password'
           type='password'
-          placeholder='Password'
+          placeholder='Enter your new password here'
+          required
           {...register("password")}
         />
         {errors.password?.message}
+        {error && <p>{error}</p>}
+
+        <input
+          aria-label='password confirm'
+          type='password'
+          placeholder='Re-enter to confirm new password'
+          required
+          {...register("confirm")}
+        />
+        {errors.confirm?.message}
         {error && <p>{error}</p>}
 
         <button

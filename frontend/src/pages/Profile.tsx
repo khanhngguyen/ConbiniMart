@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../hooks/useAppSelector'
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,9 @@ const Profile = () => {
         dispatch(logout());
     }
 
-    if (!currentUser) navigate("/");
+    useEffect(() => {
+        if (!currentUser) navigate("/");
+    }, [navigate, currentUser])
   return (
     <div>
         <h2>Profile</h2>

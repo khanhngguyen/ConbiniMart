@@ -12,7 +12,8 @@ const signupSchema = yup.object({
         .email("Email should be valid and contain @")
         .required("Email should not be empty"),
     avatar: yup
-        .string(),
+        .string()
+        .default(""),
     password: yup
         .string()
         .required("Password should not be empty")

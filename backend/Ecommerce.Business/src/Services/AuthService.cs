@@ -26,7 +26,7 @@ namespace Ecommerce.Business.src.Services
 
         public async Task<string> VerifyCredentials(UserCredentialsDto credentials)
         {
-            var found = await _userRepo.FindByEmail(credentials.Email) ?? throw new DllNotFoundException("Email not found");
+            var found = await _userRepo.FindByEmail(credentials.Email) ?? throw CustomException.NotFoundException("Email not found");
             var isAuthenticated = PasswordService.VerifyPassword(credentials.Password, found.Password, found.Salt);
             if (!isAuthenticated) throw new AuthenticationException("Password incorrect");
             return GenerateToken(found);

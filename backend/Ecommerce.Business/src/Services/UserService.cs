@@ -57,7 +57,7 @@ namespace Ecommerce.Business.src.Services
             if (found is null)
             {
                 await _userRepo.DeleteOneById(id);
-                throw new Exception("User not found");
+                throw  CustomException.NotFoundException("User not found");
             }
             if (updateUser.FirstName is null || updateUser.FirstName == "" || updateUser.FirstName == "string") updateUser.FirstName = found.FirstName;
             if (updateUser.LastName is null || updateUser.LastName == "" || updateUser.LastName  == "string") updateUser.LastName = found.Lastname;
@@ -68,7 +68,7 @@ namespace Ecommerce.Business.src.Services
         public async Task<UserReadDto> UpdatePassword(Guid id, string newPassword)
         {
             var found = await _userRepo.GetOneById(id) ?? throw CustomException.NotFoundException("User not found");
-            PasswordService.HashPassword(found.Password, out var hashedPassword, out var salt);
+            PasswordService.HashPassword(newPassword, out var hashedPassword, out var salt);
             found.Password = hashedPassword;
             found.Salt = salt;
             return _mapper.Map<UserReadDto>(await _userRepo.UpdatePassword(found));

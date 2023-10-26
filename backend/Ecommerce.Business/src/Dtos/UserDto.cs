@@ -40,4 +40,9 @@ namespace Ecommerce.Business.src.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
     }
+
+    public class UpdatePasswordDto
+    {
+        public string Password { get; set; }
+    }
 }

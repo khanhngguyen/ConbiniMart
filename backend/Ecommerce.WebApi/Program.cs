@@ -94,9 +94,22 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         ValidateIssuer = true,
         ValidIssuer = "ecommerce-backend",
-        ValidateAudience = false,
+        ValidateAudience = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ecommerce-backend-authservice-security-key")),
         ValidateIssuerSigningKey = true
+    };
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = async (context) => {
+            context.HttpContext.GetRouteData();
+            context.HttpContext.Connection.ToString();
+            await context.Response.CompleteAsync();
+        },
+        OnChallenge = async (context) => {
+            context.HttpContext.GetRouteData();
+            context.HttpContext.Connection.ToString();
+            await context.Response.CompleteAsync();
+        }
     };
 });
 

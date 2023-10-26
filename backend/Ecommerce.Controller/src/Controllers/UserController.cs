@@ -51,7 +51,7 @@ namespace Ecommerce.Controller.src.Controllers
             return CreatedAtAction(nameof(CreateAdmin), await _userService.CreateAdmin(dto));
         }
 
-        [Authorize(Policy = "AdminOnly")]
+        // [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 404)]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
@@ -63,23 +63,26 @@ namespace Ecommerce.Controller.src.Controllers
             return Ok(await _userService.GetOneById(id));
         }
 
-        [HttpPatch("/update/{id:Guid}")]
+        [HttpPatch("update/{id:Guid}")]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 404)]
-        public async Task<ActionResult<UserReadDto>> UpdatePassword([FromRoute] Guid id, [FromBody] string newPassword)
+        public async Task<ActionResult<UserReadDto>> UpdatePassword([FromRoute] Guid id, [FromBody] UpdatePasswordDto newPassword)
         {
             if (await _userService.GetOneById(id) is null)
             {
                 throw CustomException.NotFoundException("User not found");
             }
-            return Ok(await _userService.UpdatePassword(id, newPassword));
+
+            return Ok(await _userService.UpdatePassword(id, newPassword.Password));
         }
 
         [HttpGet("profile")]
         [ProducesResponseType(statusCode: 200)]
+        [ProducesResponseType(statusCode: 401)]
+        [ProducesResponseType(statusCode: 404)]
         public async Task<ActionResult<UserReadDto>> GetProfile()
         {
-            var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value ?? throw CustomException.NotFoundException("User not found");
             return Ok(await _userService.GetOneById(new Guid(id)));
         }
 

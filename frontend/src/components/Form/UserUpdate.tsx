@@ -39,7 +39,7 @@ const UserUpdate = () => {
             <input
                 aria-label='first name'
                 type='text'
-                placeholder='First name'
+                placeholder='First name (optional)'
                 {...register("firstName")}
             />
             {errors.firstName?.message}
@@ -47,7 +47,7 @@ const UserUpdate = () => {
             <input
                 aria-label='last name'
                 type='text'
-                placeholder='Last name'
+                placeholder='Last name (optional)'
                 {...register("lastName")}
             />
             {errors.lastName?.message}
@@ -55,7 +55,7 @@ const UserUpdate = () => {
             <input 
                 aria-label='email'
                 type='text'
-                placeholder='Email'
+                placeholder='Email (optional)'
                 {...register("email")}
             />
             {errors.email?.message}

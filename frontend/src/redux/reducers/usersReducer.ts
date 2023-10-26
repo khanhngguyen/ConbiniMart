@@ -77,6 +77,7 @@ export const createNewUser = createAsyncThunk(
     'createNewUser',
     async (newUser : UserCreateDto) => {
         try {
+            // newUser.avatar = "";
             const response = await axios.post(`${baseURL}/users`, newUser);
             return response.data;
         } catch (e) {
@@ -107,10 +108,12 @@ export const updateUser = createAsyncThunk(
             const response = await axios.patch(`${baseURL}/users/${update.id}`, 
                 update.update,
                 {
-                    headers : {
+                    headers: {
                         Authorization: `Bearer ${token}`
                     }
                 });
+
+            localStorage.setItem("currentUser", JSON.stringify(response.data));
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -124,8 +127,16 @@ export const updatePassword = createAsyncThunk(
     async (update : UserUpdatePassword) => {
         try {
             const requestBody = { password: update.password };
-            const response = await axios.patch(`${baseURL}/update/${update.id}`, requestBody);
-            return  response.data;
+            const token = localStorage.getItem("token");
+            const response = await axios.patch(`${baseURL}/users/update/${update.id}`,
+            // const response = await axios.patch(`http://localhost:5251/api/v1/users/update/${update.id}`,
+                requestBody,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+            return response.data;
         } catch (e) {
             const error = e as AxiosError;
             return error;
@@ -162,10 +173,16 @@ const usersSlice = createSlice({
         })
         .addCase(createNewUser.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
-                state.error = action.payload.message;
+                if (action.payload.response?.data === "Email is already used") {
+                    state.error = "Email is already used, please use a different email";
+                } else {
+                    state.error = action.payload.response?.data;
+                }
             } else {
                 state.users.push(action.payload);
                 state.currentUser = action.payload;
+                state.error = "";
+                alert("Sign up successfully");
             }
             state.loading = false;
         })
@@ -201,6 +218,8 @@ const usersSlice = createSlice({
             } else {
                 console.log("log in successfully");
                 state.currentUser = action.payload;
+                state.error = '';
+                alert("Log in successfully");
             }
             state.loading = false;
         })
@@ -237,6 +256,8 @@ const usersSlice = createSlice({
                 });
                 state.users = updatedUsers;
                 state.currentUser = action.payload;
+                state.error = '';
+                alert("Your information has been updated successfully");
             }
             state.loading = false;
         })

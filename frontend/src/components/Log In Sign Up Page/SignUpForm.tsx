@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -23,12 +23,16 @@ const SignUpForm = () => {
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,
-            avatar: data.avatar || "",
+            avatar: {
+                link: data.avatar
+            },
             password: data.password
         }));
     }
     const { error, currentUser } = useAppSelector(state => state.usersReducer);
-    if (currentUser) navigate("/profile");
+    useEffect(() => {
+        if (currentUser) navigate("/profile");
+    }, [navigate, currentUser])
 
   return (
     <div>
@@ -42,6 +46,7 @@ const SignUpForm = () => {
                 required
             />
             {errors.firstName?.message}
+
             <input
                 aria-label='last-name'
                 type='text'
@@ -50,6 +55,7 @@ const SignUpForm = () => {
                 required
             />
             {errors.lastName?.message}
+
             <input
                 aria-label='email'
                 type='email'
@@ -58,6 +64,7 @@ const SignUpForm = () => {
                 required
             />
             {errors.email?.message}
+
             <input
                 aria-label='password'
                 type='password'
@@ -67,6 +74,15 @@ const SignUpForm = () => {
             />
             {errors.password?.message}
             {error && <p>{error}</p>}
+
+            <input
+                aria-label='avatar'
+                type='text'
+                placeholder='Avatar link (optional)'
+                {...register("avatar")}
+            />
+            {errors.avatar?.message}
+
             <button
                 aria-label='sign up'
                 type='submit'

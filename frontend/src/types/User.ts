@@ -19,7 +19,9 @@ export interface UserCreateDto {
     firstName: string;
     lastName: string;
     email: string;
-    avatar: string;
+    avatar: {
+        link: string
+    }
     password: string;
 }
 
@@ -34,5 +36,6 @@ export interface UserUpdateDto {
 
 export interface UserUpdatePassword {
     id: Guid;
-    password: string
+    password: string,
+    confirm: string
 }

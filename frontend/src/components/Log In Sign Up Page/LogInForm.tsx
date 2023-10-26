@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,7 @@ const LogInForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    // reset
   } = useForm<LogInFormData>({
     resolver: yupResolver(loginSchema)
   });
@@ -26,10 +26,12 @@ const LogInForm = () => {
       email: data.email,
       password: data.password
     }));
-    reset();
+    // reset();
   }
   
-  if (currentUser) navigate("profile");
+  useEffect(() => {
+    if (currentUser) navigate("profile");
+  }, [navigate, currentUser])
 
   return (
     <div>
