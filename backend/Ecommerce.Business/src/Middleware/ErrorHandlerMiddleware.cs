@@ -26,13 +26,16 @@ namespace Ecommerce.Business.src.Middleware
             {
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsync(e.InnerException!.Message);
-                Console.WriteLine("Database Exception" + e);
+                // Console.WriteLine("Database Exception" + e);
             }
             catch (Exception e)
             {
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsync(e.Message);
-                Console.WriteLine("General Exception" + e);
+                // Console.WriteLine("HEHEHHEE");
+                // Console.WriteLine(e.GetBaseException());
+                // Console.WriteLine("General Exception " + e.Data);
+                // Console.WriteLine("General Exception " + e.Message);
             }
         }
     }

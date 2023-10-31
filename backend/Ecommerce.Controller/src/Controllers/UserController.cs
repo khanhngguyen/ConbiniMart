@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Ecommerce.Business.src.Dtos;
@@ -13,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ecommerce.Controller.src.Controllers
 {
     [ApiController]
-    [Authorize]
+    // [Authorize]
     [Route("api/v1/[controller]s")]
     public class UserController : CrudController<User, UserCreateDto, UserReadDto, UserUpdateDto>
     {
@@ -25,7 +26,8 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         // [Authorize(Policy = "AdminOnly")]
-        [AllowAnonymous]
+        // [AllowAnonymous]
+        // [Authorize]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 403)]
         [ProducesResponseType(statusCode: 40)]
@@ -35,7 +37,7 @@ namespace Ecommerce.Controller.src.Controllers
             return Ok(await _userService.GetAll(queryOptions));
         }
 
-        [AllowAnonymous]
+        // [AllowAnonymous]
         [ProducesResponseType(statusCode: 201)]
         public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
         {
@@ -43,7 +45,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         // [Authorize(Policy = "AdminOnly")]
-        [AllowAnonymous]
+        // [AllowAnonymous]
         [HttpPost("admin")]
         [ProducesResponseType(statusCode: 201)]
         public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
@@ -52,6 +54,7 @@ namespace Ecommerce.Controller.src.Controllers
         }
 
         // [Authorize(Policy = "AdminOnly")]
+        // [AllowAnonymous]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 404)]
         public override async Task<ActionResult<UserReadDto>> GetOneById([FromRoute] Guid id)
@@ -63,6 +66,7 @@ namespace Ecommerce.Controller.src.Controllers
             return Ok(await _userService.GetOneById(id));
         }
 
+        [Authorize]
         [HttpPatch("update/{id:Guid}")]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 404)]
@@ -76,21 +80,29 @@ namespace Ecommerce.Controller.src.Controllers
             return Ok(await _userService.UpdatePassword(id, newPassword.Password));
         }
 
+        [Authorize]
         [HttpGet("profile")]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 401)]
         [ProducesResponseType(statusCode: 404)]
         public async Task<ActionResult<UserReadDto>> GetProfile()
         {
-            var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value ?? throw CustomException.NotFoundException("User not found");
+            var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            // var id = "c5ee1f5a-635c-41e1-981a-386d4d66e76a";
+            // Console.WriteLine("TESTING");
+            // Console.WriteLine("ID FROM HTTPCONTEXT" + id);
+            // Console.WriteLine("");
+
             return Ok(await _userService.GetOneById(new Guid(id)));
+            // return await _userService.GetOneById(new Guid(id));
         }
 
+        [Authorize]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 401)]
         public override async Task<ActionResult<bool>> DeleteOneById([FromRoute] Guid id)
         {
-            var claimId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var claimId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)!.Value;
             if (claimId == id.ToString()) return Ok(await _userService.DeleteOneById(new Guid(claimId)));
             else return NotFound();
         }

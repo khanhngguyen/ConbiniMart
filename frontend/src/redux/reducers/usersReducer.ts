@@ -37,6 +37,7 @@ export const authenticate = createAsyncThunk(
             const response = await axios.get<User>(`${baseURL}/users/profile`, {
                 headers: {
                     Authorization: `Bearer ${token}`
+                    // 'Acceess-Control-Allow-Origin': '*',
                 }
             });
             console.log(response.data);
@@ -210,7 +211,7 @@ const usersSlice = createSlice({
         })
         .addCase(login.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
-                if (action.payload.response?.data === "Exception of type 'Ecommerce.Domain.src.Shared.CustomException' was thrown.") {
+                if (action.payload.response?.data === "Email not found") {
                     state.error = "Email is not registered";
                 } else if (action.payload.response?.data === "Password incorrect") {
                     state.error = "Password incorrect";
@@ -232,6 +233,7 @@ const usersSlice = createSlice({
         .addCase(authenticate.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
                 state.error = action.payload.message;
+                console.log("authenticate error fulfilled");
             } else {
                 state.currentUser = action.payload;
             }
