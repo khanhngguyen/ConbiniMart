@@ -282,6 +282,7 @@ const usersSlice = createSlice({
                 });
                 state.users = updatedUsers;
                 state.currentUser = action.payload;
+                alert("Your password has been updated successfully");
             }
             state.loading = false;
         })
