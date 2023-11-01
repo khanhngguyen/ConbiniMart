@@ -1,0 +1,15 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+
+.product__card {
+    background-color: colors.$mint-cream;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    outline: 2px solid transparent;
+    transition: others.$transition-2;
+    &:hover, :focus-within {
+        outline-color: colors.$emerald;
+    }
+}

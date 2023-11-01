@@ -7,6 +7,9 @@
 @use "./components/shared/loading";
 @use "./components/shared/pageNotFound";
 @use "./pages/about";
+@use "./pages/products";
+@use "./components/products/productsList";
+@use "./components/products/productCard";
 
 *,
 *::before,
