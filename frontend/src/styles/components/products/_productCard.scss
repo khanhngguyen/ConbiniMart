@@ -1,6 +1,7 @@
 @use "../../variables/colors";
 @use "../../variables/fonts";
 @use "../../variables/others";
+@use "../../mixins/button";
 
 .product__card {
     background-color: colors.$mint-cream;
@@ -9,7 +10,105 @@
     border-radius: 10px;
     outline: 2px solid transparent;
     transition: others.$transition-2;
+    transition: box-shadow others.$transition-2;
     &:hover, :focus-within {
         outline-color: colors.$emerald;
+        box-shadow: 0 0 15px rgba(27, 27, 27, 0.2); 
+    }
+    figure {
+        position: relative;
+        max-width: max-content;
+        margin-inline: auto;
+        margin-block-end: 20px;
+        transition: others.$transition-2;
+        &:hover {
+            img {
+                opacity: 0.6;
+            }
+            .favorite {
+                opacity: 1;
+            }
+        }
+        .favorite {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            button {
+                position: relative;
+                background-color: colors.$mint-cream;
+                font-size: 2rem;
+                padding: 12px;
+                border-radius: 50%;
+                svg {
+                    fill: colors.$space-cadet;
+                }
+                &:hover, &:focus {
+                    svg {
+                        fill: colors.$emerald;
+                    }
+                    .favorite__tooltip {
+                        opacity: 1;
+                    }
+                }
+            }
+            &__tooltip {
+                position: absolute;
+                bottom: calc(100% + 10px);
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: colors.$black_90;
+                color: colors.$white;
+                border-radius: others.$radius-4;
+                font-size: fonts.$fs-7;
+                min-width: max-content;
+                padding: 4px 12px;
+                pointer-events: none;
+                opacity: 0;
+                transition: others.$transition-2;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 20px;
+                    left: 50%;
+                    transform: translateX(-50%) rotate(45deg);
+                    border: 5px solid transparent;
+                    border-bottom-color: colors.$black_90;
+                    border-right-color: colors.$black_90;
+                }
+            }
+        }
+    }
+    &__rating {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+        color: colors.$yellow-orange;
+        margin-block-end: 10px;
+    }
+    &__title {
+        color: colors.$russian-violet;
+        font-size: fonts.$fs-4;
+        font-weight: fonts.$fw-600;
+        margin-block-end: 10px;
+        &:hover {
+            color: colors.$emerald;
+        }
+    }
+    &__price {
+        font-size: fonts.$fs-5;
+        margin-block-end: 15px;
+        color: colors.$emerald;
+    }
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        button {
+            @include button.button;
+            padding: 12px 18px;
+            font-size: fonts.$fs-6;
+            font-weight: fonts.$fw-500;
+        }
     }
 }

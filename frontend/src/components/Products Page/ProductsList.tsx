@@ -42,16 +42,13 @@ const ProductsList = () => {
             <li>products per page</li>
         </ul>
 
+        {loading && <Loading />}
+        {error && <Error error={error} />}
+
         <ul className='products__list'>
-            {loading && <Loading />}
             {(!loading) && products.map(product => (
                 <ProductCard key={product.id.toString()} product={product} />
             ))}
-            {error && <Error error={error} />}
-
-            {/* {products.map(product => (
-                <ProductCard key={product.id.toString()} product={product} />
-            ))} */}
         </ul>
     </div>
   )
