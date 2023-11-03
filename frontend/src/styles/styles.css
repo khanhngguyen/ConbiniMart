@@ -602,6 +602,139 @@ footer .footer__bottom__container__list {
   background-color: hsl(152, 95%, 33%);
 }
 
+.product-details {
+  padding-block-end: 80px;
+}
+.product-details .container {
+  padding-inline: 40px;
+  max-width: 1020px;
+  margin: auto;
+}
+.product-details__title {
+  text-align: center;
+  color: hsl(152, 95%, 39%);
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  margin-block-end: 25px;
+}
+.product-details__wrapper {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 40px;
+  padding-block-end: 50px;
+  border-block-end: 1px solid hsl(156, 3%, 61%);
+  margin-block-end: 50px;
+}
+.product-details__wrapper__images {
+  min-width: 450px;
+}
+.product-details__wrapper__images__main {
+  margin-block-end: 15px;
+}
+.product-details__wrapper__images__main img {
+  width: 100%;
+}
+.product-details__wrapper__images__extra {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: inline mandatory;
+  padding-block-end: 20px;
+}
+.product-details__wrapper__images__extra li {
+  min-width: calc(25% - 7.5px);
+  scroll-snap-align: start;
+}
+.product-details__wrapper__images__extra li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.product-details__wrapper__content h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-block-end: 15px;
+  color: hsl(245, 97%, 13%);
+}
+.product-details__wrapper__content h4 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: hsl(245, 97%, 13%);
+}
+.product-details__wrapper__content__rating {
+  color: hsl(36, 100%, 50%);
+  margin-block: 15px;
+}
+.product-details__wrapper__content__description {
+  color: hsl(0, 0%, 45%);
+  line-height: 1.65;
+}
+.product-details__wrapper__content__quantity {
+  margin-block: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+.product-details__wrapper__content__quantity input {
+  display: inline-block;
+  max-width: 150px;
+  color: hsl(0, 0%, 0%);
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 20px;
+  border: 1px solid hsl(156, 3%, 61%);
+  width: 100%;
+}
+.product-details__wrapper__content__quantity button {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 2rem;
+  font-weight: 500;
+  border: 1px solid hsl(152, 95%, 39%);
+}
+.product-details__wrapper__content__quantity button:hover, .product-details__wrapper__content__quantity button:focus {
+  background-color: hsl(152, 95%, 33%);
+}
+.product-details__info {
+  color: hsl(245, 97%, 13%);
+  font-size: 2.4rem;
+  margin-block-end: 25px;
+}
+.product-details__table {
+  width: 100%;
+  border: 1px solid hsl(0, 0%, 92%);
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: fixed;
+}
+.product-details__table__row {
+  border: 1px solid hsl(0, 0%, 92%);
+}
+.product-details__table__row__heading, .product-details__table__row__data {
+  color: hsl(0, 0%, 27%);
+  font-size: 1.4rem;
+  padding: 20px;
+  border: 1px solid hsl(0, 0%, 92%);
+}
+.product-details__table__row__data__rating {
+  color: hsl(36, 100%, 50%);
+}
+
 *,
 *::before,
 *::after {

@@ -1,10 +1,10 @@
 import React from 'react'
 import { StarRounded, FavoriteBorderRounded } from '@mui/icons-material'
 import { NavLink } from 'react-router-dom'
+import { Badge } from '@mui/material'
 
 import { Product } from '../../types/Product'
 import product1 from "../../styles/assets/product-1.png"
-import { Badge } from '@mui/material'
 
 interface ProductCardProps {
     product: Product

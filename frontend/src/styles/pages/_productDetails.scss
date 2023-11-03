@@ -2,3 +2,130 @@
 @use "../variables/fonts";
 @use "../variables/others";
 @use "../mixins/button";
+
+.product-details {
+    padding-block-end: others.$section-padding;
+    .container {
+        padding-inline: 40px;
+        max-width: 1020px;
+        margin: auto;
+    }
+    &__title {
+        text-align: center;
+        color: colors.$emerald;
+        font-family: fonts.$font-primary;
+        font-size: fonts.$fs-2;
+        font-style: italic;
+        margin-block-end: 25px;
+    }
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 0.7fr 1fr;
+        gap: 40px;
+        padding-block-end: 50px;
+        border-block-end: 1px solid colors.$spanish-gray;
+        margin-block-end: 50px;
+        &__images {
+            min-width: 450px;
+            &__main {
+                margin-block-end: 15px;
+                img {
+                    width: 100%;
+                }
+            }
+            &__extra {
+                display: flex;
+                gap: 10px;
+                overflow-x: auto;
+                scroll-snap-type: inline mandatory;
+                padding-block-end: 20px;
+                li {
+                    min-width: calc(25% - 7.5px);
+                    scroll-snap-align: start;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                }
+            }
+        }
+
+        &__content {
+            h3 {
+                font-size: fonts.$fs-1;
+                font-weight: fonts.$fw-700;
+                margin-block-end: 15px;
+                color: colors.$russian-violet;
+            }
+            h4 {
+                font-size: fonts.$fs-2;
+                font-weight: fonts.$fw-700;
+                color: colors.$russian-violet;
+            }
+            &__rating {
+                color: colors.$yellow-orange;
+                margin-block: 15px;
+            }
+            &__description {
+                color: colors.$sonic-silver;
+                line-height: 1.65;
+            }
+            &__quantity {
+                margin-block: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                align-items: center;
+                input {
+                    display: inline-block;
+                    max-width: 150px;
+                    color: colors.$black;
+                    font-size: fonts.$fs-3;
+                    font-weight: fonts.$fw-600;
+                    text-align: center;
+                    padding: 10px 20px;
+                    border: 1px solid colors.$spanish-gray;
+                    width: 100%;
+                }
+                button {
+                    @include button.button;
+                    border-radius: 0;
+                    padding: 10px 20px;
+                    font-size: fonts.$fs-3;
+                    font-weight: fonts.$fw-500;
+                    border: 1px solid colors.$emerald;
+                }
+            }
+        }
+    }
+
+    &__info {
+        color: colors.$russian-violet;
+        font-size: fonts.$fs-2;
+        margin-block-end: 25px;
+    }
+
+    &__table {
+        width: 100%;
+        border: 1px solid colors.$platinum;
+        border-collapse: collapse;
+        text-align: center;
+        table-layout: fixed;
+        &__row {
+            border: 1px solid colors.$platinum;
+            &__heading, &__data {
+                color: colors.$onyx;
+                font-size: fonts.$fs-7;
+                padding: 20px;
+                border: 1px solid colors.$platinum;
+            }
+            &__data {
+                &__rating {
+                    color: colors.$yellow-orange;
+                }
+            }
+        }
+    }
+}
