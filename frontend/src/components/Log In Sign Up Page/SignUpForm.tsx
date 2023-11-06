@@ -8,7 +8,11 @@ import signupSchema, { SignUpFormData } from '../../validations/signupSchema';
 import { createNewUser } from '../../redux/reducers/usersReducer';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
-const SignUpForm = () => {
+interface SignUpFormProps {
+    display: boolean
+}
+
+const SignUpForm = (props: SignUpFormProps) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const {
@@ -35,53 +39,62 @@ const SignUpForm = () => {
     }, [navigate, currentUser])
 
   return (
-    <div>
+    <div className={`form-container signup ${props.display ? "display" : ""}`}>
         <h2>Sign Up:</h2>
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <form 
+            onSubmit={handleSubmit(onSubmitHandler)}
+            className='form-container__form signup__form'
+        >
+            <label htmlFor='first-name'>First name*</label>
             <input
                 aria-label='first-name'
                 type='text'
-                placeholder='First Name'
+                id='first-name'
                 {...register("firstName")}
                 required
             />
             {errors.firstName?.message}
 
+            <label htmlFor='last-name'>Last name*</label>
             <input
                 aria-label='last-name'
                 type='text'
-                placeholder='Last Name'
+                id='last-name'
                 {...register("lastName")}
                 required
             />
             {errors.lastName?.message}
 
+            <label htmlFor='email'>Email*</label>
             <input
                 aria-label='email'
                 type='email'
-                placeholder='Email'
+                id='email'
                 {...register("email")}
                 required
             />
             {errors.email?.message}
 
+            <label htmlFor='password'>Password*</label>
             <input
                 aria-label='password'
                 type='password'
-                placeholder='Password'
+                id='password'
                 {...register("password")}
                 required
             />
             {errors.password?.message}
-            {error && <p>{error}</p>}
 
+            <label htmlFor='avatar'>Avatar</label>
             <input
                 aria-label='avatar'
                 type='text'
+                id='avatar'
                 placeholder='Avatar link (optional)'
                 {...register("avatar")}
             />
             {errors.avatar?.message}
+            {error && <p className='error'>{error}</p>}
 
             <button
                 aria-label='sign up'

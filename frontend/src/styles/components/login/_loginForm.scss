@@ -1,0 +1,68 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.form-container {
+    background-color: colors.$white;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(black, .1);
+    margin: 15px auto others.$section-padding;
+    padding: 40px;
+    h2 {
+        color: colors.$emerald;
+        font-size: fonts.$fs-3;
+        text-transform: uppercase;
+        margin-block-end: 30px;
+    }
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        label {
+            display: block;
+            color: colors.$battleship-gray;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-block-end: 10px;
+        }
+        input {
+            display: block;
+            background-color: colors.$mint-cream;
+            width: 100%;
+            border: 0;
+            border-radius: 6px;
+            padding: 12px 20px;
+            outline: none;
+            color: colors.$battleship-gray;
+            transition: others.$transition-2;
+            margin-block-end: 20px;
+            &:focus {
+                color: colors.$onyx;
+            }
+        }
+        button {
+            @include button.button;
+            border-radius: 6px;
+            width: 100%;
+            text-transform: uppercase;
+            cursor: pointer;
+            justify-content: center;
+            margin-block: 10px 30px;
+        }
+        a {
+            color: cadetblue;
+            text-decoration: underline;
+        }
+        & .error {
+            color: red;
+        }
+        & .toggle-class {
+            text-decoration: underline;
+            color: cadetblue;
+            cursor: pointer;
+        }
+    }
+}

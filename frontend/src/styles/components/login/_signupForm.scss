@@ -1,0 +1,44 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.signup {
+    background-color: colors.$mint-cream;
+    max-height: 800px;
+    overflow: hidden;
+    transition: 0.5s ease-in-out;
+    transition-delay: 0.2s;
+    transform: translateY(-20%);
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    margin: 0 auto;
+    h2 {
+        color: colors.$green-pigment;
+    }
+    &__form {
+        label {
+            color: colors.$jet;
+        }
+        input {
+            background-color: colors.$green-pigment;
+            color: colors.$light-gray;
+        }
+        button {
+            background-color: colors.$mint-cream;
+            border: 2px solid colors.$green-pigment;
+            color: colors.$shamrock-green;
+            &:hover {
+                background-color: colors.$white;
+            }
+        }
+    }
+}
+
+.display {
+    opacity: 1;
+    transform: translateY(0);
+    height: auto;
+    margin: 15px auto others.$section-padding;
+}

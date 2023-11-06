@@ -30,6 +30,11 @@
         line-height: fonts.$fs-1;
         font-style: italic;
         margin-bottom: 30px;
+        a {
+            display: inline-block;
+            color: cadetblue;
+            text-decoration: underline;
+        }
     }
     &__partners {
         background-color: colors.$emerald;

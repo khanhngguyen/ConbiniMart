@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import LogInForm from '../components/Log In Sign Up Page/LogInForm'
 import SignUpForm from '../components/Log In Sign Up Page/SignUpForm'
 
 const LogIn = () => {
+  const [display, setDisplay] = useState(false);
+
+  const toggleClass = () => {
+    setDisplay(!display);
+  };
+
   return (
     <div>
-      <LogInForm />
-      <p>Don't have an account? Sign up to create a new one!</p>
-      <SignUpForm />
+      <LogInForm toggleClass={toggleClass} />
+      <SignUpForm display={display}/>
     </div>
   )
 }

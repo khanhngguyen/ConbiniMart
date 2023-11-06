@@ -13,11 +13,25 @@ const About = () => {
         <h2>About us</h2>
       </div>
       <div className='about__content'>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, ducimus! Quia odit dolore numquam, amet earum ab ipsam assumenda unde sapiente voluptates in laborum quisquam eos illum nulla. Commodi iure nihil natus quisquam ut mollitia alias ullam maiores illo iusto eligendi delectus voluptate in illum, eveniet beatae animi? Atque minima dolore impedit quod dolorem deleniti, ipsa id asperiores officiis deserunt reprehenderit possimus cumque soluta, explicabo voluptatibus natus. Deleniti, similique ex!
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi laudantium suscipit ducimus fugit mollitia dolore voluptatum saepe, rem excepturi recusandae tenetur provident facere, dicta vitae accusantium, nulla deleniti quod aperiam.
+        <p><strong>ConbiniMart</strong> is a full-stack project that marks the end of back-end module in my study program with Integrify Academy.
+          The project consists of two parts: front-end & back-end.
+          <br /><br />
+          The front-end acts as an E-commerce themed inteface, where users can interact & make actions such as: browsing products, search or filter & sort products, log in or register, etc.
+          The back-end serves as an API endpoints which connects to a database to store data, where front-end can do fetch & do CRUD actions to database.
+          <br /><br />
+          Technologies used in this project:<br/>
+          <strong>- Backend:</strong>- C#, using ASP .Net Core with Entity Framework; PostgreSQL for database.<br />
+          <strong>- Frontend:</strong> TypeScipt with React & Redux Toolkit; SASS & MUI for stylings.
         </p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum, unde tenetur! Officiis asperiores quae nemo. Doloremque quam quis, voluptas sit vitae deserunt porro, tempore perferendis maxime doloribus, nobis odit asperiores laudantium illo! Deleniti iure blanditiis magnam eveniet dolor nesciunt dolorem, tempora adipisci in. Rem labore error quidem, incidunt numquam laborum!
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae fuga consequuntur placeat nemo ad ipsa asperiores quasi, similique voluptate tempora inventore impedit temporibus sit incidunt dignissimos, numquam modi itaque eveniet.
+        <p>
+          More details about this project can be found at:<br />
+          - Github repository: <a href='https://github.com/khanhngguyen/Fullstack-fs15'>https://github.com/khanhngguyen/Fullstack-fs15</a><br />
+          Back-end Swagger documentation: <br />
+          <a href='https://fs15kim-ecommerce-backend.azurewebsites.net/swagger/index.html'>https://fs15kim-ecommerce-backend.azurewebsites.net/swagger/index.html</a>
+          <br /><br />
+          <strong>TMI:</strong> Conbini, or Konbini, is a Japanese word borrowed from English. Conbini is abbreviation of コンビニエンスストア (konbiniensu sutoa), meaning convenience store. <a href='https://www.wordsense.eu/konbini/'>(source)</a>
+          <br /><br />
+          Disclaimer: some pages' UI are from <a href='https://github.com/codewithsadee'>@codewithsadee</a>, with modifications.
         </p>
       </div>
       <section className='about__partners'>

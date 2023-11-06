@@ -11,6 +11,9 @@
 @use "./components/products/productsList";
 @use "./components/products/productCard";
 @use "./pages/productDetails";
+@use "./components/login/loginForm";
+@use "./components/login/signupForm";
+
 
 *,
 *::before,

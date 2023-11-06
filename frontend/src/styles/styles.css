@@ -403,6 +403,11 @@ footer .footer__bottom__container__list {
   font-style: italic;
   margin-bottom: 30px;
 }
+.about__content a {
+  display: inline-block;
+  color: cadetblue;
+  text-decoration: underline;
+}
 .about__partners {
   background-color: hsl(152, 95%, 39%);
   background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
@@ -733,6 +738,121 @@ footer .footer__bottom__container__list {
 }
 .product-details__table__row__data__rating {
   color: hsl(36, 100%, 50%);
+}
+
+.form-container {
+  background-color: hsl(0, 0%, 100%);
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin: 15px auto 80px;
+  padding: 40px;
+}
+.form-container h2 {
+  color: hsl(152, 95%, 39%);
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-block-end: 30px;
+}
+.form-container__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.form-container__form label {
+  display: block;
+  color: hsl(0, 0%, 53%);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-block-end: 10px;
+}
+.form-container__form input {
+  display: block;
+  background-color: hsl(96, 36%, 95%);
+  width: 100%;
+  border: 0;
+  border-radius: 6px;
+  padding: 12px 20px;
+  outline: none;
+  color: hsl(0, 0%, 53%);
+  transition: 0.25s ease;
+  margin-block-end: 20px;
+}
+.form-container__form input:focus {
+  color: hsl(0, 0%, 27%);
+}
+.form-container__form button {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  border-radius: 6px;
+  width: 100%;
+  text-transform: uppercase;
+  cursor: pointer;
+  justify-content: center;
+  margin-block: 10px 30px;
+}
+.form-container__form button:hover, .form-container__form button:focus {
+  background-color: hsl(152, 95%, 33%);
+}
+.form-container__form a {
+  color: cadetblue;
+  text-decoration: underline;
+}
+.form-container__form .error {
+  color: red;
+}
+.form-container__form .toggle-class {
+  text-decoration: underline;
+  color: cadetblue;
+  cursor: pointer;
+}
+
+.signup {
+  background-color: hsl(96, 36%, 95%);
+  max-height: 800px;
+  overflow: hidden;
+  transition: 0.5s ease-in-out;
+  transition-delay: 0.2s;
+  transform: translateY(-20%);
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  margin: 0 auto;
+}
+.signup h2 {
+  color: hsl(152, 95%, 33%);
+}
+.signup__form label {
+  color: hsl(0, 0%, 20%);
+}
+.signup__form input {
+  background-color: hsl(152, 95%, 33%);
+  color: hsl(0, 0%, 82%);
+}
+.signup__form button {
+  background-color: hsl(96, 36%, 95%);
+  border: 2px solid hsl(152, 95%, 33%);
+  color: hsl(152, 95%, 31%);
+}
+.signup__form button:hover {
+  background-color: hsl(0, 0%, 100%);
+}
+
+.display {
+  opacity: 1;
+  transform: translateY(0);
+  height: auto;
+  margin: 15px auto 80px;
 }
 
 *,

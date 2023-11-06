@@ -8,7 +8,11 @@ import loginSchema, { LogInFormData } from '../../validations/loginSchema';
 import { login } from '../../redux/reducers/usersReducer';
 import { useAppSelector } from '../../hooks/useAppSelector';
 
-const LogInForm = () => {
+interface LogInFormProps {
+  toggleClass: () => void;
+}
+
+const LogInForm = (props: LogInFormProps) => {
   const { error, currentUser } = useAppSelector(state => state.usersReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -34,33 +38,44 @@ const LogInForm = () => {
   }, [navigate, currentUser])
 
   return (
-    <div>
+    <div className='form-container'>
         <h2>Log In:</h2>
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <form 
+          onSubmit={handleSubmit(onSubmitHandler)}
+          className='form-container__form'
+        >
+          <label htmlFor='emal'>Email</label>
           <input
             aria-label='email'
             type='email'
-            placeholder='Email'
+            id='email'
             {...register("email")}
             required
           />
           {errors.email?.message}
 
+          <label htmlFor='password'>Password</label>
           <input
             aria-label='password'
             type='password'
-            placeholder='Password'
+            id='password'
             {...register("password")}
             required
           />
           {errors.password?.message}
-          {error && <p>{error}</p>}
+          {error && <p className='error'>{error}</p>}
 
           <button
             aria-label='log in'
             type='submit'
-            placeholder='Log In'
           >Log In</button>
+
+          <p 
+          onClick={props.toggleClass}
+          className='toggle-class'
+          >
+            Don't have an account? Register here
+          </p>
         </form>
     </div>
   )
