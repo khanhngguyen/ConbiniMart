@@ -18,6 +18,8 @@ footer {
                 grid-template-columns: 1.3fr 0.6fr 1fr 1fr;
                 gap: 30px;
                 padding-inline: 40px;
+                max-width: 2000px;
+                margin: auto;
                 &__brand {
                     color: colors.$white;
                     h1 {
@@ -109,6 +111,8 @@ footer {
                 justify-content: space-between;
                 align-items: center;
                 padding-inline: 20px;
+                max-width: 2000px;
+            margin: auto;
                 &__copyright {
                     text-align: center;
                     line-height: 1.7;

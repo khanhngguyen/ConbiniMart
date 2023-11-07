@@ -21,25 +21,33 @@ const Profile = () => {
     useEffect(() => {
         if (!currentUser) navigate("/");
     }, [navigate, currentUser])
+
   return (
-    <div>
+    <div className='profile'>
         <h2>Profile</h2>
-        <p>Hello {currentUser?.firstName} {currentUser?.lastName}</p>
-        {isAdmin ? <p>not admin</p> : <p>is admin</p>}
+        <div className='profile__content'>
+            <div className='profile__content__user'>
+                <p>Hello {currentUser?.firstName} {currentUser?.lastName}</p>
+                {isAdmin ? <p>not admin</p> : <p>is admin</p>}
 
-        <button>
-            Edit your profile
-        </button>
-        <UserUpdate />
+                <div className='profile__content__user__actions'>
+                    <button>
+                        Edit your profile
+                    </button>
+                    <UserUpdate />
 
-        <UserPasswordUpdate />
-        <button>
-            Change your password
-        </button>
-        <button 
-            onClick={onLogoutHandler}
-            // className='button'
-        >Log out</button>
+                    <UserPasswordUpdate />
+                    <button>
+                        Change your password
+                    </button>
+                </div>
+
+            </div>
+
+            <button 
+                onClick={onLogoutHandler}
+            >Log out</button>
+        </div>
     </div>
   )
 }

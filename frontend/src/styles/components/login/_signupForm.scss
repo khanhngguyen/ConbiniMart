@@ -7,12 +7,12 @@
     background-color: colors.$mint-cream;
     max-height: 800px;
     overflow: hidden;
-    transition: 0.5s ease-in-out;
-    transition-delay: 0.2s;
+    transition: 0.5s ease-in;
+    transition-delay: 0.1s;
     transform: translateY(-20%);
     height: 0;
     opacity: 0;
-    visibility: hidden;
+    // visibility: hidden;
     margin: 0 auto;
     h2 {
         color: colors.$green-pigment;
@@ -39,6 +39,7 @@
 .display {
     opacity: 1;
     transform: translateY(0);
+    // visibility: visible;
     height: auto;
     margin: 15px auto others.$section-padding;
 }

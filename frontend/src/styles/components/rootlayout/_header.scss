@@ -22,6 +22,8 @@ header {
             row-gap: 20px;
             padding-inline: 5%;
             padding-block: 20px;
+            max-width: 2000px;
+            margin: auto;
             &__logo {
                 color: colors.$gunmetal-2;
                 font-family: fonts.$font-primary;
@@ -48,6 +50,9 @@ header {
                         &:hover {
                             color: colors.$shamrock-green;
                         }
+                    }
+                    .active {
+                        color: colors.$green-pigment;
                     }
                 }
             }

@@ -1,4 +1,4 @@
-# Fullstack Project
+# 1. Fullstack Project
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-v.4-green)
 ![SASS](https://img.shields.io/badge/SASS-v.4-hotpink)
@@ -16,57 +16,61 @@ This project involves creating a Fullstack project with React and Redux on the f
 You can follow the same topics as your backend project or choose the alternative one, between E-commerce and Library. You can reuse the previous frontend project, with necessary modification, or make a new layout to fit your backend server.
 
 ## Table of Contents
-Introduction: 
+1. [Introduction](#fullstack-project)
 
-[Features](#features)
-   - [Mandatory features](#mandatory-features)
-   - [Extra features](#extra-features)
-   - [Requirements](#requirements)
+2. [Features requirement](#features)
+   - 2.1. [Mandatory features](#mandatory-features)
+   - 2.2. [Extra features](#extra-features)
+   - 2.3. [Requirements](#requirements)
 
-Project Result:
+3. [How to run project locally](#run-project-locally)
 
-[Backend](#project-result--backend)
-   - [Project Design](#project-design)
-   - [Features](#features-1)
-   - [Backend Demo](#backend-demo)
-   - [Testing](#testing)
+4. [Project Result](#project-result--backend)
 
-[Frontend](#project-result--frontend)
+   4.1 [Backend](#project-result--backend)
+      - 4.1.1. [Project Design](#project-design)
+      - 4.1.2. [Features](#features-1)
+      - 4.1.3. [Backend Demo](#backend-demo)
+      - 4.1.4. [Testing](#testing)
+
+   4.2 [Frontend](#project-result--frontend)
+      - 4.2.1. [Features](#features-2)
+      - 4.2.2. [Frontend Demo](#frontend-demo)
 
 
-## Features
+## 2. Features
 
-### Mandatory features
+### 2.1. Mandatory features
 
-#### User Functionalities
+#### a. User Functionalities
 
 1. User Management: Users should be able to register for an account and log in. Users cannot register themselves as admin.
 2. Browse Products: Users should be able to view all available products and single product, search and sort products.
 3. Add to Cart: Users should be able to add products to a shopping cart, and manage cart.
 4. Checkout: Users should be able to place order.
 
-#### Admin Functionalities
+#### b. Admin Functionalities
 
 1. User Management: Admins should be able to view and delete users.
 2. Product Management: Admins should be able to view, edit, delete and add new products.
 3. Order Management: Admins should be able to view all orders
 
-### Extra features
+### 2.2. Extra features
 
-#### User Functionalities
+#### a. User Functionalities
 
 1. User Management: Users should be able to view and edit only certain properties in their accounts. They also can unregister their own accounts.
 2. Authentication and account registration with Google Oauth.
 3. Order Management: Users should be able to view their order history, track the status of their orders, and potentially cancel orders within a certain timeframe.
 
-#### Admin Functionalities
+#### b. Admin Functionalities
 
 1. User Management: Admins should be able to edit users' role and create new users.
 2. Order Management: Admins should be able to update order status, view order details, handle returns/refunds, and cancel orders.
 
 And any other extra features that you want to implement ...
 
-## Requirements
+## 2.3. Requirements
 
 1. Apply CLEAN architecture in your backend. In README file, explain the architecture of your project as well.
 2. Implement Error Handling Middleware: This will ensure any exceptions thrown in your application are handled appropriately and helpful error messages are returned.
@@ -75,15 +79,33 @@ And any other extra features that you want to implement ...
 5. `README` file should sufficiently describe the project, as well as the deployment.
 6. Unit testing, and optionally integration testing, must be included for both frontend and backend code. Aim for high test coverage and ensure all major functionalities are covered.
 
+# 3. Run project locally
+- Backend:
+   ```dotnet restore```
+   ```cd Ecommerce.WebApi/```
+   Set up ConnectionStrings in appsettings.json or appsettings.Development.json, example: 
+   ```
+   "ConnectionStrings": {
+      "DefaultConnection": "Server=127.0.0.1; Host=localhost; Port=5432; Database=databaseId; User Id=yourUserId;"
+      }
+   ```
+   then ```dotnet run```
 
-# Project Result : Backend
+- Frontend:
+   ```npm start```
+   or ```npm run compile:watch & npm start``` to compile SCSS first
+
+
+# 4. Project Result : Backend
 !!!Current status: incomplete
 
-## Project Design
+## 4.1. Project Design
 
-#### Entities design
+Topic: E-commerce
 
-![ERD](./projectDesign/ERD.png)
+#### 4.2. Entities design
+
+![ERD](./projectDesign/ERD-new.png)
 
 Brief:
    - User: has Role either Admin or User
@@ -129,12 +151,29 @@ User log in with credentials --> Verify credentials --> if success, token is ret
 
 ## Backend demo
 
-- [Swagger Docs](https://kim-fs15-ecommerce-backend.azurewebsites.net/swagger/index.html) 
+- [Swagger Docs](https://fs15kim-ecommerce-backend.azurewebsites.net/swagger/index.html) 
 
-- Backend base URL: https://kim-fs15-ecommerce-backend.azurewebsites.net/
+- Backend base URL: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1
+   - Example: 
+      - Get all products: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/products
+      - Get all categories: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/category
 
 ## Testing
 xUnit is used for testing
 
 # Project Result : Frontend
-!!! Status: not implemented yet
+!!! Status: incompleted
+
+Home page
+![Home page](./projectDesign/home%20page.png)
+
+About page
+![About page](./projectDesign/%20about%20page.png)
+
+Log in page
+![Log in page](./projectDesign/%20about%20page.png)
+
+
+## Features
+
+## Frontend demo

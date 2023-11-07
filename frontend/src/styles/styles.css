@@ -18,6 +18,8 @@ header .header__navbar-wrapper {
   row-gap: 20px;
   padding-inline: 5%;
   padding-block: 20px;
+  max-width: 2000px;
+  margin: auto;
 }
 header .header__navbar-wrapper__logo {
   color: hsl(206, 21%, 15%);
@@ -42,6 +44,9 @@ header .header__navbar-wrapper__nav__list {
 }
 header .header__navbar-wrapper__nav__list a:hover {
   color: hsl(152, 95%, 31%);
+}
+header .header__navbar-wrapper__nav__list .active {
+  color: hsl(152, 95%, 33%);
 }
 header .header__navbar-wrapper__actions {
   display: flex;
@@ -86,6 +91,8 @@ footer .footer__top__container {
   grid-template-columns: 1.3fr 0.6fr 1fr 1fr;
   gap: 30px;
   padding-inline: 40px;
+  max-width: 2000px;
+  margin: auto;
 }
 footer .footer__top__container__brand {
   color: hsl(0, 0%, 100%);
@@ -175,6 +182,8 @@ footer .footer__bottom__container {
   justify-content: space-between;
   align-items: center;
   padding-inline: 20px;
+  max-width: 2000px;
+  margin: auto;
 }
 footer .footer__bottom__container__copyright {
   text-align: center;
@@ -430,6 +439,7 @@ footer .footer__bottom__container__list {
   gap: 5rem;
   width: 70%;
   margin: auto;
+  max-width: 1020px;
 }
 .about__partners__container ul li {
   scroll-snap-align: center;
@@ -821,12 +831,11 @@ footer .footer__bottom__container__list {
   background-color: hsl(96, 36%, 95%);
   max-height: 800px;
   overflow: hidden;
-  transition: 0.5s ease-in-out;
-  transition-delay: 0.2s;
+  transition: 0.5s ease-in;
+  transition-delay: 0.1s;
   transform: translateY(-20%);
   height: 0;
   opacity: 0;
-  visibility: hidden;
   margin: 0 auto;
 }
 .signup h2 {
@@ -853,6 +862,14 @@ footer .footer__bottom__container__list {
   transform: translateY(0);
   height: auto;
   margin: 15px auto 80px;
+}
+
+.profile {
+  background-color: hsl(96, 36%, 95%);
+  opacity: 0.2;
+  background-image: radial-gradient(#444cf7 1.6px, transparent 1.6px), radial-gradient(#444cf7 1.6px, #f6f6f6 1.6px);
+  background-size: 64px 64px;
+  background-position: 0 0, 32px 32px;
 }
 
 *,

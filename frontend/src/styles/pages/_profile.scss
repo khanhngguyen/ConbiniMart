@@ -1,0 +1,19 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/others";
+@use "../mixins/button";
+
+.profile {
+    background-color: colors.$mint-cream;
+    opacity: 0.2;
+    background-image:  
+        radial-gradient(#444cf7 1.6px, transparent 1.6px), 
+        radial-gradient(#444cf7 1.6px, #f6f6f6 1.6px);
+    background-size: 64px 64px;
+    background-position: 0 0, 32px 32px;
+    // background-image:  
+    //     radial-gradient(colors.$green-pigment, 0.5px, transparent 0.5px), 
+    //     radial-gradient(colors.$green-pigment 0.5px, transparent 0.5px);
+    // background-size: 20px 20px;
+    // background-position: 0 0, 10px 10px;
+}
