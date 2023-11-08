@@ -41,6 +41,7 @@ export const authenticate = createAsyncThunk(
                 }
             });
             console.log(response.data);
+            console.log(response.data.lastname);
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -217,7 +218,6 @@ const usersSlice = createSlice({
                     state.error = "Password incorrect";
                 }
             } else {
-                console.log("log in successfully");
                 state.currentUser = action.payload;
                 state.error = '';
                 alert("Log in successfully");

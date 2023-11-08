@@ -20,7 +20,7 @@
     }
     &__content {
         display: grid;
-        grid-template-columns: repeat(2, 50rem);
+        grid-template-columns: repeat(auto-fill, 50rem);
         font-family: fonts.$font-secondary;
         font-size: fonts.$fs-4;
         gap: 30px;

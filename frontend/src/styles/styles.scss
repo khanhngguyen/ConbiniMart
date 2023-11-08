@@ -14,6 +14,10 @@
 @use "./components/login/loginForm";
 @use "./components/login/signupForm";
 @use "./pages/profile";
+@use "./components/login/userUpdate";
+@use "./components/login/userPasswordUpdate";
+@use "./components/profile/deleteAccount";
+@use "./components/profile/logoutDialog";
 
 
 *,

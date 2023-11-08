@@ -28,8 +28,7 @@ const Header = () => {
                     <li><NavLink to="/">Home</NavLink></li>
                     <li><NavLink to="about">About</NavLink></li>
                     <li><NavLink to="products">All Products</NavLink></li>
-                    {(!currentUser) && <li><NavLink to="login">Login/Sign Up</NavLink></li>}
-                    {/* <li><NavLink to="login">Log In/Sign Up</NavLink></li> */}
+                    {(!currentUser) && <li><NavLink to="login">Login</NavLink></li>}
                 </ul>
             </nav>
 

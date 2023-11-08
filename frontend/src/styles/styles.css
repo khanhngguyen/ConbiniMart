@@ -201,6 +201,7 @@ footer .footer__bottom__container__list {
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
   padding-block: 40px;
+  max-height: 1200px;
 }
 .hero__container {
   display: grid;
@@ -401,7 +402,7 @@ footer .footer__bottom__container__list {
 }
 .about__content {
   display: grid;
-  grid-template-columns: repeat(2, 50rem);
+  grid-template-columns: repeat(auto-fill, 50rem);
   font-family: "Lato", sans-serif;
   font-size: 1.8rem;
   gap: 30px;
@@ -864,12 +865,194 @@ footer .footer__bottom__container__list {
   margin: 15px auto 80px;
 }
 
-.profile {
-  background-color: hsl(96, 36%, 95%);
-  opacity: 0.2;
-  background-image: radial-gradient(#444cf7 1.6px, transparent 1.6px), radial-gradient(#444cf7 1.6px, #f6f6f6 1.6px);
-  background-size: 64px 64px;
-  background-position: 0 0, 32px 32px;
+.profile h2 {
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  color: hsl(152, 95%, 39%);
+  text-align: center;
+  font-style: italic;
+  margin-block-end: 10px;
+}
+.profile__content {
+  text-align: center;
+  max-width: 1020px;
+  margin: auto;
+  margin-bottom: 30px;
+}
+.profile__content__user img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin: auto;
+  margin-block: 20px;
+}
+.profile__content__user__name {
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: hsl(0, 0%, 20%);
+}
+.profile__content__user__settings {
+  margin-block: 30px 10px;
+}
+.profile__content__user__settings h3 {
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin-block: 10px;
+}
+.profile__content__user__settings__actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 5px;
+}
+.profile__content__user__settings__actions__title {
+  border-bottom: 2px solid transparent;
+  transition: 0.05s ease;
+}
+.profile__content__user__settings__actions__title:hover {
+  border-bottom: 2px solid hsl(152, 95%, 39%);
+}
+
+.user-update {
+  margin: 15px auto;
+  position: relative;
+  display: none;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+}
+.user-update h3 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  margin-block-end: 20px;
+}
+.user-update__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  border: 1.5px solid hsl(152, 95%, 33%);
+  border-radius: 50%;
+  padding: 5px;
+  color: hsl(152, 95%, 33%);
+}
+.user-update__form button {
+  margin: 0;
+}
+
+.display {
+  display: block;
+  opacity: 1;
+  z-index: 10;
+  position: absolute;
+}
+
+.update-password {
+  margin: 15px auto;
+  position: relative;
+  display: none;
+  transition: 0.5s ease-in-out;
+  opacity: 0;
+}
+.update-password h3 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  margin-block-end: 20px;
+}
+.update-password__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  border: 1.5px solid hsl(152, 95%, 33%);
+  border-radius: 50%;
+  padding: 5px;
+  color: hsl(152, 95%, 33%);
+}
+.update-password__form button {
+  margin: 0;
+}
+
+.display {
+  display: block;
+  opacity: 1;
+  z-index: 10;
+  position: absolute;
+}
+
+.delete-dialog {
+  font-size: 1.8rem;
+  width: 500px;
+  padding: 30px 30px 20px;
+}
+.delete-dialog__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-block-start: 20px;
+}
+.delete-dialog__actions__cancel {
+  padding: 15px 25px;
+  color: hsl(0, 0%, 45%);
+}
+.delete-dialog__actions__cancel:hover {
+  color: hsl(0, 0%, 0%);
+}
+.delete-dialog__actions__delete {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  border-radius: 4px;
+  padding: 15px 40px;
+}
+.delete-dialog__actions__delete:hover, .delete-dialog__actions__delete:focus {
+  background-color: hsl(152, 95%, 33%);
+}
+
+.logout-dialog {
+  font-size: 1.8rem;
+  width: 500px;
+  padding: 30px 30px 20px;
+}
+.logout-dialog__actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-block-start: 20px;
+}
+.logout-dialog__actions__cancel {
+  padding: 15px 25px;
+  color: hsl(0, 0%, 45%);
+}
+.logout-dialog__actions__cancel:hover {
+  color: hsl(0, 0%, 0%);
+}
+.logout-dialog__actions__logout {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  border-radius: 4px;
+  padding: 15px 40px;
+}
+.logout-dialog__actions__logout:hover, .logout-dialog__actions__logout:focus {
+  background-color: hsl(152, 95%, 33%);
 }
 
 *,

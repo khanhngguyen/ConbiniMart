@@ -1,0 +1,28 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.logout-dialog {
+    font-size: fonts.$fs-4;
+    width: 500px;
+    padding: 30px 30px 20px;
+    &__actions {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-block-start: 20px;
+        &__cancel {
+            padding: 15px 25px;
+            color: colors.$sonic-silver;
+            &:hover {
+                color: colors.$black;
+            }
+        }
+        &__logout {
+            @include button.button;
+            border-radius: 4px;
+            padding: 15px 40px; 
+        }
+    }
+}

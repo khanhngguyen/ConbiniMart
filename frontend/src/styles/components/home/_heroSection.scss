@@ -11,6 +11,7 @@
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
     padding-block: 40px;
+    max-height: 1200px;
     &__container {
         display: grid;
         grid-template-columns: 1fr 0.8fr;

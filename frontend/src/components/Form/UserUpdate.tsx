@@ -1,14 +1,21 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { Guid } from 'guid-typescript'
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Guid } from 'guid-typescript';
+import { Badge } from '@mui/material';
+import { CloseRounded } from '@mui/icons-material';
 
 import userUpdateSchema, { userUpdateData } from '../../validations/userUpdateSchema'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { updateUser } from '../../redux/reducers/usersReducer'
 import { useAppSelector } from '../../hooks/useAppSelector'
 
-const UserUpdate = () => {
+interface UserUpdateProps {
+    display: boolean;
+    toggleUpdate: () => void;
+}
+
+const UserUpdate = (props: UserUpdateProps) => {
     const { error, currentUser } = useAppSelector(state => state.usersReducer);
     const dispatch = useAppDispatch();
     const {
@@ -33,9 +40,21 @@ const UserUpdate = () => {
     }
 
   return (
-    <div>
-        <h3>Update your profile</h3>
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
+    <div className={`form-container user-update ${props.display ? "display" : ""}`}>
+        <h3>Edit information</h3>
+        <button
+            className='user-update__close'
+            onClick={props.toggleUpdate}
+        >
+            <Badge>
+                <CloseRounded fontSize='large'/>
+            </Badge>
+        </button>
+
+        <form
+            onSubmit={handleSubmit(onSubmitHandler)}
+            className='form-container__form user-update__form'
+        >
             <input
                 aria-label='first name'
                 type='text'

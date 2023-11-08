@@ -1,0 +1,39 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.user-update {
+    margin: 15px auto;
+    position: relative;
+    display: none;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    h3 {
+        font-size: fonts.$fs-5;
+        text-transform: uppercase;
+        margin-block-end: 20px;
+    }
+    &__close {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+        border: 1.5px solid colors.$green-pigment;
+        border-radius: 50%;
+        padding: 5px;
+        color: colors.$green-pigment;
+    }
+    &__form {
+        button {
+            margin: 0;
+        }
+    }
+}
+
+.display {
+    display: block;
+    opacity: 1;
+    z-index: 10;
+    position: absolute;
+}
