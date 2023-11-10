@@ -39,7 +39,7 @@ const SignUpForm = (props: SignUpFormProps) => {
     }, [navigate, currentUser])
 
   return (
-    <div className={`form-container signup ${props.display ? "display" : ""}`}>
+    <div className={`form-container signup ${props.display ? "signup-display" : ""}`}>
         <h2>Sign Up:</h2>
         <form 
             onSubmit={handleSubmit(onSubmitHandler)}

@@ -30,6 +30,7 @@
                 font-size: fonts.$fs-3;
                 font-weight: fonts.$fw-600;
                 color: colors.$jet;
+                text-transform: capitalize;
             }
             &__settings {
                 margin-block: 30px 10px;
@@ -50,6 +51,29 @@
                         &:hover {
                             border-bottom: 2px solid colors.$emerald;
                         }
+                    }
+                }
+            }
+        }
+
+        &__admin {
+            margin-block: 30px 10px;
+            h3 {
+                font-weight: fonts.$fw-600;
+                font-size: fonts.$fs-5;
+                margin-block: 10px;
+            }
+            &__settings {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-block: 5px;
+                &__actions {
+                    border-bottom: 2px solid transparent;
+                    transition: others.$transition-1;
+                    &:hover {
+                        border-bottom: 2px solid colors.$emerald;
                     }
                 }
             }

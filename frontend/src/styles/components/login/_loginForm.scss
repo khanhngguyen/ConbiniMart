@@ -6,10 +6,10 @@
 .form-container {
     background-color: colors.$white;
     max-width: 600px;
-    max-height: 600px;
+    // max-height: 600px;
     border-radius: 6px;
     box-shadow: 0 0 15px rgba(black, .1);
-    margin: 15px auto others.$section-padding;
+    margin: 15px auto 30px;
     padding: 40px;
     h2 {
         color: colors.$emerald;
@@ -66,3 +66,4 @@
         }
     }
 }
+

@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { Axios, AxiosError } from "axios";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User, UserCreateDto, UserUpdateDto, UserUpdatePassword } from "../../types/User"
@@ -138,6 +138,25 @@ export const updatePassword = createAsyncThunk(
                         Authorization: `Bearer ${token}`
                     }
                 });
+            return response.data;
+        } catch (e) {
+            const error = e as AxiosError;
+            return error;
+        }
+    }
+)
+
+export const deleteUser = createAsyncThunk(
+    'deleteUser',
+    async (user: User) => {
+        const token = localStorage.getItem("token");
+        try {
+            const response = await axios.delete(`${baseURL}/users/${user.id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -291,6 +310,21 @@ const usersSlice = createSlice({
         })
         .addCase(updatePassword.rejected, (state) => {
             state.error = "can not update password";
+        })
+        .addCase(deleteUser.fulfilled, (state, action) => {
+            if (action.payload instanceof AxiosError) {
+                state.error = action.payload.message;
+            } else {
+                state.currentUser = undefined;
+                alert("You've deleted your account successfully");
+            }
+            state.loading = false;
+        })
+        .addCase(deleteUser.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(deleteUser.rejected, (state) => {
+            state.error = "can not delete account";
         })
     }
 })

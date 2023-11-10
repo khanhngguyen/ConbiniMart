@@ -16,7 +16,7 @@ export interface ProductCreateDto {
     title: string;
     description: string;
     price: number;
-    category: Category;
+    category: number;
     inventory: number;
     image: Image
 }

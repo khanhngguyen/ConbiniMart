@@ -11,7 +11,7 @@ const LogIn = () => {
   };
 
   return (
-    <div>
+    <div className='login-page'>
       <LogInForm toggleClass={toggleClass} />
       <SignUpForm display={display}/>
     </div>

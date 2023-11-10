@@ -24,6 +24,7 @@ const LogInForm = (props: LogInFormProps) => {
   } = useForm<LogInFormData>({
     resolver: yupResolver(loginSchema)
   });
+
   const onSubmitHandler = (data: LogInFormData) => {
     console.log(data);
     dispatch(login({
@@ -44,23 +45,23 @@ const LogInForm = (props: LogInFormProps) => {
           onSubmit={handleSubmit(onSubmitHandler)}
           className='form-container__form'
         >
-          <label htmlFor='emal'>Email</label>
+          <label htmlFor='emalinput'>Email</label>
           <input
             aria-label='email'
             type='email'
-            id='email'
-            {...register("email")}
+            id='emailinput'
             required
+            {...register("email")}
           />
           {errors.email?.message}
 
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='passwordinput'>Password</label>
           <input
             aria-label='password'
             type='password'
-            id='password'
-            {...register("password")}
+            id='passwordinput'
             required
+            {...register("password")}
           />
           {errors.password?.message}
           {error && <p className='error'>{error}</p>}

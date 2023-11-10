@@ -88,13 +88,7 @@ namespace Ecommerce.Controller.src.Controllers
         public async Task<ActionResult<UserReadDto>> GetProfile()
         {
             var id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            // var id = "c5ee1f5a-635c-41e1-981a-386d4d66e76a";
-            // Console.WriteLine("TESTING");
-            // Console.WriteLine("ID FROM HTTPCONTEXT" + id);
-            // Console.WriteLine("");
-
             return Ok(await _userService.GetOneById(new Guid(id)));
-            // return await _userService.GetOneById(new Guid(id));
         }
 
         [Authorize]

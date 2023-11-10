@@ -754,10 +754,9 @@ footer .footer__bottom__container__list {
 .form-container {
   background-color: hsl(0, 0%, 100%);
   max-width: 600px;
-  max-height: 600px;
   border-radius: 6px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  margin: 15px auto 80px;
+  margin: 15px auto 30px;
   padding: 40px;
 }
 .form-container h2 {
@@ -828,41 +827,43 @@ footer .footer__bottom__container__list {
   cursor: pointer;
 }
 
-.signup {
+.form-container.signup {
   background-color: hsl(96, 36%, 95%);
   max-height: 800px;
-  overflow: hidden;
-  transition: 0.5s ease-in;
+  transition: 0.5s ease-in-out;
   transition-delay: 0.1s;
   transform: translateY(-20%);
   height: 0;
   opacity: 0;
   margin: 0 auto;
 }
-.signup h2 {
+.form-container.signup h2 {
   color: hsl(152, 95%, 33%);
 }
-.signup__form label {
-  color: hsl(0, 0%, 20%);
-}
-.signup__form input {
-  background-color: hsl(152, 95%, 33%);
-  color: hsl(0, 0%, 82%);
-}
-.signup__form button {
-  background-color: hsl(96, 36%, 95%);
-  border: 2px solid hsl(152, 95%, 33%);
-  color: hsl(152, 95%, 31%);
-}
-.signup__form button:hover {
-  background-color: hsl(0, 0%, 100%);
-}
-
-.display {
+.form-container.signup.signup-display {
   opacity: 1;
   transform: translateY(0);
   height: auto;
   margin: 15px auto 80px;
+}
+.form-container__form.signup__form label {
+  color: hsl(0, 0%, 20%);
+}
+.form-container__form.signup__form input {
+  background-color: hsl(152, 95%, 33%);
+  color: hsl(0, 0%, 82%);
+}
+.form-container__form.signup__form input:focus {
+  color: hsl(0, 0%, 100%);
+}
+.form-container__form.signup__form button {
+  background-color: hsl(96, 36%, 95%);
+  border: 2px solid hsl(152, 95%, 33%);
+  color: hsl(152, 95%, 31%);
+  margin: 10px auto;
+}
+.form-container__form.signup__form button:hover {
+  background-color: hsl(0, 0%, 100%);
 }
 
 .profile h2 {
@@ -891,6 +892,7 @@ footer .footer__bottom__container__list {
   font-size: 2rem;
   font-weight: 600;
   color: hsl(0, 0%, 20%);
+  text-transform: capitalize;
 }
 .profile__content__user__settings {
   margin-block: 30px 10px;
@@ -912,6 +914,28 @@ footer .footer__bottom__container__list {
   transition: 0.05s ease;
 }
 .profile__content__user__settings__actions__title:hover {
+  border-bottom: 2px solid hsl(152, 95%, 39%);
+}
+.profile__content__admin {
+  margin-block: 30px 10px;
+}
+.profile__content__admin h3 {
+  font-weight: 600;
+  font-size: 1.7rem;
+  margin-block: 10px;
+}
+.profile__content__admin__settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 5px;
+}
+.profile__content__admin__settings__actions {
+  border-bottom: 2px solid transparent;
+  transition: 0.05s ease;
+}
+.profile__content__admin__settings__actions:hover {
   border-bottom: 2px solid hsl(152, 95%, 39%);
 }
 

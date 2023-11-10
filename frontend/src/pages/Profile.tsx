@@ -9,6 +9,7 @@ import UserUpdate from '../components/Form/UserUpdate';
 import UserPasswordUpdate from '../components/Form/UserPasswordUpdate';
 import DeleteAccountDialog from '../components/Form/DeleteAccountDialog';
 import LogoutDialog from '../components/Form/LogoutDialog';
+import AdminSettings from '../components/Profile Page/AdminSettings';
 
 const Profile = () => {
     const [update, setUpdate] = useState(false);
@@ -63,7 +64,6 @@ const Profile = () => {
                 <p className='profile__content__user__name'>
                     {currentUser?.firstName} {currentUser?.lastname}
                 </p>
-                {/* {isAdmin ? <p>not admin</p> : <p>is admin</p>} */}
 
                 <div className='profile__content__user__settings'>
                     <h3>Profile settings</h3>
@@ -123,11 +123,13 @@ const Profile = () => {
                                 logout={onLogoutHandler}
                             />
                         </Dialog>
-
                     </div>
 
                 </div>
+            </div>
 
+            <div className='profile__content__admin'>
+                {isAdmin ? <></> : <AdminSettings />}
             </div>
         </div>
     </div>
