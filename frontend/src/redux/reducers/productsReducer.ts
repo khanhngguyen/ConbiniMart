@@ -13,7 +13,6 @@ const initialState: {
 } = {
     products : [],
     categories: [],
-    // product: undefined,
     loading: false,
     error: ''
 }
@@ -181,6 +180,9 @@ const productsSlice = createSlice({
                 state.error = action.payload.message;
             } else {
                 state.products.push(action.payload);
+                state.error = "";
+                console.log(state.products);
+                alert("Create new product successfully");
             }
             state.loading = false;
         })

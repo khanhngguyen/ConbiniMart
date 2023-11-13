@@ -11,6 +11,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = (props: ProductCardProps) => {
+
   return (
     <div className='product__card'>
         <NavLink to={props.product.id.toString()}>

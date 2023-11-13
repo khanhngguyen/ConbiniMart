@@ -43,6 +43,10 @@
                 color: colors.$onyx;
             }
         }
+        p {
+            margin-block-end: 20px;
+            color: orangered;
+        }
         button {
             @include button.button;
             border-radius: 6px;

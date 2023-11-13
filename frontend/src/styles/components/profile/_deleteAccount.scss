@@ -13,11 +13,7 @@
         justify-content: flex-end;
         margin-block-start: 20px;
         &__cancel {
-            padding: 15px 25px;
-            color: colors.$sonic-silver;
-            &:hover {
-                color: colors.$black;
-            }
+            @include button.cancel;
         }
         &__delete {
             @include button.button;

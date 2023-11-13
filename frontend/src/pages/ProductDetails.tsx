@@ -12,8 +12,10 @@ import product1 from "../styles/assets/product-1.png"
 const ProductDetails = () => {
   // const product = useLoaderData() as Product;
   const { loading, error, product } = useAppSelector(state => state.productsReducer);
+  const { currentUser } = useAppSelector(state => state.usersReducer);
   const dispatch = useAppDispatch();
   const { id } = useParams();
+  const isAdmin = currentUser?.role;
 
   useEffect(() => {
     dispatch(fetchOneProductById(id ?? ""));
@@ -101,6 +103,7 @@ const ProductDetails = () => {
 
           <div className='product-details__wrapper__content'>
             <h3>{product?.title}</h3>
+            <h5>{ isAdmin ? "" : "Id: " + product?.id.toString() }</h5>
             <h4>{product?.price} €</h4>
 
             <div className='product-details__wrapper__content__rating'>

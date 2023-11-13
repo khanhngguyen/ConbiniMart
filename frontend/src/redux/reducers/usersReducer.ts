@@ -12,7 +12,7 @@ const initialState: {
 } = {
     users: [],
     loading: false,
-    error: ''
+    error: '',
 }
 
 const baseURL = "https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1";

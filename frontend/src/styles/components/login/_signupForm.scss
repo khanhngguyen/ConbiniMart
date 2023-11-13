@@ -69,27 +69,6 @@
         h2 {
             color: colors.$green-pigment;
         }
-        // &__form {
-        //     label {
-        //         color: colors.$jet;
-        //     }
-        //     input {
-        //         background-color: colors.$green-pigment;
-        //         color: colors.$light-gray;
-        //         &:focus {
-        //             color: colors.$white;
-        //         }
-        //     }
-        //     button {
-        //         background-color: colors.$mint-cream;
-        //         border: 2px solid colors.$green-pigment;
-        //         color: colors.$shamrock-green;
-        //         &:hover {
-        //             background-color: colors.$white;
-        //         }
-        //     }
-        // }
-    
         &.signup-display {
             opacity: 1;
             transform: translateY(0);

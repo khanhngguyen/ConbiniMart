@@ -59,7 +59,7 @@ const UserPasswordUpdate = (props: UserPasswordUpdateProps) => {
           required
           {...register("password")}
         />
-        {errors.password?.message}
+        <p>{errors.password?.message}</p>
         {error && <p>{error}</p>}
 
         <input
@@ -69,7 +69,7 @@ const UserPasswordUpdate = (props: UserPasswordUpdateProps) => {
           required
           {...register("confirm")}
         />
-        {errors.confirm?.message}
+        <p>{errors.confirm?.message}</p>
         {error && <p>{error}</p>}
 
         <button

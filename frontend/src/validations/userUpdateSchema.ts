@@ -3,6 +3,7 @@ import * as yup from 'yup'
 const userUpdateSchema = yup.object({
     firstName: yup
         .string()
+        .min(0)
         .default(""),
     lastName: yup
         .string()

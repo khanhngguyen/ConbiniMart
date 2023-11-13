@@ -53,7 +53,7 @@ const LogInForm = (props: LogInFormProps) => {
             required
             {...register("email")}
           />
-          {errors.email?.message}
+          <p>{errors.email?.message}</p>
 
           <label htmlFor='passwordinput'>Password</label>
           <input
@@ -63,7 +63,7 @@ const LogInForm = (props: LogInFormProps) => {
             required
             {...register("password")}
           />
-          {errors.password?.message}
+          <p>{errors.password?.message}</p>
           {error && <p className='error'>{error}</p>}
 
           <button

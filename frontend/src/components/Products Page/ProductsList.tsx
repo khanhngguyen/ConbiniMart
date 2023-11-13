@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { useAppSelector } from '../../hooks/useAppSelector'
 import Loading from '../Shared/Loading'
 import Error from '../Shared/Error'
@@ -17,22 +18,22 @@ const ProductsList = () => {
             </li>
             <li>
                 <button className='filter__list__categories'>
-                    <p>Category 1</p>
+                    <p>Vegetables</p>
                 </button>
             </li>
             <li>
                 <button className='filter__list__categories'>
-                    <p>Category 2</p>
+                    <p>Meat</p>
                 </button>
             </li>
             <li>
                 <button className='filter__list__categories'>
-                    <p>Category 3</p>
+                    <p>Dairy</p>
                 </button>
             </li>
             <li>
                 <button className='filter__list__categories'>
-                    <p>Category 4</p>
+                    <p>Others</p>
                 </button>
             </li>
         </ul>

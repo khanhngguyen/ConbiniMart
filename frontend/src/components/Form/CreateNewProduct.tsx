@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useForm } from 'react-hook-form';
 import createProductSchema, { createProductFormData } from '../../validations/createProductSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createNewProduct } from '../../redux/reducers/productsReducer';
+import { createNewProduct, fetchAllProducts } from '../../redux/reducers/productsReducer';
 
 interface CreateNewProductProps {
     handleClose: () => void;
@@ -31,6 +31,8 @@ const CreateNewProduct = (props: CreateNewProductProps) => {
                 link: data.image
             }
         }));
+        dispatch(fetchAllProducts());
+        props.handleClose();
     }
 
   return (
@@ -80,10 +82,10 @@ const CreateNewProduct = (props: CreateNewProductProps) => {
                 {...register("category")}
             />
             <datalist id='categories'>
-                <option value="0">Vegetables</option>
-                <option value="1">Meat</option>
-                <option value="2">Dairy</option>
-                <option value="3">Others</option>
+                <option value="1">Vegetables</option>
+                <option value="2">Meat</option>
+                <option value="3">Dairy</option>
+                <option value="4">Others</option>
             </datalist>
 
             <label htmlFor='product-inventory'>Inventory*</label>
@@ -108,9 +110,11 @@ const CreateNewProduct = (props: CreateNewProductProps) => {
             <div className='create-new-product__buttons'>
                 <button
                     onClick={props.handleClose}
+                    className='create-new-product__buttons__cancel'
                 >Cancel</button>
                 <button
                     type='submit'
+                    className='create-new-product__buttons__create'
                 >Create</button>
             </div>
  

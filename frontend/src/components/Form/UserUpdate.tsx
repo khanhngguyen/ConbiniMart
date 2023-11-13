@@ -61,7 +61,7 @@ const UserUpdate = (props: UserUpdateProps) => {
                 placeholder='First name (optional)'
                 {...register("firstName")}
             />
-            {errors.firstName?.message}
+            <p>{errors.firstName?.message}</p>
 
             <input
                 aria-label='last name'
@@ -69,7 +69,7 @@ const UserUpdate = (props: UserUpdateProps) => {
                 placeholder='Last name (optional)'
                 {...register("lastName")}
             />
-            {errors.lastName?.message}
+            <p>{errors.lastName?.message}</p>
 
             <input 
                 aria-label='email'
@@ -77,7 +77,7 @@ const UserUpdate = (props: UserUpdateProps) => {
                 placeholder='Email (optional)'
                 {...register("email")}
             />
-            {errors.email?.message}
+            <p>{errors.email?.message}</p>
             {error && <p>{error}</p>}
 
             <button

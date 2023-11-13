@@ -18,3 +18,13 @@
         background-color: colors.$green-pigment;
     }
 }
+
+@mixin cancel {
+    background-color: transparent;
+    padding: 15px 25px;
+    color: colors.$sonic-silver;
+    &:hover {
+        color: colors.$black;
+        background-color: transparent;
+    }
+}

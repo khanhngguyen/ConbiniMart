@@ -5,18 +5,22 @@ import * as yup from 'yup'
 const createProductSchema = yup.object({
     title: yup
         .string()
+        .min(2)
         .required("Title should not be empty"),
     description: yup
         .string()
+        .min(5)
         .required("Description should not be empty"),
     price: yup
         .number()
+        .positive()
         .required("Price should not be empty"),
     category: yup
         .number()
         .required(),
     inventory: yup
         .number()
+        .positive()
         .required(),
     image: yup
         .string()

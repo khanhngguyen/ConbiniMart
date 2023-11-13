@@ -64,6 +64,12 @@
                 font-weight: fonts.$fw-700;
                 color: colors.$russian-violet;
             }
+            h5 {
+                margin-block-end: 15px;
+                font-size: fonts.$fs-3;
+                font-weight: fonts.$fw-500;
+                color: colors.$jet;
+            }
             &__rating {
                 color: colors.$yellow-orange;
                 margin-block: 15px;

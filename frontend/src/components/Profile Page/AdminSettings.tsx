@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import { Dialog } from '@mui/material'
 
 import CreateNewProduct from '../Form/CreateNewProduct'
+import DeleteProduct from '../Form/DeleteProduct';
 
 const AdminSettings = () => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {
-        setOpen(true);
+    const [openCreate, setOpenCreate] = useState(false);
+    const [openDelete, setOpenDelete] = useState(false);
+    const handleOpenCreate = () => {
+        setOpenCreate(true);
     };
-    const handleClose = () => {
-        setOpen(false);
+    const handleCloseCreate = () => {
+        setOpenCreate(false);
+    };
+    const handleOpenDelete = () => {
+        setOpenDelete(true);
+    };
+    const handleCloseDelete = () => {
+        setOpenDelete(false);
     };
 
   return (
@@ -17,21 +25,28 @@ const AdminSettings = () => {
         <h3>Admin settings</h3>
         <div className='profile__content__admin__settings'>
             <button
-                onClick={handleOpen}
+                onClick={handleOpenCreate}
                 className='profile__content__admin__settings__actions'
             >Create new product</button>
             <Dialog
-                open={open}
-                onClose={handleClose}
+                open={openCreate}
+                onClose={handleCloseCreate}
             >
-                <CreateNewProduct handleClose={handleClose} />
+                <CreateNewProduct handleClose={handleCloseCreate} />
             </Dialog>
         </div>
 
         <div className='profile__content__admin__settings'>
             <button
+                onClick={handleOpenDelete}
                 className='profile__content__admin__settings__actions'
             >Delete a product</button>
+            <Dialog
+                open={openDelete}
+                onClose={handleCloseDelete}
+            >
+                <DeleteProduct handleClose={handleCloseDelete}/>
+            </Dialog>
         </div>
 
         <div className='profile__content__admin__settings'>
