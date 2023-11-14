@@ -33,8 +33,9 @@ namespace Ecommerce.Controller.src.Controllers
 
         [Authorize(Policy = "AdminOnly")]
         [ProducesResponseType(statusCode: 200)]
-        public override async Task<ActionResult<ProductReadDto>> UpdateOneById([FromRoute] Guid id, ProductUpdateDto update)
+        public override async Task<ActionResult<ProductReadDto>> UpdateOneById([FromRoute] Guid id, [FromBody] ProductUpdateDto update)
         {
+            Console.WriteLine("Product Controller");
             return Ok(await _productService.UpdateOneById(id, update));
         }
 

@@ -1,0 +1,38 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.delete-product {
+    h4 {
+        margin-block-end: 15px;
+        font-weight: fonts.$fw-600;
+        color: colors.$onyx;
+    }
+    &__buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+.form-container__form {
+    .delete-product__buttons {
+        &__cancel {
+            @include button.cancel;
+            width: fit-content;
+            text-transform: none;
+            font-weight: fonts.$fw-500;
+            margin-block-end: 0;
+        }
+        &__delete {
+            width: fit-content;
+            text-transform: none;
+            font-weight: fonts.$fw-600;
+            border-radius: 4px;
+            padding: 15px 40px; 
+            margin-block-end: 0;
+        }
+    }
+}

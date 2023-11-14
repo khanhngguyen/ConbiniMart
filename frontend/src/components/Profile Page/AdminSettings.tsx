@@ -7,6 +7,7 @@ import DeleteProduct from '../Form/DeleteProduct';
 const AdminSettings = () => {
     const [openCreate, setOpenCreate] = useState(false);
     const [openDelete, setOpenDelete] = useState(false);
+    const [openUpdate, setOpenUpdate] = useState(false);
     const handleOpenCreate = () => {
         setOpenCreate(true);
     };
@@ -18,6 +19,12 @@ const AdminSettings = () => {
     };
     const handleCloseDelete = () => {
         setOpenDelete(false);
+    };
+    const handleOpenUpdate = () => {
+        setOpenUpdate(true);
+    };
+    const handleCloseUpdate = () => {
+        setOpenUpdate(false);
     };
 
   return (
@@ -51,8 +58,17 @@ const AdminSettings = () => {
 
         <div className='profile__content__admin__settings'>
             <button
+                onClick={handleOpenUpdate}
                 className='profile__content__admin__settings__actions'
             >Update a product</button>
+            <Dialog
+                open={openUpdate}
+                onClose={handleCloseUpdate}
+            >
+                <div className='form-container'>
+                    To update a Product, go to each Product's Details Page
+                </div>
+            </Dialog>
         </div>
     </>
   )

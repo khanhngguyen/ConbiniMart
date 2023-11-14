@@ -53,6 +53,7 @@
         }
 
         &__content {
+            position: relative;
             h3 {
                 font-size: fonts.$fs-1;
                 font-weight: fonts.$fw-700;
@@ -69,6 +70,52 @@
                 font-size: fonts.$fs-3;
                 font-weight: fonts.$fw-500;
                 color: colors.$jet;
+            }
+            &__update {
+                position: absolute;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+                border: 1.5px solid transparent;
+                border-radius: 50%;
+                padding: 5px;
+                transition: others.$transition-2;
+                svg {
+                    font-size: 28px;
+                }
+                &:hover, &:focus {
+                    svg {
+                        font-size: 33px;
+                    }
+                    .update__tooltip {
+                        opacity: 1;
+                    }
+                }
+                .update__tooltip {
+                    position: absolute;
+                    bottom: calc(100% + 10px);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: colors.$black_90;
+                    color: colors.$white;
+                    border-radius: others.$radius-4;
+                    font-size: fonts.$fs-7;
+                    min-width: max-content;
+                    padding: 4px 12px;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: others.$transition-2;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 20px;
+                        left: 50%;
+                        transform: translateX(-50%) rotate(45deg);
+                        border: 5px solid transparent;
+                        border-bottom-color: colors.$black_90;
+                        border-right-color: colors.$black_90;
+                    }
+                }
             }
             &__rating {
                 color: colors.$yellow-orange;

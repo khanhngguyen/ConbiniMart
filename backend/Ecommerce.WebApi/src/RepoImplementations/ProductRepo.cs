@@ -53,7 +53,8 @@ namespace Ecommerce.WebApi.src.RepoImplementations
         public override async Task<Product> UpdateOneById(Guid id, Product updateProduct)
         {
             var found = await _dbSet.FirstOrDefaultAsync(p => p.Id == id);
-            if (found is null) throw new Exception("Item not found");
+            Console.WriteLine("reach product database");
+            if (found is null) throw new Exception("Product not found");
             else 
             {
                 found.Title = updateProduct.Title;

@@ -1,8 +1,9 @@
 import React from 'react'
-import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useForm } from 'react-hook-form';
-import createProductSchema, { createProductFormData } from '../../validations/createProductSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
+
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import createProductSchema, { createProductFormData } from '../../validations/createProductSchema';
 import { createNewProduct, fetchAllProducts } from '../../redux/reducers/productsReducer';
 
 interface CreateNewProductProps {
@@ -82,10 +83,10 @@ const CreateNewProduct = (props: CreateNewProductProps) => {
                 {...register("category")}
             />
             <datalist id='categories'>
-                <option value="1">Vegetables</option>
-                <option value="2">Meat</option>
-                <option value="3">Dairy</option>
-                <option value="4">Others</option>
+                <option value="0">Vegetables</option>
+                <option value="1">Meat</option>
+                <option value="2">Dairy</option>
+                <option value="3">Others</option>
             </datalist>
 
             <label htmlFor='product-inventory'>Inventory*</label>

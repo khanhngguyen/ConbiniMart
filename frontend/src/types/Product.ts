@@ -7,7 +7,7 @@ export interface Product {
     title: string;
     description: string;
     price: number;
-    category: Category;
+    category: number;
     inventory: number;
     image: Image
 }
@@ -27,7 +27,7 @@ export interface ProductUpdateDto {
         title: string;
         description: string;
         price: number;
-        category: Category;
+        category: number;
         inventory: number;
         image: Image
     }

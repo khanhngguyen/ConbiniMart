@@ -51,6 +51,9 @@ export const fetchOneProductById = createAsyncThunk(
     async (id: string) => {
         try {
             const response = await axios.get<Product>(`${baseURL}/products/${id}`);
+
+            localStorage.setItem("productId", response.data.id.toString());
+
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -84,7 +87,7 @@ export const updateProduct = createAsyncThunk(
     async (update : ProductUpdateDto) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.patch(`${baseURL}/products/${update.id}`,
+            const response = await axios.patch(`http://localhost:5251/api/v1/products/${update.id}`,
                 update.update,
                 {
                     headers: {
@@ -164,6 +167,7 @@ const productsSlice = createSlice({
                 state.error = action.payload.message;
             } else {
                 state.product = action.payload;
+                console.log(action.payload);
             }
             state.loading = false;
         })
@@ -181,7 +185,6 @@ const productsSlice = createSlice({
             } else {
                 state.products.push(action.payload);
                 state.error = "";
-                console.log(state.products);
                 alert("Create new product successfully");
             }
             state.loading = false;
@@ -220,10 +223,17 @@ const productsSlice = createSlice({
             {
                 state.error = action.payload.message;
             } else {
-                const deleteProductId = action.payload.id;
-                state.products = state.products.filter(
-                    p => p.id.toString() !== deleteProductId
-                );
+                const isDeleted = action.payload.response;
+                if (isDeleted) {
+                    const deleteProductId = action.payload.id;
+                    state.products = state.products.filter(
+                        p => p.id.toString() !== deleteProductId
+                    );
+                    alert(`Product with Id: ${action.payload.id} has been deleted successfully`);
+
+                } else {
+                    alert("Invalid Id, please try another Id");
+                }
             }
             state.loading = false;
         })

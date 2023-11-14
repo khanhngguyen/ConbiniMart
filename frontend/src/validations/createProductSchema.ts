@@ -13,14 +13,14 @@ const createProductSchema = yup.object({
         .required("Description should not be empty"),
     price: yup
         .number()
-        .positive()
+        .positive("Price can not be less than 0")
         .required("Price should not be empty"),
     category: yup
         .number()
         .required(),
     inventory: yup
         .number()
-        .positive()
+        .positive("Inventory can not be less than 0")
         .required(),
     image: yup
         .string()

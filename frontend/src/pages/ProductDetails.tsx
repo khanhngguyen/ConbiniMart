@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { StarRounded, StarBorderRounded } from '@mui/icons-material'
+import { StarRounded, StarBorderRounded, AutoFixHighRounded } from '@mui/icons-material'
 
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useAppDispatch } from '../hooks/useAppDispatch';
@@ -8,6 +8,9 @@ import { fetchOneProductById } from '../redux/reducers/productsReducer';
 import Loading from '../components/Shared/Loading';
 import Error from '../components/Shared/Error';
 import product1 from "../styles/assets/product-1.png"
+import { Badge, Dialog } from '@mui/material';
+import UpdateProduct from '../components/Form/UpdateProduct';
+import { Role } from '../types/User';
 
 const ProductDetails = () => {
   // const product = useLoaderData() as Product;
@@ -15,7 +18,34 @@ const ProductDetails = () => {
   const { currentUser } = useAppSelector(state => state.usersReducer);
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const isAdmin = currentUser?.role;
+  const [openUpdate, setOpenUpdate] = useState(false);
+
+  let isAdmin = currentUser?.role;
+  if (!currentUser) isAdmin = Role.User;
+
+  let productCategory;
+  let categoryEnum = product?.category;
+  switch (categoryEnum) {
+    case 0:
+      productCategory = "Vegetables";
+      break;
+    case 1:
+      productCategory = "Meat";
+      break;
+    case 2:
+      productCategory = "Dairy";
+      break;
+    case 3:
+      productCategory = "Others";
+      break;
+  };
+
+  const handleOpenUpdate = () => {
+    setOpenUpdate(true);
+  };
+  const handleCloseUpdate = () => {
+    setOpenUpdate(false);
+  };
 
   useEffect(() => {
     dispatch(fetchOneProductById(id ?? ""));
@@ -103,8 +133,29 @@ const ProductDetails = () => {
 
           <div className='product-details__wrapper__content'>
             <h3>{product?.title}</h3>
+            <h5>{productCategory}</h5>
             <h5>{ isAdmin ? "" : "Id: " + product?.id.toString() }</h5>
+            <h5>{ isAdmin ? "" : "Inventory: " + product?.inventory }</h5>
             <h4>{product?.price} €</h4>
+
+            { (!isAdmin) && 
+              <div className='product-details__wrapper__content__update'>
+                <button
+                  onClick={handleOpenUpdate}
+                >
+                  <Badge>
+                    <AutoFixHighRounded fontSize='large'/>
+                  </Badge>
+                  <div className='update__tooltip'>Edit Product</div>
+                </button>
+                <Dialog
+                  open={openUpdate}
+                  onClose={handleCloseUpdate}
+                >
+                  <UpdateProduct handleClose={handleCloseUpdate} currentCategory={categoryEnum!} />
+                </Dialog>
+              </div>
+            }
 
             <div className='product-details__wrapper__content__rating'>
               <StarRounded fontSize='large'/>
@@ -125,7 +176,7 @@ const ProductDetails = () => {
               <input
                 type='number'
                 name='quantity'
-                value='1'
+                // value='1'
                 min='1'
                 max='20'
               />
@@ -156,7 +207,7 @@ const ProductDetails = () => {
             <tr className='product-details__table__row'>
               <th className='product-details__table__row__heading' scope='row'>Categories</th>
               <td className='product-details__table__row__data'>
-                {product?.category.name}
+                {productCategory}
               </td>
             </tr>
 
@@ -179,11 +230,6 @@ const ProductDetails = () => {
         </table>
 
       </div>
-
-      {/* <h2>Product details:</h2>
-      <p>{product?.title}</p>
-      <p>{product?.price}</p>
-      <p>{product?.description}</p> */}
     </section>
   )
 }

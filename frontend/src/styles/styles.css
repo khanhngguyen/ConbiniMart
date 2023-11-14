@@ -668,6 +668,9 @@ footer .footer__bottom__container__list {
   object-fit: cover;
   object-position: center;
 }
+.product-details__wrapper__content {
+  position: relative;
+}
 .product-details__wrapper__content h3 {
   font-size: 3rem;
   font-weight: 700;
@@ -684,6 +687,50 @@ footer .footer__bottom__container__list {
   font-size: 2rem;
   font-weight: 500;
   color: hsl(0, 0%, 20%);
+}
+.product-details__wrapper__content__update {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  border-radius: 50%;
+  padding: 5px;
+  transition: 0.25s ease;
+}
+.product-details__wrapper__content__update svg {
+  font-size: 28px;
+}
+.product-details__wrapper__content__update:hover svg, .product-details__wrapper__content__update:focus svg {
+  font-size: 33px;
+}
+.product-details__wrapper__content__update:hover .update__tooltip, .product-details__wrapper__content__update:focus .update__tooltip {
+  opacity: 1;
+}
+.product-details__wrapper__content__update .update__tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: hsla(0, 0%, 0%, 0.9);
+  color: hsl(0, 0%, 100%);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  min-width: max-content;
+  padding: 4px 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease;
+}
+.product-details__wrapper__content__update .update__tooltip::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border: 5px solid transparent;
+  border-bottom-color: hsla(0, 0%, 0%, 0.9);
+  border-right-color: hsla(0, 0%, 0%, 0.9);
 }
 .product-details__wrapper__content__rating {
   color: hsl(36, 100%, 50%);
@@ -1115,6 +1162,40 @@ footer .footer__bottom__container__list {
   background-color: transparent;
 }
 .form-container__form .create-new-product__buttons__create {
+  width: fit-content;
+  text-transform: none;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 15px 40px;
+  margin-block-end: 0;
+}
+
+.delete-product h4 {
+  margin-block-end: 15px;
+  font-weight: 600;
+  color: hsl(0, 0%, 27%);
+}
+.delete-product__buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.form-container__form .delete-product__buttons__cancel {
+  background-color: transparent;
+  padding: 15px 25px;
+  color: hsl(0, 0%, 45%);
+  width: fit-content;
+  text-transform: none;
+  font-weight: 500;
+  margin-block-end: 0;
+}
+.form-container__form .delete-product__buttons__cancel:hover {
+  color: hsl(0, 0%, 0%);
+  background-color: transparent;
+}
+.form-container__form .delete-product__buttons__delete {
   width: fit-content;
   text-transform: none;
   font-weight: 600;

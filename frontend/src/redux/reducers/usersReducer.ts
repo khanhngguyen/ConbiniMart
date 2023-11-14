@@ -41,7 +41,6 @@ export const authenticate = createAsyncThunk(
                 }
             });
             console.log(response.data);
-            console.log(response.data.lastname);
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
