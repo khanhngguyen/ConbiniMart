@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAppDispatch } from '../../hooks/useAppDispatch';
-import { useForm } from 'react-hook-form';
-import updateProductSchema, { updateProductFormData } from '../../validations/updateProductSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { updateProduct } from '../../redux/reducers/productsReducer';
-import { Product } from '../../types/Product';
+import { useForm } from 'react-hook-form';
 import { Guid } from 'guid-typescript';
+
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import updateProductSchema, { updateProductFormData } from '../../validations/updateProductSchema';
+import { updateProduct } from '../../redux/reducers/productsReducer';
 
 interface UpdateProductProps {
   handleClose: () => void;
@@ -38,7 +38,8 @@ const UpdateProduct = (props: UpdateProductProps) => {
           link: data.image
         }
       }
-    }))
+    }));
+    props.handleClose();
   }
 
   return (
@@ -115,12 +116,14 @@ const UpdateProduct = (props: UpdateProductProps) => {
         />
         <p>{errors.image?.message}</p>
 
-        <div>
+        <div className='update-product__buttons'>
           <button
             onClick={props.handleClose}
+            className='update-product__buttons__cancel'
           >Cancel</button>
           <button
             type='submit'
+            className='update-product__buttons__update'
           >Update</button>
         </div>
 

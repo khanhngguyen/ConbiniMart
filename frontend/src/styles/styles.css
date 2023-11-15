@@ -1204,6 +1204,36 @@ footer .footer__bottom__container__list {
   margin-block-end: 0;
 }
 
+.form-container__form .update-product__buttons {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: flex-end;
+  text-transform: none;
+  margin-block-end: 0;
+}
+.form-container__form .update-product__buttons__cancel {
+  background-color: transparent;
+  padding: 15px 25px;
+  color: hsl(0, 0%, 45%);
+  width: fit-content;
+  text-transform: none;
+  font-weight: 500;
+  margin-block-end: 0;
+}
+.form-container__form .update-product__buttons__cancel:hover {
+  color: hsl(0, 0%, 0%);
+  background-color: transparent;
+}
+.form-container__form .update-product__buttons__update {
+  width: fit-content;
+  text-transform: none;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 15px 40px;
+  margin-block-end: 0;
+}
+
 *,
 *::before,
 *::after {

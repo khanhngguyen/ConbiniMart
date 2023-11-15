@@ -7,6 +7,7 @@ import { fetchAllProducts, fetchCategories } from './redux/reducers/productsRedu
 
 const App = () => {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(fetchCategories());
     // dispatch(fetchAllProducts());

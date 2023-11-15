@@ -1,0 +1,30 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.form-container__form {
+    .update-product__buttons {
+        display: flex;
+        width: 100%;
+        gap: 10px;
+        justify-content: flex-end;
+        text-transform: none;
+        margin-block-end: 0;
+        &__cancel {
+            @include button.cancel;
+            width: fit-content;
+            text-transform: none;
+            font-weight: fonts.$fw-500;
+            margin-block-end: 0;
+        }
+        &__update {
+            width: fit-content;
+            text-transform: none;
+            font-weight: fonts.$fw-600;
+            border-radius: 4px;
+            padding: 15px 40px; 
+            margin-block-end: 0;
+        }
+    }
+}

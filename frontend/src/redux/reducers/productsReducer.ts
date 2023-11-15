@@ -87,7 +87,7 @@ export const updateProduct = createAsyncThunk(
     async (update : ProductUpdateDto) => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.patch(`http://localhost:5251/api/v1/products/${update.id}`,
+            const response = await axios.patch(`${baseURL}/products/${update.id}`,
                 update.update,
                 {
                     headers: {
@@ -208,6 +208,7 @@ const productsSlice = createSlice({
                     return p;
                 })
                 state.products = updatedProducts;
+                alert(`${action.payload.title} has been updated successfully, reload page to see changes`);
             }
             state.loading = false;
         })
