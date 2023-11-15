@@ -57,16 +57,16 @@ namespace Ecommerce.WebApi.src.Database
             modelBuilder.HasPostgresEnum<Category>();
             modelBuilder.HasPostgresEnum<OrderStatus>();
 
-            // modelBuilder.Entity<Product>()
-            // .HasMany(p => p.Image)
-            // .WithOne(p => p.ProductId)
-            // .HasForeignKey(p => p.ProductId)
-            // .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Product>()
+            .HasOne(p => p.Image)
+            .WithOne(x => x.Product)
+            // .HasForeignKey<ProductImage>(x => x.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
 
             // modelBuilder.Entity<ProductImage>()
-            // .HasOne(x => x.Id)
-            // .WithMany(x => x.Product)
-            // .HasForeignKey(x => x.ProductId)
+            // .HasOne(x => x.Product)
+            // .WithOne(p => p.Image)
+            // .HasForeignKey<ProductImage>(x => x.ProductId)
             // .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<OrderProduct>()

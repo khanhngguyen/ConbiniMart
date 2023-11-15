@@ -13,7 +13,7 @@ namespace Ecommerce.Domain.src.Entities
 
     public class ProductImage : Image
     {
-        [ForeignKey(nameof(Product))]
+        // [ForeignKey(nameof(Product))]
         public Guid ProductId { get; set; }
         public Product Product { get; set; }
     }

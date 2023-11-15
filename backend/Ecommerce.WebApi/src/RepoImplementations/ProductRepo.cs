@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ecommerce.Business.src.Dtos;
 using Ecommerce.Domain.src.Entities;
 using Ecommerce.Domain.src.RepoInterfaces;
 using Ecommerce.Domain.src.Shared;
@@ -48,6 +49,13 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             results = results.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize);
             return await results.ToListAsync();
 
+        }
+
+        public override async Task<Product> GetOneById(Guid id) {
+            return await _dbSet
+                .Include(x => x.Image)
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public override async Task<Product> UpdateOneById(Guid id, Product updateProduct)
