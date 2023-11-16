@@ -20,17 +20,70 @@
         font-size: fonts.$fs-5;
         font-family: fonts.$font-primary;
         font-weight: fonts.$fw-600;
-        padding: 25px;
+        padding: 16px 20px;
+        border: 2px solid transparent;
         border-radius: 10px;
+        transition: others.$transition-2;
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        // background-position: center;
+        &:hover {
+            border: 2px solid colors.$emerald;
+        }
+        &:focus, &:focus-within {
+            background-color: colors.$emerald;
+            color: colors.$white;
+        }
     }
-    & .active {
-        background-color: colors.$emerald;
-        color: colors.$white;
+}
+
+.query {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    margin-block-end: 25px;
+    &__search {
+        min-width: 30%;
     }
+    &__others {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 15px;
+        &__container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            select {
+                border: 2px solid colors.$mint-cream;
+                font-size: fonts.$fs-6;
+                transition: others.$transition-2;
+                &:hover {
+                    border-color: colors.$emerald-70;
+                }
+            }
+        }
+    }
+}
+
+#query-search {
+    position: relative;
+}
+#query-search__icon {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    color: colors.$battleship-gray;
 }
 
 .products__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: repeat(4, 1fr);
+    // gap: 30px;
+    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
     gap: 30px;
+    justify-items: center;
+    align-items: center;
+
 }

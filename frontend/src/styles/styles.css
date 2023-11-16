@@ -485,18 +485,66 @@ footer .footer__bottom__container__list {
   font-size: 1.7rem;
   font-family: "Merriweather", serif;
   font-weight: 600;
-  padding: 25px;
+  padding: 16px 20px;
+  border: 2px solid transparent;
   border-radius: 10px;
+  transition: 0.25s ease;
 }
-.filter__list .active {
+.filter__list__categories:hover {
+  border: 2px solid hsl(152, 95%, 39%);
+}
+.filter__list__categories:focus, .filter__list__categories:focus-within {
   background-color: hsl(152, 95%, 39%);
   color: hsl(0, 0%, 100%);
 }
 
+.query {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-block-end: 25px;
+}
+.query__search {
+  min-width: 30%;
+}
+.query__others {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.query__others__container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.query__others__container select {
+  border: 2px solid hsl(96, 36%, 95%);
+  font-size: 1.5rem;
+  transition: 0.25s ease;
+}
+.query__others__container select:hover {
+  border-color: hsla(152, 95%, 39%, 0.7);
+}
+
+#query-search {
+  position: relative;
+}
+
+#query-search__icon {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  color: hsl(0, 0%, 53%);
+}
+
 .products__list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 30px;
+  justify-items: center;
+  align-items: center;
 }
 
 .product__card {
@@ -507,6 +555,8 @@ footer .footer__bottom__container__list {
   outline: 2px solid transparent;
   transition: 0.25s ease;
   transition: box-shadow 0.25s ease;
+  max-width: max-content;
+  max-height: max-content;
 }
 .product__card:hover, .product__card :focus-within {
   outline-color: hsl(152, 95%, 39%);

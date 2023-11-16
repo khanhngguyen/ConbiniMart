@@ -11,6 +11,8 @@
     outline: 2px solid transparent;
     transition: others.$transition-2;
     transition: box-shadow others.$transition-2;
+    max-width: max-content;
+    max-height: max-content;
     &:hover, :focus-within {
         outline-color: colors.$emerald;
         box-shadow: 0 0 15px rgba(27, 27, 27, 0.2); 

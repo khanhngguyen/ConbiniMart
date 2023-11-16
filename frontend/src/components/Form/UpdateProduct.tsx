@@ -118,7 +118,9 @@ const UpdateProduct = (props: UpdateProductProps) => {
 
         <div className='update-product__buttons'>
           <button
+            type='button'
             onClick={props.handleClose}
+            // onClick={handleSubmit(close)}
             className='update-product__buttons__cancel'
           >Cancel</button>
           <button

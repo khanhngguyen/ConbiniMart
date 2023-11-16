@@ -66,7 +66,8 @@ export const createNewProduct = createAsyncThunk(
     'createNewProduct',
     async (newProduct : ProductCreateDto) => {
         try {
-            const token = localStorage.getItem("token");
+            // const token = localStorage.getItem("token");
+            const token = sessionStorage.getItem("token");
             const response = await axios.post(`${baseURL}/products`,
                 newProduct,
                 {
@@ -86,7 +87,8 @@ export const updateProduct = createAsyncThunk(
     'updateProduct',
     async (update : ProductUpdateDto) => {
         try {
-            const token = localStorage.getItem("token");
+            // const token = localStorage.getItem("token");
+            const token = sessionStorage.getItem("token");
             const response = await axios.patch(`${baseURL}/products/${update.id}`,
                 update.update,
                 {
@@ -106,7 +108,8 @@ export const deleteProduct = createAsyncThunk(
     'deleteProduct',
     async (id : string) => {
         try {
-            const token = localStorage.getItem("token");
+            // const token = localStorage.getItem("token");
+            const token = sessionStorage.getItem("token");
             const response = await axios.delete(`${baseURL}/products/${id}`,
                 {
                     headers: {

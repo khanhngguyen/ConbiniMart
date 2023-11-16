@@ -49,7 +49,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchOneProductById(id ?? ""));
-  }, [dispatch, id])
+  }, [dispatch, id, currentUser])
 
   if (loading) {
     return (<><Loading /></>)
@@ -68,6 +68,7 @@ const ProductDetails = () => {
               <img 
                 src='https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg' 
                 // src={product1} 
+                // src={product?.image.link}
                 alt='product main thumbnail'
                 loading='lazy'
               />

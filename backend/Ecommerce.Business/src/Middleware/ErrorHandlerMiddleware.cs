@@ -32,7 +32,7 @@ namespace Ecommerce.Business.src.Middleware
             catch (Exception e)
             {
                 context.Response.StatusCode = 500;
-                await context.Response.WriteAsync(e.ToString());
+                await context.Response.WriteAsync(e.Message);
                 Console.WriteLine("HEHEHHEE");
                 // Console.WriteLine(e.GetBaseException());
                 Console.WriteLine("General Exception " + e.Data);

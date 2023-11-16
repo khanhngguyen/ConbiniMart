@@ -20,7 +20,7 @@ const updateProductSchema = yup.object({
     image: yup
         .string()
         .url("Please provide a valid image link")
-        .default("")
+        .default("") 
 })
 
 export type updateProductFormData = yup.InferType<typeof updateProductSchema>;

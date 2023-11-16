@@ -58,8 +58,10 @@ export const login = createAsyncThunk(
     
             const authentication = await dispatch(authenticate(response.data));
 
-            localStorage.setItem("token", response.data);
-            localStorage.setItem("currentUser", JSON.stringify(authentication.payload));
+            // localStorage.setItem("token", response.data);
+            // localStorage.setItem("currentUser", JSON.stringify(authentication.payload));
+            sessionStorage.setItem("token", response.data);
+            sessionStorage.setItem("currentUser", JSON.stringify(authentication.payload));
 
             return authentication.payload as User;
         } catch (e) {
@@ -105,7 +107,8 @@ export const updateUser = createAsyncThunk(
     'updateUser',
     async (update : UserUpdateDto) => {
         try {
-            const token = localStorage.getItem("token");
+            // const token = localStorage.getItem("token");
+            const token = sessionStorage.getItem("token");
             const response = await axios.patch(`${baseURL}/users/${update.id}`, 
                 update.update,
                 {
@@ -114,7 +117,8 @@ export const updateUser = createAsyncThunk(
                     }
                 });
 
-            localStorage.setItem("currentUser", JSON.stringify(response.data));
+            // localStorage.setItem("currentUser", JSON.stringify(response.data));
+            sessionStorage.setItem("currentUser", JSON.stringify(response.data));
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -128,7 +132,8 @@ export const updatePassword = createAsyncThunk(
     async (update : UserUpdatePassword) => {
         try {
             const requestBody = { password: update.password };
-            const token = localStorage.getItem("token");
+            // const token = localStorage.getItem("token");
+            const token = sessionStorage.getItem("token");
             const response = await axios.patch(`${baseURL}/users/update/${update.id}`,
             // const response = await axios.patch(`http://localhost:5251/api/v1/users/update/${update.id}`,
                 requestBody,
@@ -148,7 +153,8 @@ export const updatePassword = createAsyncThunk(
 export const deleteUser = createAsyncThunk(
     'deleteUser',
     async (user: User) => {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
         try {
             const response = await axios.delete(`${baseURL}/users/${user.id}`,
             {
@@ -170,8 +176,10 @@ const usersSlice = createSlice({
     reducers: {
         logout: (state) => {
             state.currentUser = undefined;
-            localStorage.removeItem("currentUser");
-            localStorage.removeItem("token");
+            // localStorage.removeItem("currentUser");
+            // localStorage.removeItem("token");
+            sessionStorage.removeItem("currentUser");
+            sessionStorage.removeItem("token");
         }
     },
     extraReducers: (build) => {

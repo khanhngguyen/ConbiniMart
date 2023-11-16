@@ -19,7 +19,7 @@ namespace Ecommerce.WebApi.src.RepoImplementations
 
         public override async Task<IEnumerable<Product>> GetAll(QueryOptions queryOptions)
         {
-            IQueryable<Product> results = _dbSet;
+            IQueryable<Product> results = _dbSet.Include(x => x.Image);
             //search
             if (!string.IsNullOrWhiteSpace(queryOptions.Search))
             {
