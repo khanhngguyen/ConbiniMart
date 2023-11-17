@@ -25,6 +25,22 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             {
                 results = _dbSet.Where(p => p.Title.ToLower().Contains(queryOptions.Search.ToLower()));
             }
+            //category
+            switch (queryOptions.Category)
+            { 
+                case "Vegetables":
+                    results = _dbSet.Where(p => p.Category == Category.Vegetables);
+                    break;
+                case "Meat":
+                    results = _dbSet.Where(p => p.Category == Category.Meat);
+                    break;
+                case "Dairy":
+                    results = _dbSet.Where(p => p.Category == Category.Dairy);
+                    break;
+                case "Others":
+                    results = _dbSet.Where(p => p.Category == Category.Others);
+                    break;
+            }
             //order by
             if (queryOptions.OrderBy == "Newest first")
             {

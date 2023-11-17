@@ -3,6 +3,7 @@ import axios, { AxiosError } from "axios";
 
 import { Product, ProductCreateDto, ProductUpdateDto } from "../../types/Product";
 import { Category } from "../../types/Category";
+import defaultQuery, { QueryOptions } from "../../types/QueryOptions";
 
 const initialState: {
     products: Product[],
@@ -34,10 +35,18 @@ export const fetchCategories = createAsyncThunk(
 
 export const fetchAllProducts = createAsyncThunk(
     'fetchAllProducts',
-    async () => {
+    async (query: QueryOptions | undefined) => {
         try {
-            const response = await axios.get<Product[]>(`${baseURL}/products`);
-            return response.data;
+            if (query)
+            {
+                const response = await axios.get<Product[]>(`${baseURL}/products`, { params: query });
+                return response.data;
+            } else {
+                const response = await axios.get<Product[]>(`${baseURL}/products`);
+                return response.data;
+            }
+            // const response = await axios.get<Product[]>(`${baseURL}/products`, { params: query });
+            // return response.data;
         } catch (e) {
             const error = e as AxiosError;
             console.log(error.code! + error.status + error.message);
@@ -188,7 +197,7 @@ const productsSlice = createSlice({
             } else {
                 state.products.push(action.payload);
                 state.error = "";
-                alert("Create new product successfully");
+                alert(`${action.payload.title} has been created successfully`);
             }
             state.loading = false;
         })

@@ -35,9 +35,14 @@ const ProductCard = (props: ProductCardProps) => {
             <StarRounded fontSize='large'/>
         </div>
 
-        <h3 className='product__card__title'>
+        <div className='product__card__title'>
+            <h3>{props.product.title}</h3>
+            <p className='title__tooltip'>{props.product.title}</p>
+        </div>
+
+        {/* <h3 className='product__card__title'>
             {props.product.title}
-        </h3>
+        </h3> */}
 
         <p className='product__card__price'>
             {props.product.price} €

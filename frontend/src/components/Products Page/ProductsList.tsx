@@ -1,16 +1,43 @@
 import React from 'react'
+import { Badge } from '@mui/material'
 import { SearchRounded } from '@mui/icons-material'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { useAppSelector } from '../../hooks/useAppSelector'
 import Loading from '../Shared/Loading'
 import Error from '../Shared/Error'
 import ProductCard from './ProductCard'
-import { Badge } from '@mui/material'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
+import productsQuerySchema, { productsQueryFormData } from '../../validations/productsQuerySchema'
+import { fetchAllProducts } from '../../redux/reducers/productsReducer'
+import { QueryOptions } from '../../types/QueryOptions'
 
 const ProductsList = () => {
     const { loading, error, products, categories } = useAppSelector(state => state.productsReducer);
     const dispatch = useAppDispatch();
+    const {
+        register,
+        handleSubmit,
+    } = useForm<productsQueryFormData>({
+        resolver: yupResolver(productsQuerySchema)
+    });
+    const onSubmitHandler = (data: productsQueryFormData) => {
+        console.log(data);
+        if (!data.search) {
+            dispatch(fetchAllProducts());
+        } else {
+            const query: QueryOptions = {
+                search: data.search,
+                category: "all",
+                orderBy: data.sort,
+                orderByDescending: data.order,
+                pageNumber: data.page,
+                pageSize: data.pageLimit
+            };
+            dispatch(fetchAllProducts(query));
+        }
+    };
 
   return (
     <div>
@@ -53,13 +80,17 @@ const ProductsList = () => {
 
         <div className='query'>
             <div className='query__search'>
-                <form className='form-container__form query-search' id='query-search'>
+                <form 
+                    onSubmit={handleSubmit(onSubmitHandler)}
+                    className='form-container__form query-search' id='query-search'
+                >
                     <div className='query-search__icon' id='query-search__icon'>
                         <Badge><SearchRounded fontSize='large' /></Badge>
                     </div>
                     <input 
                         type='text'
                         placeholder='Search product by name'
+                        {...register("search")}
                     />
                 </form>
             </div>
@@ -67,7 +98,7 @@ const ProductsList = () => {
             <div className='query__others'>
                 <div className='query__others__container'>
                     <label htmlFor='query-sort'>Sort by:</label>
-                    <select name='query-sort' id='query-sort'>
+                    <select id='query-sort' {...register("sort")}>
                         <option value="Newest first">Newest first</option>
                         <option value="Oldest first">Oldest first</option>
                         <option value="Least expensive first">Least expensive first</option>
@@ -77,7 +108,7 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-order'>Order by:</label>
-                    <select name='query-order' id='query-order'>
+                    <select id='query-order' {...register("order")}>
                         <option value="true">Ascending</option>
                         <option value="false">Descending</option>
                     </select>
@@ -85,7 +116,7 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-page'>Page: </label>
-                    <select name='query-page' id='query-page'>
+                    <select id='query-page' {...register("page")}>
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -95,7 +126,7 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-pageLimit'>Per page: </label>
-                    <select name='query-pageLimit' id='query-pageLimit'>
+                    <select id='query-pageLimit' {...register("pageLimit")}>
                         <option value="30">30</option>
                         <option value="20">20</option>
                         <option value="10">10</option>
@@ -107,6 +138,8 @@ const ProductsList = () => {
 
         {loading && <Loading />}
         {error && <Error error={error} />}
+
+        {(!loading) && (products.length === 0) && <p>No products to display</p>}
 
         <ul className='products__list'>
             {(!loading) && products.map(product => (

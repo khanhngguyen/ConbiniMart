@@ -1,5 +1,4 @@
 import { Guid } from "guid-typescript";
-import { Category } from "./Category";
 import { Image } from "./Image";
 
 export interface Product {

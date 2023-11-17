@@ -555,8 +555,10 @@ footer .footer__bottom__container__list {
   outline: 2px solid transparent;
   transition: 0.25s ease;
   transition: box-shadow 0.25s ease;
-  max-width: max-content;
-  max-height: max-content;
+  width: 240px;
+  max-height: 427px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .product__card:hover, .product__card :focus-within {
   outline-color: hsl(152, 95%, 39%);
@@ -632,12 +634,46 @@ footer .footer__bottom__container__list {
 }
 .product__card__title {
   color: hsl(245, 97%, 13%);
-  font-size: 1.8rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 500;
   margin-block-end: 10px;
+  position: relative;
+}
+.product__card__title h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product__card__title:hover {
   color: hsl(152, 95%, 39%);
+}
+.product__card__title:hover .title__tooltip {
+  opacity: 0.8;
+}
+.product__card__title .title__tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: hsl(156, 3%, 61%);
+  color: hsl(206, 21%, 15%);
+  border-radius: 4px;
+  font-size: 1.4rem;
+  padding: 4px 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.25s ease;
+  white-space: normal;
+  width: 100%;
+}
+.product__card__title .title__tooltip::after {
+  content: "";
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border: 5px solid transparent;
+  border-bottom-color: hsl(156, 3%, 61%);
+  border-right-color: hsl(156, 3%, 61%);
 }
 .product__card__price {
   font-size: 1.7rem;

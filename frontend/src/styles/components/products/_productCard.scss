@@ -11,8 +11,10 @@
     outline: 2px solid transparent;
     transition: others.$transition-2;
     transition: box-shadow others.$transition-2;
-    max-width: max-content;
-    max-height: max-content;
+    width: 240px;
+    max-height: 427px;
+    white-space: nowrap;
+    overflow: hidden;
     &:hover, :focus-within {
         outline-color: colors.$emerald;
         box-shadow: 0 0 15px rgba(27, 27, 27, 0.2); 
@@ -91,11 +93,47 @@
     }
     &__title {
         color: colors.$russian-violet;
-        font-size: fonts.$fs-4;
-        font-weight: fonts.$fw-600;
+        font-size: fonts.$fs-7;
+        font-weight: fonts.$fw-500;
         margin-block-end: 10px;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+        position: relative;
+        h3 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         &:hover {
             color: colors.$emerald;
+            .title__tooltip {
+                opacity: 0.8;
+            }
+        }
+        .title__tooltip {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: colors.$spanish-gray;
+            color: colors.$gunmetal-2;
+            border-radius: others.$radius-4;
+            font-size: fonts.$fs-7;
+            padding: 4px 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: others.$transition-2;
+            white-space: normal;
+            width: 100%;
+            &::after {
+                content: "";
+                position: absolute;
+                top: 80%;
+                left: 50%;
+                transform: translateX(-50%) rotate(45deg);
+                border: 5px solid transparent;
+                border-bottom-color: colors.$spanish-gray;
+                border-right-color: colors.$spanish-gray;
+            }
         }
     }
     &__price {
@@ -114,3 +152,29 @@
         }
     }
 }
+
+// .title__tooltip {
+//     position: absolute;
+//     bottom: calc(100% + 10px);
+//     left: 50%;
+//     transform: translateX(-50%);
+//     background-color: colors.$black_90;
+//     color: colors.$white;
+//     border-radius: others.$radius-4;
+//     font-size: fonts.$fs-7;
+//     min-width: max-content;
+//     padding: 4px 12px;
+//     pointer-events: none;
+//     opacity: 1;
+//     transition: others.$transition-2;
+//     &::after {
+//         content: "";
+//         position: absolute;
+//         top: 20px;
+//         left: 50%;
+//         transform: translateX(-50%) rotate(45deg);
+//         border: 5px solid transparent;
+//         border-bottom-color: colors.$black_90;
+//         border-right-color: colors.$black_90;
+//     }
+// }
