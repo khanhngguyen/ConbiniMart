@@ -21,6 +21,7 @@
 @use "./components/profile/createNewProduct";
 @use "./components/profile/deleteProduct";
 @use "./components/products/updateProduct";
+@use "./components/home/categories";
 
 *,
 *::before,

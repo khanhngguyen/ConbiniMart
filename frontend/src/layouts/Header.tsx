@@ -37,17 +37,21 @@ const Header = () => {
                     aria-label='wishlist'
                     className='header__navbar-wrapper__actions__button'
                 >
-                    <Badge>
-                        <FavoriteBorder fontSize='large'/>
-                    </Badge>
+                    <NavLink to="favorites">
+                        <Badge>
+                            <FavoriteBorder fontSize='large'/>
+                        </Badge>
+                    </NavLink>
                 </button>
                 <button
                     aria-label='cart'
                     className='header__navbar-wrapper__actions__button'
                 >
-                    <Badge>
-                        <ShoppingCart fontSize='large'/>
-                    </Badge>
+                    <NavLink to="cart">
+                        <Badge>
+                            <ShoppingCart fontSize='large'/>
+                        </Badge>
+                    </NavLink>
                 </button>
 
                 {(!currentUser) && <NavLink to="login">

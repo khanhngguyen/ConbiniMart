@@ -1,0 +1,64 @@
+@use "../../variables/colors";
+@use "../../variables/fonts";
+@use "../../variables/others";
+@use "../../mixins/button";
+
+.categories {
+    // max-width: 1020px;
+    margin: auto;
+    padding-block: 40px;
+    &__container {
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 80px;
+        }
+        &__category {
+            text-align: left;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-items: end;
+            align-content: center;
+            padding: 30px;
+            background-color: colors.$mint-cream;
+            transition: others.$transition-2;
+            &:hover {
+                box-shadow: 0 0 10px rgba(27, 27, 27, 0.2);
+            }
+            &__content {
+                h4 {
+                    color: colors.$emerald;
+                    text-transform: uppercase;
+                    margin-block-end: 10px;
+                }
+                h2 {
+                    font-family: fonts.$font-primary;
+                    margin-block-end: 12px;
+                    color: colors.$russian-violet;
+                    transition: others.$transition-2;
+                    &:hover {
+                        font-size: fonts.$fs-1;
+                    }
+                }
+                button {
+                    @include button.button;
+                    padding: 16px 25px;
+                    font-size: fonts.$fs-5;
+                    font-weight: fonts.$fw-600;
+                    border-radius: 6px;
+                }
+            }
+            &__image {
+                max-width: max-content;
+                // margin-inline: auto;
+                transition: others.$transition-2;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}

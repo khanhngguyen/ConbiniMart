@@ -1,5 +1,5 @@
 export interface QueryOptions {
-    search: string;
+    search?: string;
     category: string;
     orderBy: string;
     orderByDescending: boolean;
@@ -8,7 +8,7 @@ export interface QueryOptions {
 }
 
 const defaultQuery: QueryOptions = {
-    search: "",
+    // search: "",
     category: "All",
     orderBy: "Newest first",
     orderByDescending: false,

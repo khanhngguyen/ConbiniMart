@@ -67,6 +67,9 @@ header .header__navbar-wrapper__actions__button svg {
 header .header__navbar-wrapper__actions__button:hover, header .header__navbar-wrapper__actions__button:focus {
   outline: 1.5px solid hsla(152, 95%, 39%, 0.7);
 }
+header .header__navbar-wrapper__actions .active svg {
+  fill: hsl(152, 95%, 39%);
+}
 
 @keyframes glow {
   from {
@@ -1318,6 +1321,73 @@ footer .footer__bottom__container__list {
   border-radius: 4px;
   padding: 15px 40px;
   margin-block-end: 0;
+}
+
+.categories {
+  margin: auto;
+  padding-block: 40px;
+}
+.categories__container ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 80px;
+}
+.categories__container__category {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: end;
+  align-content: center;
+  padding: 30px;
+  background-color: hsl(96, 36%, 95%);
+  transition: 0.25s ease;
+}
+.categories__container__category:hover {
+  box-shadow: 0 0 10px rgba(27, 27, 27, 0.2);
+}
+.categories__container__category__content h4 {
+  color: hsl(152, 95%, 39%);
+  text-transform: uppercase;
+  margin-block-end: 10px;
+}
+.categories__container__category__content h2 {
+  font-family: "Merriweather", serif;
+  margin-block-end: 12px;
+  color: hsl(245, 97%, 13%);
+  transition: 0.25s ease;
+}
+.categories__container__category__content h2:hover {
+  font-size: 3rem;
+}
+.categories__container__category__content button {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  padding: 16px 25px;
+  font-size: 1.7rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+.categories__container__category__content button:hover, .categories__container__category__content button:focus {
+  background-color: hsl(152, 95%, 33%);
+}
+.categories__container__category__image {
+  max-width: max-content;
+  transition: 0.25s ease;
+}
+.categories__container__category__image:hover {
+  opacity: 0.8;
 }
 
 *,

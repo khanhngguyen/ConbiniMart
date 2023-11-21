@@ -33,11 +33,11 @@ namespace Ecommerce.Business.src.Middleware
             {
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsync(e.Message);
-                Console.WriteLine("HEHEHHEE");
+                // Console.WriteLine("HEHEHHEE");
                 // Console.WriteLine(e.GetBaseException());
-                Console.WriteLine("General Exception " + e.Data);
-                Console.WriteLine("General Exception " + e.Message);
-                Console.WriteLine(e);
+                // Console.WriteLine("General Exception " + e.Data);
+                // Console.WriteLine("General Exception " + e.Message);
+                // Console.WriteLine(e);
             }
         }
     }

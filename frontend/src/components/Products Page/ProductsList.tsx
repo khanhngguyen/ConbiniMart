@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Badge } from '@mui/material'
 import { SearchRounded } from '@mui/icons-material'
 import { useForm } from 'react-hook-form'
@@ -10,22 +10,32 @@ import Error from '../Shared/Error'
 import ProductCard from './ProductCard'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import productsQuerySchema, { productsQueryFormData } from '../../validations/productsQuerySchema'
-import { fetchAllProducts } from '../../redux/reducers/productsReducer'
+import { fetchAllProducts, fetchProductsByCategory } from '../../redux/reducers/productsReducer'
 import { QueryOptions } from '../../types/QueryOptions'
 
 const ProductsList = () => {
     const { loading, error, products, categories } = useAppSelector(state => state.productsReducer);
     const dispatch = useAppDispatch();
+    
     const {
         register,
         handleSubmit,
+        watch
     } = useForm<productsQueryFormData>({
         resolver: yupResolver(productsQuerySchema)
     });
     const onSubmitHandler = (data: productsQueryFormData) => {
         console.log(data);
         if (!data.search) {
-            dispatch(fetchAllProducts());
+            const query: QueryOptions = {
+                category: "all",
+                orderBy: data.sort,
+                orderByDescending: data.order,
+                pageNumber: data.page,
+                pageSize: data.pageLimit
+            };
+            dispatch(fetchAllProducts(query));
+            // dispatch(fetchAllProducts());
         } else {
             const query: QueryOptions = {
                 search: data.search,
@@ -39,43 +49,36 @@ const ProductsList = () => {
         }
     };
 
+    useEffect(() => {
+        const subscription = watch(() => handleSubmit(onSubmitHandler)());
+        return () => subscription.unsubscribe();
+    }, [handleSubmit, watch])
+
   return (
     <div>
         <ul className='filter__list'>
             <li>
-                <button className='filter__list__categories' autoFocus> 
+                <button 
+                    onClick={() => dispatch(fetchAllProducts())}
+                    className='filter__list__categories' autoFocus
+                > 
                     <p>All</p>
                 </button>
             </li>
+    
             {categories.map(c => (
                 <li key={c.name}>
                     <button 
+                        onClick={() => {
+                            const name = c.name;
+                            dispatch(fetchProductsByCategory(name));
+                        }}
                         className='filter__list__categories'
                     >
                         <p>{c.name}</p>
                     </button>
                 </li>
             ))}
-            {/* <li>
-                <button className='filter__list__categories'>
-                    <p>Vegetables</p>
-                </button>
-            </li>
-            <li>
-                <button className='filter__list__categories'>
-                    <p>Meat</p>
-                </button>
-            </li>
-            <li>
-                <button className='filter__list__categories'>
-                    <p>Dairy</p>
-                </button>
-            </li>
-            <li>
-                <button className='filter__list__categories'>
-                    <p>Others</p>
-                </button>
-            </li> */}
         </ul>
 
         <div className='query'>
@@ -98,7 +101,11 @@ const ProductsList = () => {
             <div className='query__others'>
                 <div className='query__others__container'>
                     <label htmlFor='query-sort'>Sort by:</label>
-                    <select id='query-sort' {...register("sort")}>
+                    <select
+                        id='query-sort' 
+                        {...register("sort")} 
+                        // onChange={handleSubmit(onSubmitHandler)}
+                    >
                         <option value="Newest first">Newest first</option>
                         <option value="Oldest first">Oldest first</option>
                         <option value="Least expensive first">Least expensive first</option>
@@ -108,7 +115,11 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-order'>Order by:</label>
-                    <select id='query-order' {...register("order")}>
+                    <select 
+                        id='query-order' 
+                        {...register("order")}
+                        // onChange={handleSubmit(onSubmitHandler)}
+                    >
                         <option value="true">Ascending</option>
                         <option value="false">Descending</option>
                     </select>
@@ -116,7 +127,11 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-page'>Page: </label>
-                    <select id='query-page' {...register("page")}>
+                    <select 
+                        id='query-page' 
+                        {...register("page")}
+                        // onChange={handleSubmit(onSubmitHandler)}
+                    >
                         <option value="0">1</option>
                         <option value="1">2</option>
                         <option value="2">3</option>
@@ -126,13 +141,16 @@ const ProductsList = () => {
 
                 <div className='query__others__container'>
                     <label htmlFor='query-pageLimit'>Per page: </label>
-                    <select id='query-pageLimit' {...register("pageLimit")}>
+                    <select 
+                        id='query-pageLimit' 
+                        {...register("pageLimit")}
+                        // onChange={handleSubmit(onSubmitHandler)}
+                    >
                         <option value="30">30</option>
                         <option value="20">20</option>
                         <option value="10">10</option>
                     </select>
                 </div>
-
             </div>
         </div>
 

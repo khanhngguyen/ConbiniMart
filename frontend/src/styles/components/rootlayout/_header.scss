@@ -75,6 +75,11 @@ header {
                         outline: 1.5px solid colors.$emerald_70;
                     }
                 }
+                .active {
+                    svg {
+                        fill: colors.$emerald;
+                    }
+                }
             }
         }
     }

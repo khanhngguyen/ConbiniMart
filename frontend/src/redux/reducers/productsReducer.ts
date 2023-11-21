@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 
 import { Product, ProductCreateDto, ProductUpdateDto } from "../../types/Product";
 import { Category } from "../../types/Category";
-import defaultQuery, { QueryOptions } from "../../types/QueryOptions";
+import { QueryOptions } from "../../types/QueryOptions";
 
 const initialState: {
     products: Product[],
@@ -47,6 +47,26 @@ export const fetchAllProducts = createAsyncThunk(
             }
             // const response = await axios.get<Product[]>(`${baseURL}/products`, { params: query });
             // return response.data;
+        } catch (e) {
+            const error = e as AxiosError;
+            console.log(error.code! + error.status + error.message);
+            return error;
+        }
+    }
+)
+
+export const fetchProductsByCategory = createAsyncThunk(
+    'fetchProductsByCategory',
+    async (category: string) => {
+        // const query = { ...defaultQuery, category: category } as Partial<QueryOptions>;
+        // delete query["search"];
+        const query = { category: category };
+        try {
+            const response = await axios.get<Product[]>(`${baseURL}/products`, 
+            {
+                params: query
+            });
+            return response.data;
         } catch (e) {
             const error = e as AxiosError;
             console.log(error.code! + error.status + error.message);
@@ -255,6 +275,24 @@ const productsSlice = createSlice({
         })
         .addCase(deleteProduct.rejected, (state) => {
             state.error = "can not delete product";
+            state.loading = false;
+        })
+        .addCase(fetchProductsByCategory.fulfilled, (state, action) => {
+            if (action.payload instanceof AxiosError)
+            {
+                state.error = action.payload.message;
+                state.products = [];
+            } else {
+                state.products = action.payload;
+                console.log(action.payload);
+            }
+            state.loading = false;
+        })
+        .addCase(fetchProductsByCategory.pending, (state) => {
+            state.loading = true;
+        })
+        .addCase(fetchProductsByCategory.rejected, (state) => {
+            state.error = "can not fetch products";
             state.loading = false;
         })
     }
