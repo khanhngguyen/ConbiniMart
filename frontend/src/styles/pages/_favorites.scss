@@ -1,0 +1,81 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/others";
+
+.favorites {
+    padding-block-end: others.$section-padding;
+    min-height: 50vh;
+    .container {
+        max-width: 1020px;
+        margin: auto;
+        padding-inline: 0;
+    }
+    &__title {
+        text-align: center;
+        color: colors.$emerald;
+        font-family: fonts.$font-primary;
+        font-size: fonts.$fs-2;
+        font-style: italic;
+        margin-block-end: 25px;
+    }
+    &__table {
+        width: 100%;
+        border: 1px solid colors.$platinum;
+        border-collapse: collapse;
+        text-align: right;
+        table-layout: fixed;
+        border-radius: 4px;
+        border-spacing: 0;
+        background-color: white;
+        box-shadow: 
+            0px 2px 1px -1px rgba(0,0,0,0.2),
+            0px 1px 1px 0px rgba(0,0,0,0.14),
+            0px 1px 3px 0px rgba(0,0,0,0.12);
+        &__header {
+            border: 2px solid colors.$platinum;
+            color: colors.$green-pigment;
+            font-style: italic;
+        }
+        &__body {
+            font-size: fonts.$fs-6;
+        }
+        &__row {
+            border-bottom: 1px solid colors.$platinum;
+        }
+        &__data {
+            padding: 20px;
+            &--left {
+                padding: 20px;
+                text-align: left;
+                button {
+                    display: inline-block;
+                    margin-inline-start: 5px;
+                    svg {
+                        fill: colors.$emerald_70;
+                    }
+                }
+            }
+            &--middle {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+    }
+    &__empty {
+        margin-block-start: 30px;
+        display: flex;
+        align-items: center;
+        button {
+            display: inline-block;
+            margin-inline-start: 5px;
+            svg {
+                fill: colors.$emerald_70;
+                transition: others.$transition-2;
+                &:hover {
+                    fill: colors.$emerald;
+                    font-size: 3rem;
+                }
+            }
+        }
+    }
+}

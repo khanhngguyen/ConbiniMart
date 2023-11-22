@@ -67,6 +67,17 @@ header .header__navbar-wrapper__actions__button svg {
 header .header__navbar-wrapper__actions__button:hover, header .header__navbar-wrapper__actions__button:focus {
   outline: 1.5px solid hsla(152, 95%, 39%, 0.7);
 }
+header .header__navbar-wrapper__actions__button span span {
+  font-size: 12px;
+  background-color: hsl(152, 95%, 39%);
+  border-radius: 50%;
+  padding: 5px;
+  color: white;
+  width: auto;
+  height: auto;
+  top: -7px;
+  right: -7px;
+}
 header .header__navbar-wrapper__actions .active svg {
   fill: hsl(152, 95%, 39%);
 }
@@ -868,6 +879,19 @@ footer .footer__bottom__container__list {
 .product-details__wrapper__content__quantity button:hover, .product-details__wrapper__content__quantity button:focus {
   background-color: hsl(152, 95%, 33%);
 }
+.product-details__wrapper__content__quantity .add-to-favorites {
+  background-color: hsl(96, 36%, 95%);
+  font-size: 2rem;
+  padding: 12px;
+  border: 1px solid hsl(96, 36%, 95%);
+}
+.product-details__wrapper__content__quantity .add-to-favorites svg {
+  fill: hsl(152, 95%, 39%);
+}
+.product-details__wrapper__content__quantity .add-to-favorites:hover {
+  background-color: hsl(96, 36%, 95%);
+  border: 1px solid hsl(152, 95%, 39%);
+}
 .product-details__info {
   color: hsl(245, 97%, 13%);
   font-size: 2.4rem;
@@ -1388,6 +1412,81 @@ footer .footer__bottom__container__list {
 }
 .categories__container__category__image:hover {
   opacity: 0.8;
+}
+
+.favorites {
+  padding-block-end: 80px;
+  min-height: 50vh;
+}
+.favorites .container {
+  max-width: 1020px;
+  margin: auto;
+  padding-inline: 0;
+}
+.favorites__title {
+  text-align: center;
+  color: hsl(152, 95%, 39%);
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  margin-block-end: 25px;
+}
+.favorites__table {
+  width: 100%;
+  border: 1px solid hsl(0, 0%, 92%);
+  border-collapse: collapse;
+  text-align: right;
+  table-layout: fixed;
+  border-radius: 4px;
+  border-spacing: 0;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.favorites__table__header {
+  border: 2px solid hsl(0, 0%, 92%);
+  color: hsl(152, 95%, 33%);
+  font-style: italic;
+}
+.favorites__table__body {
+  font-size: 1.5rem;
+}
+.favorites__table__row {
+  border-bottom: 1px solid hsl(0, 0%, 92%);
+}
+.favorites__table__data {
+  padding: 20px;
+}
+.favorites__table__data--left {
+  padding: 20px;
+  text-align: left;
+}
+.favorites__table__data--left button {
+  display: inline-block;
+  margin-inline-start: 5px;
+}
+.favorites__table__data--left button svg {
+  fill: hsla(152, 95%, 39%, 0.7);
+}
+.favorites__table__data--middle {
+  padding: 20px;
+  text-align: center;
+}
+.favorites__empty {
+  margin-block-start: 30px;
+  display: flex;
+  align-items: center;
+}
+.favorites__empty button {
+  display: inline-block;
+  margin-inline-start: 5px;
+}
+.favorites__empty button svg {
+  fill: hsla(152, 95%, 39%, 0.7);
+  transition: 0.25s ease;
+}
+.favorites__empty button svg:hover {
+  fill: hsl(152, 95%, 39%);
+  font-size: 3rem;
 }
 
 *,

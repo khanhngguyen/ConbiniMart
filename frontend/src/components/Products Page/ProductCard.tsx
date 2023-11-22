@@ -5,12 +5,19 @@ import { Badge } from '@mui/material'
 
 import { Product } from '../../types/Product'
 import product1 from "../../styles/assets/product-1.png"
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { addToFavorites } from '../../redux/reducers/favoritesReducer'
 
 interface ProductCardProps {
     product: Product
 }
 
 const ProductCard = (props: ProductCardProps) => {
+    const dispatch = useAppDispatch();
+
+    const handleAddToFavorites = () => {
+        dispatch(addToFavorites(props.product));
+    }
 
   return (
     <div className='product__card'>
@@ -18,9 +25,9 @@ const ProductCard = (props: ProductCardProps) => {
         <figure>
             <img src={product1} width='189' height='189' loading='lazy' alt='product' />
             <div className='favorite'>
-                <button>
+                <button type='button' onClick={handleAddToFavorites}>
                     <Badge>
-                        <FavoriteBorderRounded fontSize='large' />
+                        <FavoriteBorderRounded fontSize='large'/>
                     </Badge>
                     <div className='favorite__tooltip'>Add to favorites</div>
                 </button>
@@ -55,10 +62,6 @@ const ProductCard = (props: ProductCardProps) => {
         </div>
 
         </NavLink>
-
-        {/* <p>{props.product.title}</p>
-        <p>{props.product.description}</p>
-        <p>{props.product.price}</p> */}
     </div>
   )
 }

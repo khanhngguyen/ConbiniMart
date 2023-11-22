@@ -149,6 +149,28 @@
                     font-size: fonts.$fs-3;
                     font-weight: fonts.$fw-500;
                     border: 1px solid colors.$emerald;
+                    // .add-to-favorites {
+                    //     background-color: colors.$mint-cream;
+                    //     font-size: 2rem;
+                    //     padding: 12px;
+                    //     border-radius: 50%;
+                    //     svg {
+                    //         fill: colors.$space-cadet;
+                    //     }
+                    // }
+                }
+                .add-to-favorites {
+                    background-color: colors.$mint-cream;
+                    font-size: 2rem;
+                    padding: 12px;
+                    border: 1px solid colors.$mint-cream;
+                    svg {
+                        fill: colors.$emerald;
+                    }
+                    &:hover {
+                        background-color: colors.$mint-cream;
+                        border: 1px solid colors.$emerald;
+                    }
                 }
             }
         }

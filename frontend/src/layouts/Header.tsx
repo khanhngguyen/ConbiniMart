@@ -6,6 +6,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 
 const Header = () => {
     const { currentUser } = useAppSelector(state => state.usersReducer);
+    const { totalFavorites } = useAppSelector(state => state.favoritesReducer);
 
   return (
     <header className='header'>
@@ -38,7 +39,7 @@ const Header = () => {
                     className='header__navbar-wrapper__actions__button'
                 >
                     <NavLink to="favorites">
-                        <Badge>
+                        <Badge badgeContent={totalFavorites}>
                             <FavoriteBorder fontSize='large'/>
                         </Badge>
                     </NavLink>
@@ -48,7 +49,7 @@ const Header = () => {
                     className='header__navbar-wrapper__actions__button'
                 >
                     <NavLink to="cart">
-                        <Badge>
+                        <Badge badgeContent={0}>
                             <ShoppingCart fontSize='large'/>
                         </Badge>
                     </NavLink>

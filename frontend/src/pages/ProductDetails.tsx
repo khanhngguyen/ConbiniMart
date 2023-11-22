@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { StarRounded, StarBorderRounded, AutoFixHighRounded } from '@mui/icons-material'
+import { StarRounded, StarBorderRounded, AutoFixHighRounded, FavoriteBorderOutlined, Favorite } from '@mui/icons-material'
+import { Badge, Dialog } from '@mui/material';
 
 import { useAppSelector } from '../hooks/useAppSelector';
 import { useAppDispatch } from '../hooks/useAppDispatch';
@@ -8,20 +9,23 @@ import { fetchOneProductById } from '../redux/reducers/productsReducer';
 import Loading from '../components/Shared/Loading';
 import Error from '../components/Shared/Error';
 import product1 from "../styles/assets/product-1.png"
-import { Badge, Dialog } from '@mui/material';
 import UpdateProduct from '../components/Form/UpdateProduct';
 import { Role } from '../types/User';
+import { addToFavorites } from '../redux/reducers/favoritesReducer';
 
 const ProductDetails = () => {
   // const product = useLoaderData() as Product;
   const { loading, error, product } = useAppSelector(state => state.productsReducer);
   const { currentUser } = useAppSelector(state => state.usersReducer);
+  const { favProducts } = useAppSelector(state => state.favoritesReducer);
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const [openUpdate, setOpenUpdate] = useState(false);
 
   let isAdmin = currentUser?.role;
   if (!currentUser) isAdmin = Role.User;
+
+  let isFavorite = favProducts.find(p => p.id === product?.id);
 
   let productCategory;
   let categoryEnum = product?.category;
@@ -46,6 +50,9 @@ const ProductDetails = () => {
   const handleCloseUpdate = () => {
     setOpenUpdate(false);
   };
+  const handleAddToFavorites = () => {
+    dispatch(addToFavorites(product!));
+  }
 
   useEffect(() => {
     dispatch(fetchOneProductById(id ?? ""));
@@ -182,6 +189,14 @@ const ProductDetails = () => {
                 max='20'
               />
               <button>Add to Cart</button>
+              <button 
+                onClick={handleAddToFavorites}
+                className='add-to-favorites'>
+                <Badge>
+                  { isFavorite ? <Favorite fontSize='large' /> : <FavoriteBorderOutlined fontSize='large' />} 
+                  {/* <FavoriteBorderOutlined fontSize='large' /> */}
+                </Badge>
+              </button>
             </div>
 
           </div>

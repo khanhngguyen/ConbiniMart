@@ -74,6 +74,19 @@ header {
                     &:hover, &:focus {
                         outline: 1.5px solid colors.$emerald_70;
                     }
+                    span {
+                        span {
+                            font-size: 12px;
+                            background-color: colors.$emerald;
+                            border-radius: 50%;
+                            padding: 5px;
+                            color: white;
+                            width: auto;
+                            height: auto;
+                            top: -7px;
+                            right: -7px;
+                        }
+                    }
                 }
                 .active {
                     svg {
