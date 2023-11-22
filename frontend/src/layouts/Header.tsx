@@ -7,6 +7,7 @@ import { useAppSelector } from '../hooks/useAppSelector';
 const Header = () => {
     const { currentUser } = useAppSelector(state => state.usersReducer);
     const { totalFavorites } = useAppSelector(state => state.favoritesReducer);
+    const { totalAmount } = useAppSelector(state => state.cartReducer);
 
   return (
     <header className='header'>
@@ -49,7 +50,7 @@ const Header = () => {
                     className='header__navbar-wrapper__actions__button'
                 >
                     <NavLink to="cart">
-                        <Badge badgeContent={0}>
+                        <Badge badgeContent={totalAmount}>
                             <ShoppingCart fontSize='large'/>
                         </Badge>
                     </NavLink>

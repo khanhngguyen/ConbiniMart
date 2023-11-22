@@ -1,10 +1,22 @@
+import { DeleteForeverOutlined } from '@mui/icons-material'
+import { Badge } from '@mui/material'
 import React from 'react'
+import { useAppSelector } from '../hooks/useAppSelector'
+import { useAppDispatch } from '../hooks/useAppDispatch'
+import { emptyCart } from '../redux/reducers/cartReducer'
 
 const Cart = () => {
+  const { items } = useAppSelector(state => state.cartReducer)
+  const dispatch = useAppDispatch();
+
+  const handleEmptyCart = () => {
+    dispatch(emptyCart());
+  }
+
   return (
     <section className='favorites'>
       <div className='container'>
-        <p className='favorites__title'> -- Favorites -- </p>
+        <p className='favorites__title'> -- Cart -- </p>
 
         <table className='favorites__table'>
           <thead className='favorites__table__header'>
@@ -48,6 +60,16 @@ const Cart = () => {
             </tr>
           </tbody>
         </table>
+
+        <p className='favorites__empty'>
+          Empty Cart
+          <button onClick={handleEmptyCart}>
+            <Badge>
+              <DeleteForeverOutlined fontSize='large' />
+            </Badge>
+          </button>
+        </p>
+
       </div>
       
       {/* <h2>Favorites</h2>
