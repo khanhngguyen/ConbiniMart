@@ -21,6 +21,10 @@ const favoritesSlice = createSlice({
                 state.favProducts.push(action.payload);
                 state.totalFavorites++;
             }
+
+            localStorage.setItem("favItems", JSON.stringify({
+                items: state.favProducts
+            }));
         },
         removeFromFavorites: (state, action: PayloadAction<Product>) => {
             const isExisted = state.favProducts.find(p => p.id === action.payload.id);
@@ -30,10 +34,16 @@ const favoritesSlice = createSlice({
                 state.favProducts.splice(productIndex, 1);
                 state.totalFavorites--;
             }
+
+            localStorage.setItem("favItems", JSON.stringify({
+                items: state.favProducts
+            }));
         },
         emptyFavorites: (state) => {
             state.favProducts = [];
             state.totalFavorites = 0;
+
+            localStorage.removeItem("favItems");
         }
     }
 })

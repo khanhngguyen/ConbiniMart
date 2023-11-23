@@ -1064,26 +1064,26 @@ footer .footer__bottom__container__list {
   color: hsl(0, 0%, 20%);
   text-transform: capitalize;
 }
-.profile__content__user__settings {
+.profile__content__user__settings, .profile__content__user__orders {
   margin-block: 30px 10px;
 }
-.profile__content__user__settings h3 {
+.profile__content__user__settings h3, .profile__content__user__orders h3 {
   font-weight: 600;
   font-size: 1.7rem;
   margin-block: 10px;
 }
-.profile__content__user__settings__actions {
+.profile__content__user__settings__actions, .profile__content__user__orders__actions {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-block: 5px;
 }
-.profile__content__user__settings__actions__title {
+.profile__content__user__settings__actions__title, .profile__content__user__orders__actions__title {
   border-bottom: 2px solid transparent;
   transition: 0.05s ease;
 }
-.profile__content__user__settings__actions__title:hover {
+.profile__content__user__settings__actions__title:hover, .profile__content__user__orders__actions__title:hover {
   border-bottom: 2px solid hsl(152, 95%, 39%);
 }
 .profile__content__admin {
@@ -1487,6 +1487,124 @@ footer .footer__bottom__container__list {
 .favorites__empty button svg:hover {
   fill: hsl(152, 95%, 39%);
   font-size: 3rem;
+}
+
+.cart {
+  padding-block-end: 80px;
+  min-height: 50vh;
+}
+.cart .container {
+  max-width: 1020px;
+  margin: auto;
+  padding-inline: 0;
+}
+.cart__title {
+  text-align: center;
+  color: hsl(152, 95%, 39%);
+  font-family: "Merriweather", serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  margin-block-end: 25px;
+}
+.cart__table {
+  width: 100%;
+  border: 1px solid hsl(0, 0%, 92%);
+  border-collapse: collapse;
+  text-align: right;
+  table-layout: fixed;
+  border-radius: 4px;
+  border-spacing: 0;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+.cart__table__header {
+  border: 2px solid hsl(0, 0%, 92%);
+  color: hsl(152, 95%, 33%);
+  font-style: italic;
+}
+.cart__table__body {
+  font-size: 1.5rem;
+}
+.cart__table__row {
+  border-bottom: 1px solid hsl(0, 0%, 92%);
+}
+.cart__table__data {
+  padding: 20px;
+}
+.cart__table__data button {
+  display: inline-block;
+  margin-inline: 8px;
+}
+.cart__table__data button svg {
+  fill: hsl(0, 0%, 53%);
+  transition: 0.25s ease;
+}
+.cart__table__data button svg:hover {
+  fill: hsl(0, 0%, 20%);
+}
+.cart__table__data--left {
+  padding: 20px;
+  text-align: left;
+}
+.cart__table__data--left a {
+  display: inline-block;
+}
+.cart__table__data--left a:hover {
+  border-bottom: 2px solid hsla(152, 95%, 39%, 0.7);
+}
+.cart__table__data--left button {
+  display: inline-block;
+  margin-inline-start: 5px;
+}
+.cart__table__data--left button svg {
+  fill: hsl(0, 0%, 53%);
+  transition: 0.25s ease;
+}
+.cart__table__data--left button svg:hover {
+  fill: hsl(0, 0%, 20%);
+}
+.cart__table__data--middle {
+  padding: 20px;
+  text-align: center;
+}
+.cart__empty {
+  margin-block-start: 30px;
+  display: flex;
+  align-items: center;
+}
+.cart__empty button {
+  display: inline-block;
+  margin-inline-start: 5px;
+}
+.cart__empty button svg {
+  fill: hsla(152, 95%, 39%, 0.7);
+  transition: 0.25s ease;
+}
+.cart__empty button svg:hover {
+  fill: hsl(152, 95%, 39%);
+  font-size: 3rem;
+}
+.cart__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+.cart__actions button {
+  background-color: hsl(152, 95%, 39%);
+  color: hsl(0, 0%, 100%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 18px 50px;
+  border-radius: 50px;
+  transition: 0.25s ease;
+  border-radius: 4px;
+  padding: 18px 30px;
+}
+.cart__actions button:hover, .cart__actions button:focus {
+  background-color: hsl(152, 95%, 33%);
 }
 
 *,

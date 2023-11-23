@@ -65,6 +65,13 @@ const Profile = () => {
                     {currentUser?.firstName} {currentUser?.lastname}
                 </p>
 
+                <div className='profile__content__user__orders'>
+                    <h3>Orders</h3>
+                    <div className='profile__content__user__orders__actions'>
+                        <button>All orders</button>
+                    </div>
+                </div>
+
                 <div className='profile__content__user__settings'>
                     <h3>Profile settings</h3>
                     <div className='profile__content__user__settings__actions'>

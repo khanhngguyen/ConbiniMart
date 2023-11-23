@@ -32,7 +32,7 @@
                 color: colors.$jet;
                 text-transform: capitalize;
             }
-            &__settings {
+            &__settings, &__orders {
                 margin-block: 30px 10px;
                 h3 {
                     font-weight: fonts.$fw-600;

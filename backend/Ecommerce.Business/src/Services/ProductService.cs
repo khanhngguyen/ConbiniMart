@@ -37,7 +37,7 @@ namespace Ecommerce.Business.src.Services
             // Console.WriteLine(updateProduct.Category);
             if (found is null)
             {
-                _productRepo.DeleteOneById(id);
+                // _productRepo.DeleteOneById(id);
                 throw new Exception("Product not found");
             }
             if (updateProduct.Title == null || updateProduct.Title == "" || updateProduct.Title  == "string") updateProduct.Title = found.Title;

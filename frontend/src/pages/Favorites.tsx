@@ -29,7 +29,7 @@ const Favorites = () => {
 
           <tbody className='favorites__table__body'>
             {favProducts.length === 0 && 
-              <tr>
+              <tr className='favorites__table__row'>
                 <td colSpan={3} className='favorites__table__data--middle'>No favorite products in list</td>
               </tr>
             }

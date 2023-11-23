@@ -11,7 +11,7 @@ import Error from '../components/Shared/Error';
 import product1 from "../styles/assets/product-1.png"
 import UpdateProduct from '../components/Form/UpdateProduct';
 import { Role } from '../types/User';
-import { addToFavorites } from '../redux/reducers/favoritesReducer';
+import { addToFavorites, removeFromFavorites } from '../redux/reducers/favoritesReducer';
 
 const ProductDetails = () => {
   // const product = useLoaderData() as Product;
@@ -50,8 +50,13 @@ const ProductDetails = () => {
   const handleCloseUpdate = () => {
     setOpenUpdate(false);
   };
-  const handleAddToFavorites = () => {
-    dispatch(addToFavorites(product!));
+  const handleToggleAddToFavorites = () => {
+    if (isFavorite) {
+        dispatch(removeFromFavorites(product!));
+    } else {
+        dispatch(addToFavorites(product!));
+    }
+    // dispatch(addToFavorites(product!));
   }
 
   useEffect(() => {
@@ -190,7 +195,7 @@ const ProductDetails = () => {
               />
               <button>Add to Cart</button>
               <button 
-                onClick={handleAddToFavorites}
+                onClick={handleToggleAddToFavorites}
                 className='add-to-favorites'>
                 <Badge>
                   { isFavorite ? <Favorite fontSize='large' /> : <FavoriteBorderOutlined fontSize='large' />} 

@@ -38,6 +38,12 @@ const cartSlice = createSlice({
             }
             state.totalAmount++;
             // state.totalPrice += (isExisted?.amount * isExisted?.price)
+
+            localStorage.setItem("cartItems", JSON.stringify({
+                items: state.items,
+                totalAmount: state.totalAmount,
+                totalPrice: state.totalPrice
+            }));
         },
         removeFromCart: (state, action: PayloadAction<Product>) => {
             const isExisted = state.items.find(i => i.id === action.payload.id);
@@ -48,11 +54,19 @@ const cartSlice = createSlice({
                 state.totalAmount -= isExisted.amount;
                 state.totalPrice -= isExisted.amount * isExisted.price
             }
+
+            localStorage.setItem("cartItems", JSON.stringify({
+                items: state.items,
+                totalAmount: state.totalAmount,
+                totalPrice: state.totalPrice
+            }));
         },
         emptyCart: (state) => {
             state.items = [];
             state.totalAmount = 0;
             state.totalPrice = 0;
+
+            localStorage.removeItem("cartItems");
         },
         increaseAmount: (state, action: PayloadAction<Guid>) => {
             const isExisted = state.items.find(i => i.id === action.payload);
@@ -63,6 +77,12 @@ const cartSlice = createSlice({
             } else {
                 alert("Can not add into cart, item is not available anymore in inventory");
             }
+
+            localStorage.setItem("cartItems", JSON.stringify({
+                items: state.items,
+                totalAmount: state.totalAmount,
+                totalPrice: state.totalPrice
+            }));
         },
         decreaseAmount: (state, action: PayloadAction<Guid>) => {
             const isExisted = state.items.find(i => i.id === action.payload);
@@ -77,6 +97,12 @@ const cartSlice = createSlice({
             } else {
                 return;
             }
+
+            localStorage.setItem("cartItems", JSON.stringify({
+                items: state.items,
+                totalAmount: state.totalAmount,
+                totalPrice: state.totalPrice
+            }));
         }
     }
 })
