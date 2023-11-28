@@ -77,6 +77,10 @@
     color: colors.$battleship-gray;
 }
 
+.products__total {
+    margin-block-end: 20px;
+}
+
 .products__list {
     display: grid;
     // grid-template-columns: repeat(4, 1fr);

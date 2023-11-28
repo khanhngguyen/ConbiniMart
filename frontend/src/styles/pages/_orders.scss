@@ -1,0 +1,15 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+@use "../variables/others";
+
+.orders {
+    margin-block-end: 50px;
+    &__total {
+        margin-block: 25px;
+    }
+    &__not-log-in {
+        text-align: center;
+        margin-block: 25px;
+        min-height: 50vh;
+    }
+}

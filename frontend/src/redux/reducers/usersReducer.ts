@@ -40,7 +40,6 @@ export const authenticate = createAsyncThunk(
                     // 'Acceess-Control-Allow-Origin': '*',
                 }
             });
-            console.log(response.data);
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
@@ -259,7 +258,6 @@ const usersSlice = createSlice({
         .addCase(authenticate.fulfilled, (state, action) => {
             if (action.payload instanceof AxiosError) {
                 state.error = action.payload.message;
-                console.log("authenticate error fulfilled");
             } else {
                 state.currentUser = action.payload;
             }

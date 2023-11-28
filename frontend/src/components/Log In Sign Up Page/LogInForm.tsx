@@ -26,7 +26,7 @@ const LogInForm = (props: LogInFormProps) => {
   });
 
   const onSubmitHandler = (data: LogInFormData) => {
-    console.log(data);
+    // console.log(data);
     dispatch(login({
       email: data.email,
       password: data.password

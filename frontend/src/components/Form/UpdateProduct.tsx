@@ -23,9 +23,8 @@ const UpdateProduct = (props: UpdateProductProps) => {
     resolver: yupResolver(updateProductSchema)
   });
   const onSubmitHandler = (data: updateProductFormData) => {
-    console.log(productId);
-    console.log(data);
-    console.log(props.currentCategory);
+    // console.log(data);
+    // console.log(props.currentCategory);
     dispatch(updateProduct({
       id: Guid.parse(productId!),
       update: {

@@ -21,7 +21,7 @@ const CreateNewProduct = (props: CreateNewProductProps) => {
     });
 
     const onSubmitHandler = (data : createProductFormData) => {
-        console.log(data);
+        // console.log(data);
         dispatch(createNewProduct({
             title: data.title,
             description: data.description,

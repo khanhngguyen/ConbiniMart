@@ -52,7 +52,8 @@ namespace Ecommerce.Business.src.Services
                 orderProducts[i].OrderId = createdOrder.Id;
                 orderProducts[i].Product = await _productRepo.GetOneById(dto.OrderProducts[i].ProductId);
 
-                await _orderProductRepo.CreateOrderProduct(orderProducts[i]);
+                // await _orderProductRepo.CreateOrderProduct(orderProducts[i]);
+                await _orderProductService.CreateOrderProduct(orderProducts[i]);
             }
 
             createdOrder.OrderProducts = orderProducts;

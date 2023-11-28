@@ -49,7 +49,6 @@ export const fetchAllProducts = createAsyncThunk(
             // return response.data;
         } catch (e) {
             const error = e as AxiosError;
-            console.log(error.code! + error.status + error.message);
             return error;
         }
     }
@@ -69,7 +68,6 @@ export const fetchProductsByCategory = createAsyncThunk(
             return response.data;
         } catch (e) {
             const error = e as AxiosError;
-            console.log(error.code! + error.status + error.message);
             return error;
         }
     }
@@ -164,7 +162,6 @@ const productsSlice = createSlice({
                 state.categories = [];
             } else {
                 state.categories = action.payload;
-                console.log(action.payload);
             }
             state.loading = false;
         })
@@ -182,7 +179,7 @@ const productsSlice = createSlice({
                 state.products = [];
             } else {
                 state.products = action.payload;
-                console.log(action.payload);
+                // console.log(action.payload);
             }
             state.loading = false;
         })
@@ -199,7 +196,7 @@ const productsSlice = createSlice({
                 state.error = action.payload.message;
             } else {
                 state.product = action.payload;
-                console.log(action.payload);
+                // console.log(action.payload);
             }
             state.loading = false;
         })
@@ -284,7 +281,7 @@ const productsSlice = createSlice({
                 state.products = [];
             } else {
                 state.products = action.payload;
-                console.log(action.payload);
+                // console.log(action.payload);
             }
             state.loading = false;
         })

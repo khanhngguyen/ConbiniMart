@@ -27,7 +27,7 @@ const UserPasswordUpdate = (props: UserPasswordUpdateProps) => {
     resolver: yupResolver(userPasswordUpdateSchema)
   });
   const onSubmitHandler = (data: userPasswordUpdateData) => {
-    console.log(data);
+    // console.log(data);
     dispatch(updatePassword({
       id: currentUser?.id as Guid,
       password: data.password,

@@ -37,7 +37,24 @@ const ProductCard = (props: ProductCardProps) => {
         {/* <NavLink to={props.product.id.toString()}> */}
         <figure>
             <NavLink to={props.product.id.toString()}>
-                <img src={product1} width='189' height='189' loading='lazy' alt='product' />
+                {/* { props.product.image.link 
+                ? <img
+                    src={props.product.image.link}
+                    width='200' height='200' loading='lazy' alt='product'
+                    />
+                : <img 
+                    src={product1} 
+                    width='200' height='200' loading='lazy' alt='product'
+                    />
+                } */}
+                {/* <img 
+                    src={product1} 
+                    width='200' height='200' loading='lazy' alt='product' 
+                /> */}
+                <img 
+                    src={props.product.image.link} 
+                    width='200' height='200' loading='lazy' alt='product' 
+                />
             </NavLink>
             <div className='favorite'>
                 <button type='button' onClick={handleToggleAddToFavorites}>

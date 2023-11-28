@@ -19,7 +19,7 @@ const DeleteProduct = (props: DeleteProductProps) => {
         resolver: yupResolver(deleteProductSchema)
     });
     const onSubmitHandler = (data : deleteProductFormData) => {
-        console.log(data);
+        // console.log(data);
         dispatch(deleteProduct(data.id));
     }
 

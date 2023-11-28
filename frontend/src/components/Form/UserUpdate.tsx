@@ -27,7 +27,7 @@ const UserUpdate = (props: UserUpdateProps) => {
         resolver: yupResolver(userUpdateSchema)
     });
     const onSubmitHandler = (data: userUpdateData) => {
-        console.log(data);
+        // console.log(data);
         dispatch(updateUser({
             id: currentUser?.id as Guid,
             update: {

@@ -25,7 +25,7 @@ const ProductsList = () => {
         resolver: yupResolver(productsQuerySchema)
     });
     const onSubmitHandler = (data: productsQueryFormData) => {
-        console.log(data);
+        // console.log(data);
         if (!data.search) {
             const query: QueryOptions = {
                 category: "all",
@@ -158,6 +158,8 @@ const ProductsList = () => {
         {error && <Error error={error} />}
 
         {(!loading) && (products.length === 0) && <p>No products to display</p>}
+
+        <p className='products__total'>Total: {products.length} products</p>
 
         <ul className='products__list'>
             {(!loading) && products.map(product => (

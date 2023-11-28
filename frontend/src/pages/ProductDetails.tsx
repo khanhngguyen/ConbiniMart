@@ -12,6 +12,7 @@ import product1 from "../styles/assets/product-1.png"
 import UpdateProduct from '../components/Form/UpdateProduct';
 import { Role } from '../types/User';
 import { addToFavorites, removeFromFavorites } from '../redux/reducers/favoritesReducer';
+import { addToCartWithAmount } from '../redux/reducers/cartReducer';
 
 const ProductDetails = () => {
   // const product = useLoaderData() as Product;
@@ -21,6 +22,7 @@ const ProductDetails = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const [openUpdate, setOpenUpdate] = useState(false);
+  const [amount, setAmount] = useState(1);
 
   let isAdmin = currentUser?.role;
   if (!currentUser) isAdmin = Role.User;
@@ -56,7 +58,16 @@ const ProductDetails = () => {
     } else {
         dispatch(addToFavorites(product!));
     }
-    // dispatch(addToFavorites(product!));
+  }
+
+  const handleAmountInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAmount(parseInt(e.target.value));
+  }
+  const handleAddToCartWithQuantity = () => {
+    dispatch(addToCartWithAmount({
+      product: product!,
+      amount: amount
+    }))
   }
 
   useEffect(() => {
@@ -78,9 +89,9 @@ const ProductDetails = () => {
           <div className='product-details__wrapper__images'>
             <figure className='product-details__wrapper__images__main'>
               <img 
-                src='https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg' 
+                // src='https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg' 
                 // src={product1} 
-                // src={product?.image.link}
+                src={product?.image.link}
                 alt='product main thumbnail'
                 loading='lazy'
               />
@@ -96,7 +107,8 @@ const ProductDetails = () => {
               </li>
               <li>
                 <img 
-                  src='https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?quality=90&resize=556,505'
+                  // src='https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg?quality=90&resize=556,505'
+                  src={product?.image.link}
                   alt='product extra images' 
                   loading='lazy'
                   width='700'
@@ -105,7 +117,8 @@ const ProductDetails = () => {
               </li>
               <li>
                 <img 
-                  src='https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg' 
+                  // src='https://www.bhg.com/thmb/Mwd_YEkDbVg_fPsUDcWr3eZk9W0=/5645x0/filters:no_upscale():strip_icc()/difference-between-fruits-vegetables-01-5f92e7ec706b463287bcfb46985698f9.jpg' 
+                  src={product?.image.link}
                   alt='product extra images' 
                   loading='lazy'
                   width='700'
@@ -133,7 +146,8 @@ const ProductDetails = () => {
               </li>
               <li>
                 <img 
-                  src={product1} 
+                  // src={product1} 
+                  src={product?.image.link}
                   alt='product extra images' 
                   loading='lazy'
                   width='700'
@@ -189,11 +203,15 @@ const ProductDetails = () => {
               <input
                 type='number'
                 name='quantity'
-                // value='1'
+                value={amount}
+                // defaultValue={1}
                 min='1'
                 max='20'
+                onChange={handleAmountInput}
               />
-              <button>Add to Cart</button>
+              <button
+                onClick={handleAddToCartWithQuantity}
+              >Add to Cart</button>
               <button 
                 onClick={handleToggleAddToFavorites}
                 className='add-to-favorites'>

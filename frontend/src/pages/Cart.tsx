@@ -5,7 +5,9 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 import { useAppSelector } from '../hooks/useAppSelector'
 import { useAppDispatch } from '../hooks/useAppDispatch'
-import { decreaseAmount, emptyCart, increaseAmount, removeFromCart } from '../redux/reducers/cartReducer'
+import { decreaseAmount, emptyCart, increaseAmount, placeOrder, removeFromCart } from '../redux/reducers/cartReducer'
+import { CartItemCreateDto } from '../types/Cart'
+import Loading from '../components/Shared/Loading'
 
 const Cart = () => {
   const { items, totalAmount, totalPrice } = useAppSelector(state => state.cartReducer);
@@ -22,7 +24,25 @@ const Cart = () => {
       alert("Please log in to check out");
       navigate("/login");
     } else {
-      navigate("/orders");
+      // navigate("/orders");
+      let orderProducts: CartItemCreateDto[] = [];
+      items.forEach(item => {
+        const orderProduct: CartItemCreateDto = {
+          productId: item.product.id,
+          amount: item.amount
+        };
+        orderProducts.push(orderProduct);
+      })
+      
+      dispatch(placeOrder({
+        // id: id!,
+        // orderStatus: 0,
+        // user: currentUser,
+        // orderProducts: items,
+        // totalAmount: totalAmount,
+        // totalPrice: totalPrice,
+        orderProducts: orderProducts
+      }));
     }
   }
 
@@ -42,13 +62,6 @@ const Cart = () => {
           </thead>
 
           <tbody className='cart__table__body'>
-            {/* <tr className='cart__table__row'>
-              <td className='cart__table__data--left'>product name</td>
-              <td className='cart__table__data'>price</td>
-              <td className='cart__table__data'>amount</td>
-              <td className='cart__table__data'>total</td>
-            </tr> */}
-
             {items.length === 0 && 
               <tr className='cart__table__row'>
                 <td colSpan={4} className='cart__table__data--middle'>Cart is empty</td>
@@ -56,21 +69,21 @@ const Cart = () => {
             }
 
             {items.map(item => (
-              <tr key={item.id.toString()} className='cart__table__row'>
+              <tr key={item.product.id.toString()} className='cart__table__row'>
                 <td className='cart__table__data--left'>
-                  <NavLink to={`/products/${item.id.toString()}`}>{item.title}</NavLink>
+                  <NavLink to={`/products/${item.product.id.toString()}`}>{item.product.title}</NavLink>
                   <button
-                    onClick={() => dispatch(removeFromCart(item))}
+                    onClick={() => dispatch(removeFromCart(item.product))}
                   >
                     <Badge>
                       <DeleteOutlineOutlined fontSize='large' />
                     </Badge>
                   </button>
                 </td>
-                <td className='cart__table__data'>{item.price} €</td>
+                <td className='cart__table__data'>{item.product.price} €</td>
                 <td className='cart__table__data'>
                   <button
-                    onClick={() => dispatch(decreaseAmount(item.id))}
+                    onClick={() => dispatch(decreaseAmount(item.product.id))}
                   >
                     <Badge><RemoveOutlined fontSize='large' /></Badge>
                   </button>
@@ -78,12 +91,12 @@ const Cart = () => {
                   {item.amount}
 
                   <button
-                    onClick={() => dispatch(increaseAmount(item.id))}
+                    onClick={() => dispatch(increaseAmount(item.product.id))}
                   >
                     <Badge><AddCircleOutlineOutlined fontSize='large' /></Badge>
                   </button>
                 </td>
-                <td className='cart__table__data'>{(item.price * item.amount).toFixed(2)}</td>
+                <td className='cart__table__data'>{(item.product.price * item.amount).toFixed(2)}</td>
               </tr>
             ))}
 
@@ -131,13 +144,6 @@ const Cart = () => {
 
       </div>
       
-      {/* <h2>Favorites</h2>
-      <ul>
-          <li>items</li>
-          <li>items</li>
-          <li>items</li>
-          <li>items</li>
-      </ul> */}
     </section>
   )
 }

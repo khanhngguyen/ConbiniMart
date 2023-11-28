@@ -74,7 +74,7 @@ namespace Ecommerce.WebApi.src.Database
             .WithMany(order => order.OrderProducts)
             // .HasConstraintName("fk_orders_products_products_orders_order_id")
             // .HasConstraintName("fk_orders_products_products_product_id")
-            .OnDelete(DeleteBehavior.SetNull);
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -10,6 +10,7 @@ import UserPasswordUpdate from '../components/Form/UserPasswordUpdate';
 import DeleteAccountDialog from '../components/Form/DeleteAccountDialog';
 import LogoutDialog from '../components/Form/LogoutDialog';
 import AdminSettings from '../components/Profile Page/AdminSettings';
+import { fetchAllOrderByUserId } from '../redux/reducers/cartReducer';
 
 const Profile = () => {
     const [update, setUpdate] = useState(false);
@@ -46,6 +47,13 @@ const Profile = () => {
         setOpenLogout(false);
     }
 
+    const handleFetchAllOrders = () => {
+        dispatch(fetchAllOrderByUserId());
+        setTimeout(() => {
+            navigate("/orders");
+        }, 1000);
+    }
+
     useEffect(() => {
         if (!currentUser) navigate("/");
     }, [navigate, currentUser])
@@ -68,7 +76,9 @@ const Profile = () => {
                 <div className='profile__content__user__orders'>
                     <h3>Orders</h3>
                     <div className='profile__content__user__orders__actions'>
-                        <button>All orders</button>
+                        <button
+                            onClick={handleFetchAllOrders}
+                        >All orders</button>
                     </div>
                 </div>
 

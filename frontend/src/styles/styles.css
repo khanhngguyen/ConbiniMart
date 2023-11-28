@@ -553,6 +553,10 @@ footer .footer__bottom__container__list {
   color: hsl(0, 0%, 53%);
 }
 
+.products__total {
+  margin-block-end: 20px;
+}
+
 .products__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -584,6 +588,11 @@ footer .footer__bottom__container__list {
   margin-inline: auto;
   margin-block-end: 20px;
   transition: 0.25s ease;
+}
+.product__card figure a img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
 }
 .product__card figure:hover img {
   opacity: 0.6;
@@ -1605,6 +1614,18 @@ footer .footer__bottom__container__list {
 }
 .cart__actions button:hover, .cart__actions button:focus {
   background-color: hsl(152, 95%, 33%);
+}
+
+.orders {
+  margin-block-end: 50px;
+}
+.orders__total {
+  margin-block: 25px;
+}
+.orders__not-log-in {
+  text-align: center;
+  margin-block: 25px;
+  min-height: 50vh;
 }
 
 *,
