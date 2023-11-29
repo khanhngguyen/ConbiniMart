@@ -82,10 +82,6 @@ const ProductCard = (props: ProductCardProps) => {
             </div>
         </NavLink>
 
-        {/* <h3 className='product__card__title'>
-            {props.product.title}
-        </h3> */}
-
         <p className='product__card__price'>
             {props.product.price} €
         </p>

@@ -43,6 +43,7 @@ export const fetchAllProducts = createAsyncThunk(
                 return response.data;
             } else {
                 const response = await axios.get<Product[]>(`${baseURL}/products`);
+                
                 return response.data;
             }
             // const response = await axios.get<Product[]>(`${baseURL}/products`, { params: query });
@@ -61,7 +62,7 @@ export const fetchProductsByCategory = createAsyncThunk(
         // delete query["search"];
         const query = { category: category };
         try {
-            const response = await axios.get<Product[]>(`${baseURL}/products`, 
+            const response = await axios.get<Product[]>(`${baseURL}/products`,
             {
                 params: query
             });

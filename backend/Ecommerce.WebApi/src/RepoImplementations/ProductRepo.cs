@@ -61,10 +61,9 @@ namespace Ecommerce.WebApi.src.RepoImplementations
             //descending
             if (queryOptions.OrderByDescending) results.OrderByDescending(p => p.Title);
 
-            //defeault query
-            results = results.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize);
+            //default query
+            results = results.Skip(queryOptions.PageNumber * queryOptions.PageSize).Take(queryOptions.PageSize).Include(x => x.Image);
             return await results.ToListAsync();
-
         }
 
         public override async Task<Product> GetOneById(Guid id) {
