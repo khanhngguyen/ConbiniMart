@@ -7,7 +7,6 @@ import { useAppSelector } from '../hooks/useAppSelector'
 import { useAppDispatch } from '../hooks/useAppDispatch'
 import { decreaseAmount, emptyCart, increaseAmount, placeOrder, removeFromCart } from '../redux/reducers/cartReducer'
 import { CartItemCreateDto } from '../types/Cart'
-import Loading from '../components/Shared/Loading'
 
 const Cart = () => {
   const { items, totalAmount, totalPrice } = useAppSelector(state => state.cartReducer);

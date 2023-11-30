@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Badge } from '@mui/material'
 
 import { Product } from '../../types/Product'
-import product1 from "../../styles/assets/product-1.png"
+// import product1 from "../../styles/assets/product-1.png"
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { addToFavorites, removeFromFavorites } from '../../redux/reducers/favoritesReducer'
 import { addToCart } from '../../redux/reducers/cartReducer'

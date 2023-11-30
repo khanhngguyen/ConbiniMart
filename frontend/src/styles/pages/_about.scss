@@ -3,9 +3,11 @@
 @use "../variables/others";
 
 .about {
-    background-image: 
-    url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
-    url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    // background-image: 
+    //     url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
+    //     url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    // background-image: url("/frontend/src/styles/assets/hero-left-bg.png"), url("/frontend/src/styles/assets/hero-right-bg.png");
+    background-image: url("./assets/hero-left-bg.png"), url("./assets/hero-right-bg.png");
     background-color: colors.$mint-cream;
     background-repeat: no-repeat, no-repeat;
     background-position: left top, right top;
@@ -38,8 +40,10 @@
     }
     &__partners {
         background-color: colors.$emerald;
-        background-image:
-            url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+        // background-image:
+        //     url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+        // background-image: url("/frontend/src/styles/assets/partner-left-bg.png");
+        background-image: url("./assets/partner-left-bg.png");
         background-repeat: no-repeat;
         background-position: bottom left;
         &__container {

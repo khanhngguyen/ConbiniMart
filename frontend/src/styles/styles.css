@@ -91,7 +91,7 @@ header .header__navbar-wrapper__actions .active svg {
   }
 }
 footer {
-  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-image: url("./assets/hero-left-bg.png"), url("./assets/hero-right-bg.png");
   background-color: hsl(206, 20%, 14%);
   background-repeat: no-repeat;
   background-position: bottom left, bottom right;
@@ -210,7 +210,7 @@ footer .footer__bottom__container__list {
 }
 
 .hero {
-  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-image: url("./assets/hero-left-bg.png"), url("./assets/hero-right-bg.png");
   background-color: hsl(96, 36%, 95%);
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
@@ -284,7 +284,7 @@ footer .footer__bottom__container__list {
 }
 
 .service {
-  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+  background-image: url("./assets/partner-left-bg.png");
   background-color: hsl(152, 95%, 31%);
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -401,7 +401,7 @@ footer .footer__bottom__container__list {
 }
 
 .about {
-  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"), url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+  background-image: url("./assets/hero-left-bg.png"), url("./assets/hero-right-bg.png");
   background-color: hsl(96, 36%, 95%);
   background-repeat: no-repeat, no-repeat;
   background-position: left top, right top;
@@ -434,7 +434,7 @@ footer .footer__bottom__container__list {
 }
 .about__partners {
   background-color: hsl(152, 95%, 39%);
-  background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+  background-image: url("./assets/partner-left-bg.png");
   background-repeat: no-repeat;
   background-position: bottom left;
 }

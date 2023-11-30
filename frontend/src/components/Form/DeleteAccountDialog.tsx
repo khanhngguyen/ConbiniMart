@@ -9,7 +9,7 @@ interface DeleteAccountProps {
 }
 
 const DeleteAccountDialog = (props: DeleteAccountProps) => {
-    const { error, currentUser } = useAppSelector(state => state.usersReducer);
+    const { currentUser } = useAppSelector(state => state.usersReducer);
     const dispatch = useAppDispatch();
 
     const onDeleteHandler = () => {

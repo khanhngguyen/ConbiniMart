@@ -3,7 +3,9 @@
 @use "../../variables/others";
 
 .service {
-    background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+    // background-image: url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/partner-left-bg.png");
+    // background-image: url("/frontend/src/styles/assets/partner-left-bg.png");
+    background-image: url("./assets/partner-left-bg.png");
     background-color: colors.$shamrock-green;
     background-repeat: no-repeat;
     background-position: left bottom;

@@ -4,9 +4,11 @@
 @use "../../mixins/button";
 
 .hero {
-    background-image: 
-        url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
-        url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    // background-image: 
+    //     url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-left-bg.png"),
+    //     url("/Users/khanhngguyen/Downloads/KHANH/Integrify/fs15_Fullstack/frontend/src/styles/assets/hero-right-bg.png");
+    // background-image: url("/frontend/src/styles/assets/hero-left-bg.png"), url("/frontend/src/styles/assets/hero-right-bg.png");
+    background-image: url("./assets/hero-left-bg.png"), url("./assets/hero-right-bg.png");
     background-color: colors.$mint-cream;
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right top;
