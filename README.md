@@ -36,6 +36,7 @@ You can follow the same topics as your backend project or choose the alternative
    4.2 [Frontend](#project-result--frontend)
       - 4.2.1. [Features](#features-2)
       - 4.2.2. [Frontend Demo](#frontend-demo)
+      - 4.2.3. [How to test features](#423-how-to-test-features)
 
 
 ## 2. Features
@@ -96,14 +97,13 @@ And any other extra features that you want to implement ...
    or ```npm run compile:watch & npm start``` to compile SCSS first
 
 
-# 4. Project Result : Backend
-!!!Current status: incomplete
+# 4.1. Project Result : Backend
 
-## 4.1. Project Design
+## 4.1.1. Project Design
 
 Topic: E-commerce
 
-#### 4.2. Entities design
+#### Entities design
 
 ![ERD](./projectDesign/ERD-new.png)
 
@@ -116,9 +116,7 @@ Brief:
    --> Each Order can have many OrderProducts
 
 #### Endpoints design
-!!!!Current status: incomplete, only endpoints for User & Product are working
-
-![Endpoints design](./projectDesign/Endpoints.png)
+![Endpoints design](./projectDesign/Endpoints%20design.png)
 
 Brief:
    - Most endpoints are protected, only the one without any mark are accessible to everyone
@@ -133,23 +131,25 @@ User log in with credentials --> Verify credentials --> if success, token is ret
 
 ![CLEAN Architecture](./projectDesign/CLEAN%20Architecture.png)
 
-## Features
-!!! Only working features are listed here
+## 4.1.2. Features
 
 #### User Functionalities
 
-- Users can register for an account, email for each user is unique, no email is used for 2 accounts. Users can.not register as an Admin/
-- Users can log in and access certain endpoints, e.g. get their profile, update password, update their profile (name, email), delete their own account.
+- Users can register for an account, email for each user is unique, no email is used for 2 accounts. Users can not register as an Admin.
+- Users can log in and access certain endpoints, e.g. get their profile, update password, update their profile (name, email), delete their own account, get all their orders, etc.
 
 #### Product Functionalities
-- Browse Products: anyone can browse available products and single product. Users can also search and sort products.
+- Browse Products: anyone can browse available products and single product. Users can also search and sort products using query.
+- Orders:
+   - Logged in users can make new orders (with orders products).
+   - A user can browse all orders created by them.
 
 #### Admin Functionalities
 
 - User Management: Admins can view all users, or view a sigle user. Admin can create new admin account.
 - Product Management: only Admins can create, edit, and delete products.
 
-## Backend demo
+## 4.1.3. Backend demo
 
 - [Swagger Docs](https://fs15kim-ecommerce-backend.azurewebsites.net/swagger/index.html) 
 
@@ -158,22 +158,126 @@ User log in with credentials --> Verify credentials --> if success, token is ret
       - Get all products: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/products
       - Get all categories: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/category
 
-## Testing
+## 4.1.4. Testing
 xUnit is used for testing
 
-# Project Result : Frontend
-!!! Status: incompleted
+# 4.2. Project Result : Frontend
+
+[Frontend demo in Netlify](https://conbinimart.netlify.app/)
 
 Home page
-![Home page](./projectDesign/home%20page.png)
+<p>
+<img alt="home page 1" src="./projectDesign/home page 1.png" width="45%">
+<img alt="home page 2" src="./projectDesign/home page 2.png" width="45%">
+</p>
 
-About page
-![About page](./projectDesign/%20about%20page.png)
+Products page
+<p>
+<img alt="products page" src="./projectDesign/products page.png" width="90%">
+</p>
 
-Log in page
-![Log in page](./projectDesign/%20about%20page.png)
+Product's details page
+<p>
+<img alt="product's details page" src="./projectDesign/product details page.png" width="90%">
+</p>
+
+About & Log in page
+<p>
+<img alt="about page" src="./projectDesign/ about page.png" width="45%">
+<img alt="log in page" src="./projectDesign/login page.png" width="45%">
+</p>
 
 
-## Features
+## 4.2.1. Features
 
-## Frontend demo
+#### Products
+- Browse all products
+- Browse products by category
+- Search products by name
+- Sort & set order for products display, set limit per page
+- Add products to favorites, remove from favorites
+
+Example of search products by name
+<img alt="search products by name" src="./projectDesign/search products by name.png">
+
+#### Users
+- Sign up as new user
+- Log in if already registered,  log out
+
+Validation examples when log in & sign up
+<p>
+<img alt="email formatting" src="./projectDesign/email format.png" width="30%">
+<img alt="email is not registered" src="./projectDesign/email not registered.png" width="30%">
+<img alt="password incorrect" src="./projectDesign/password incorrect.png" width="30%">
+</p>
+<p>
+<img alt="required fields can not be empty" src="./projectDesign/required fields.png" width="45%">
+<img alt="email is already registered" src="./projectDesign/email is registered.png" width="45%">
+</p>
+
+
+
+- Modify profile
+   - Edit information (first name, last name, email)
+   - Change password
+   - Delete account
+<p>
+<img alt="user edit info" src="./projectDesign/User edit info.png" width="45%">
+<img alt="user change password" src="./projectDesign/User change password.png" width="45%">
+</p>
+
+
+- To users with Admin Role: 
+   - Create new product
+   - Delete a product
+   - Update a product's information
+
+Differences in profile page between User & Admin
+<p>
+<img alt="user profile" src="./projectDesign/User profile.png" width="45%">
+<img alt="admin profile" src="./projectDesign/Admin profile.png" width="45%">
+</p>
+
+Create & Delete a product
+<p>
+<img alt="create new product" src="./projectDesign/create new product.png" width="40%">
+<img alt="delete a product" src="./projectDesign/delete a product.png" width="50%">
+</p>
+
+<p>
+Product's details view with Admin Role, Update a product
+<img alt="product details view with admin role" src="./projectDesign/product details admin view.png" width="60%">
+<img alt="update a product" src="./projectDesign/update a product.png" width="30%">
+</p>
+
+
+#### Orders
+- Add products to cart, remove from cart, modify products' quantity
+- Checkout/Place order
+- See all orders made by logged in user
+
+Cart & all orders example
+<p>
+<img alt="cart page" src="./projectDesign/cart.png" width="45%">
+<img alt="all orders page" src="./projectDesign/all orders.png" width="45%">
+</p>
+
+
+## 4.2.2. Frontend Demo
+[Frontend demo in Netlify](https://conbinimart.netlify.app/)
+
+## 4.2.3. How to test features
+To see all registered users: https://fs15kim-ecommerce-backend.azurewebsites.net/api/v1/users
+
+![All users example](./projectDesign/all%20users.png)
+
+To test features as normal user without registering, you can log in using these 2 example accounts:
+- email: john@mail.com
+   password: john123
+- email: testing@mail.com
+   password: testing123
+
+To test features as Admin, you can log in using:
+email: admin@mail.com
+password: admin123
+

@@ -140,6 +140,7 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         builder => {
             builder.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
+            builder.WithOrigins("https://conbinimart.netlify.app").AllowAnyHeader().AllowAnyMethod();
         }
     );
 });
