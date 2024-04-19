@@ -7,12 +7,12 @@ namespace Ecommerce.Domain.src.Entities
 {
     public class Product : BaseEntity
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; } = default!;
+        public string Description { get; set; } = default!;
         public float Price { get; set; }
         public Category Category { get; set; }
         public int Inventory { get; set; }
-        public ProductImage Image { get; set; }
+        public ProductImage Image { get; set; } = default!;
     }
 
     public enum Category

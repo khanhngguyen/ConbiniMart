@@ -8,7 +8,7 @@ namespace Ecommerce.Business.src.Dtos
 {
     public class OrderProductReadDto
     {
-        public ProductReadDto Product { get; set; }
+        public ProductReadDto Product { get; set; } = default!;
         // public OrderReadDto Order { get; set; }
         // public Guid OrderId { get; set; }
         public int Amount { get; set; }

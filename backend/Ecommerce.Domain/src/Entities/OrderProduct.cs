@@ -10,8 +10,8 @@ namespace Ecommerce.Domain.src.Entities
     // [PrimaryKey(nameof(ProductId), nameof(OrderId))]
     public class OrderProduct : BaseEntity
     {
-        public Product Product { get; set; }
-        public Order Order { get; set; }
+        public Product Product { get; set; } = default!;
+        public Order Order { get; set; } = default!;
         // [ForeignKey(nameof(ProductId))]
         public Guid ProductId { get; set; }
         // [ForeignKey(nameof(OrderId))]

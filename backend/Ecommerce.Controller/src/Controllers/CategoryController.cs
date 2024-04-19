@@ -45,8 +45,8 @@ namespace Ecommerce.Controller.src.Controllers
 
         private class CategoryDisplay
         {
-            public string Name { get; set; }
-            public string Image { get; set; }
+            public string Name { get; set; }  = default!;
+            public string Image { get; set; } = default!;
         }
     }
 }

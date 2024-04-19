@@ -15,13 +15,13 @@ namespace Ecommerce.Domain.src.Entities
     {
         // [ForeignKey(nameof(Product))]
         public Guid ProductId { get; set; }
-        public Product Product { get; set; }
+        public Product Product { get; set; } = default!;
     }
 
     public class UserImage : Image
     {
         [ForeignKey(nameof(User))]
         public Guid UserId { get; set; }
-        public User User { get; set; }
+        public User User { get; set; } = default!;
     }
 }

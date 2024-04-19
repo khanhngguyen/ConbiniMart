@@ -1,0 +1,30 @@
+version: '1.0'
+services:
+    backend: 
+        container_name: 'conbinibackend'
+        image: khanhngguyen/conbinibackend
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        environment:
+            - ConnectionStrings__DefaultConnection=Username=postgres;Password=postgres;Port=5432;Database=backend;Server=conbinidatabase;
+        ports:
+          - 8080:80
+        depends_on:
+          - db
+    frontend:
+        container_name: 'conbinifrontend'
+        image: khanhngguyen/conbinifrontend
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+          - 3000:3000
+    db:
+        container_name: 'conbinidatabase'
+        image: postgresdb
+        restart: always
+        environment:
+          POSTGRES_PASSWORD: postgres
+        ports: 
+          - 5432:5432
