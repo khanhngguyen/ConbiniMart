@@ -28,7 +28,7 @@ namespace Ecommerce.Controller.src.Controllers
         public override async Task<ActionResult<ProductReadDto>> CreateOne([FromBody] ProductCreateDto dto)
         {
             var created = await _productService.CreateOne(dto);
-            return CreatedAtAction("CreateOne", created);
+            return CreatedAtAction("Created New Product", created);
         }
 
         [Authorize(Policy = "AdminOnly")]

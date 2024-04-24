@@ -22,8 +22,6 @@ namespace Ecommerce.Business.src.Services
 
         public override async Task<UserReadDto> CreateOne(UserCreateDto dto)
         {
-            // var user = await _userRepo.CreateOne(_mapper.Map<User>(dto));
-            // return _mapper.Map<UserReadDto>(user);
             //Check if email is already used
             var check = await CheckEmail(dto.Email);
             if (!check) throw new Exception("Email is already used");
@@ -32,6 +30,7 @@ namespace Ecommerce.Business.src.Services
             PasswordService.HashPassword(dto.Password, out var hashedPassword, out var salt);
             user.Password = hashedPassword;
             user.Salt = salt;
+
             var created = await _userRepo.CreateOne(user);
             return _mapper.Map<UserReadDto>(created);
         }
@@ -44,6 +43,7 @@ namespace Ecommerce.Business.src.Services
             PasswordService.HashPassword(dto.Password, out var hashedPassword, out var salt);
             admin.Password = hashedPassword;
             admin.Salt = salt;
+            
             var created = await _userRepo.CreateAdmin(admin);
             return _mapper.Map<UserReadDto>(created);
         }

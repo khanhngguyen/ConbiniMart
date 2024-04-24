@@ -31,7 +31,6 @@ namespace Ecommerce.Business.src.Dtos
         public ProductImageCreateDto Image { get; set; } = default!;
     }
 
-    // [AutoMap(typeof(Product))]
     public class ProductUpdateDto
     {
         public string Title { get; set; } = default!;

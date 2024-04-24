@@ -89,6 +89,10 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 await _context.SaveChangesAsync();
                 return found;
             }
+
+            // _dbSet.Update(updateProduct);
+            // await _context.SaveChangesAsync();
+            // return updateProduct;
         }
     }
 }

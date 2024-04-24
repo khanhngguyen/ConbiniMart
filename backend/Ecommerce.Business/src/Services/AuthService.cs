@@ -51,7 +51,6 @@ namespace Ecommerce.Business.src.Services
 
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var token = jwtSecurityTokenHandler.CreateToken(securityTokenDescriptor);
-            // return token.ToString();
             return jwtSecurityTokenHandler.WriteToken(token);
         }
     }

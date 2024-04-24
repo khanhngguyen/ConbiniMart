@@ -49,19 +49,6 @@ namespace Ecommerce.WebApi.src.RepoImplementations
                 _context.Entry(found).CurrentValues.SetValues(updateEntity);
                 await _context.SaveChangesAsync();
                 return found;
-
-                // var attachedFound = _context.Attach(updateEntity);
-                // attachedFound.State = EntityState.Modified;
-                // await _context.SaveChangesAsync();
-                // return updateEntity;
-
-            // _context.Entry(found).State = EntityState.Detached;
-            //     _context.Entry(found).State = EntityState.Modified;
-            //     _context.Update<T>(updateEntity);
-            //     _context.Entry(found).CurrentValues.SetValues(updateEntity);
-            //     _context.Attach(found);
-            //     _context.SaveChanges();
-            //     return found;
             }
         }
         public async Task<bool> DeleteOneById(Guid id)

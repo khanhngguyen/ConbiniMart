@@ -22,7 +22,6 @@ namespace Ecommerce.Controller.src.Controllers
         [HttpPost]
         [ProducesResponseType(statusCode: 200)]
         [ProducesResponseType(statusCode: 401)]
-        // [ProducesResponseType(statusCode: 500)]
         [ProducesResponseType(statusCode: 404)]
         public async Task<ActionResult<string>> VerifyCredentials([FromBody] UserCredentialsDto credentials)
         {

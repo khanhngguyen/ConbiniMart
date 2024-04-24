@@ -60,20 +60,11 @@ namespace Ecommerce.WebApi.src.Database
             modelBuilder.Entity<Product>()
             .HasOne(p => p.Image)
             .WithOne(x => x.Product)
-            // .HasForeignKey<ProductImage>(x => x.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
-
-            // modelBuilder.Entity<ProductImage>()
-            // .HasOne(x => x.Product)
-            // .WithOne(p => p.Image)
-            // .HasForeignKey<ProductImage>(x => x.ProductId)
-            // .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<OrderProduct>()
             .HasOne(orderProduct => orderProduct.Order)
             .WithMany(order => order.OrderProducts)
-            // .HasConstraintName("fk_orders_products_products_orders_order_id")
-            // .HasConstraintName("fk_orders_products_products_product_id")
             .OnDelete(DeleteBehavior.Cascade);
         }
     }

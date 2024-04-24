@@ -41,7 +41,7 @@ namespace Ecommerce.Controller.src.Controllers
         [ProducesResponseType(statusCode: 201)]
         public override async Task<ActionResult<UserReadDto>> CreateOne([FromBody] UserCreateDto dto)
         {
-            return CreatedAtAction(nameof(CreateOne), await _userService.CreateOne(dto));
+            return CreatedAtAction("Created New User", await _userService.CreateOne(dto));
         }
 
         // [Authorize(Policy = "AdminOnly")]
@@ -50,7 +50,7 @@ namespace Ecommerce.Controller.src.Controllers
         [ProducesResponseType(statusCode: 201)]
         public async Task<ActionResult<UserReadDto>> CreateAdmin([FromBody] UserCreateDto dto)
         {
-            return CreatedAtAction(nameof(CreateAdmin), await _userService.CreateAdmin(dto));
+            return CreatedAtAction("Created New Admin", await _userService.CreateAdmin(dto));
         }
 
         // [Authorize(Policy = "AdminOnly")]

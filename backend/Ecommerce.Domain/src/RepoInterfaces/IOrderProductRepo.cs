@@ -8,7 +8,6 @@ namespace Ecommerce.Domain.src.RepoInterfaces
 {
     public interface IOrderProductRepo 
     {
-        // Task<IEnumerable<OrderProduct>> CreateOrderProduct(params OrderProduct[] orderProducts);
         Task<OrderProduct> CreateOrderProduct(OrderProduct orderProduct);
     }
 }

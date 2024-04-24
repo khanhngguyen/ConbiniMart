@@ -35,17 +35,12 @@ namespace Ecommerce.Business.src.Services
         }
         public virtual async Task<TReadDto> UpdateOneById(Guid id, TUpdateDto updated)
         {
-            var found = await _baseRepo.GetOneById(id);
-            if (found is null)
-            {
-                throw new Exception("Item not found");
-            }
+            var found = await _baseRepo.GetOneById(id) ?? throw new Exception("Item not found");
             var updatedEntity = await _baseRepo.UpdateOneById(id, _mapper.Map<T>(updated));
             return _mapper.Map<TReadDto>(updatedEntity);
         }
         public async Task<bool> DeleteOneById(Guid id)
         {
-            // var found = _baseRepo.GetOneByIdSync(id);
             var found = await _baseRepo.GetOneById(id);
             if (found != null)
             {

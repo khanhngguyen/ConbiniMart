@@ -17,7 +17,6 @@ namespace Ecommerce.Domain.src.Entities
         public Role Role { get; set; }
     }
 
-    // [JsonConverter(typeof(StringEnumConverter))]
     public enum Role
     {
         Admin,

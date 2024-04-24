@@ -12,9 +12,7 @@ namespace Ecommerce.Domain.src.Entities
     {
         public Product Product { get; set; } = default!;
         public Order Order { get; set; } = default!;
-        // [ForeignKey(nameof(ProductId))]
         public Guid ProductId { get; set; }
-        // [ForeignKey(nameof(OrderId))]
         public Guid OrderId { get; set; }
         public int Amount { get; set; }
     }
