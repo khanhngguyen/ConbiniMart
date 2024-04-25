@@ -24,7 +24,7 @@ namespace Ecommerce.Business.src.Services
         {
             //Check if email is already used
             var check = await CheckEmail(dto.Email);
-            if (!check) throw new Exception("Email is already used");
+            if (check) throw new Exception("Email is already used");
 
             var user = _mapper.Map<User>(dto);
             PasswordService.HashPassword(dto.Password, out var hashedPassword, out var salt);
@@ -37,7 +37,7 @@ namespace Ecommerce.Business.src.Services
         public async Task<UserReadDto> CreateAdmin(UserCreateDto dto)
         {
             var check = await CheckEmail(dto.Email);
-            if (!check) throw new Exception("Email is already used");
+            if (check) throw new Exception("Email is already used");
 
             var admin = _mapper.Map<User>(dto);
             PasswordService.HashPassword(dto.Password, out var hashedPassword, out var salt);

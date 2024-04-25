@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -125,7 +126,7 @@ namespace Ecommerce.Tests.src.Business.Tests
             var exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.CreateOne(_existedEmail));
 
             //Assert
-            Assert.ThrowsAsync<Exception>(async () => await _userService.CreateOne(_existedEmail));
+            await Assert.ThrowsAsync<Exception>(async () => await _userService.CreateOne(_existedEmail));
             Assert.Equal("Email is already used", exception.Message);
             _userRepoMock.Verify(x => x.CheckEmail(It.IsAny<string>()), Times.AtLeastOnce);
             _userRepoMock.Verify(x => x.CreateOne(It.IsAny<User>()), Times.Never);
@@ -249,10 +250,10 @@ namespace Ecommerce.Tests.src.Business.Tests
             };
 
             //Act
-            Exception exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.UpdateOneById(id, userUpdate));
+            CustomException exception = await Assert.ThrowsAsync<CustomException>(async () => await _userService.UpdateOneById(id, userUpdate));
 
             //Assert
-            Assert.ThrowsAsync<Exception>(async () => await _userService.UpdateOneById(id, userUpdate));
+            await Assert.ThrowsAsync<CustomException>(async () => await _userService.UpdateOneById(id, userUpdate));
             Assert.Equal("User not found", exception.Message);
             _userRepoMock.Verify(x => x.UpdateOneById(It.IsAny<Guid>(), It.IsAny<User>()), Times.Never);
         }
@@ -298,10 +299,10 @@ namespace Ecommerce.Tests.src.Business.Tests
             await _userService.CreateOne(_userCreateDto);
 
             //Act
-            Exception exception = await Assert.ThrowsAsync<Exception>(async () => await _userService.UpdatePassword(id, "newpassword"));
+            CustomException exception = await Assert.ThrowsAsync<CustomException>(async () => await _userService.UpdatePassword(id, "newpassword"));
 
             //Assert
-            Assert.ThrowsAsync<Exception>(async () => await _userService.UpdatePassword(id, "newpassword"));
+            await Assert.ThrowsAsync<CustomException>(async () => await _userService.UpdatePassword(id, "newpassword"));
             Assert.Equal("User not found", exception.Message);
             _userRepoMock.Verify(x => x.UpdatePassword(It.IsAny<User>()), Times.Never);
         }

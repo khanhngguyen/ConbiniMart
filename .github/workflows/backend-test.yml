@@ -1,0 +1,31 @@
+# github action to run xunit test on backend
+
+name: Build and test backend 
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [development, published]
+        paths: 
+            - '**.cs'
+            - '**.csproj'
+
+jobs: 
+    build-and-test:
+
+        runs-on: [ubuntu-latest, windows-latest, macOS-latest]
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v3
+              with: 
+                dotnet-version: 8.0.x
+
+            - name: Install dependencies
+              run: dotnet restore ./backend
+
+            - name: Build
+              run: dotnet build --configuration Release --no-restore
+
+            - name: Test
+              run: dotnet test

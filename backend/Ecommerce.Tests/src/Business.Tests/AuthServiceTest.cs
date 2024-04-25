@@ -8,6 +8,7 @@ using Ecommerce.Business.src.ServiceInterfaces;
 using Ecommerce.Business.src.Services;
 using Ecommerce.Domain.src.Entities;
 using Ecommerce.Domain.src.RepoInterfaces;
+using Ecommerce.Domain.src.Shared;
 using Moq;
 using Xunit;
 
@@ -71,10 +72,10 @@ namespace Ecommerce.Tests.src.Business.Tests
             _user.Password = hashed;
             _user.Salt = salt;
             await _userRepoMock.Object.CreateOne(_user);
-            Exception exception = await Assert.ThrowsAsync<Exception>(async () => await _authService.VerifyCredentials(credentials));
+            CustomException exception = await Assert.ThrowsAsync<CustomException>(async () => await _authService.VerifyCredentials(credentials));
 
             //Assert
-            Assert.ThrowsAsync<Exception>(async () => await _authService.VerifyCredentials(credentials));
+            await Assert.ThrowsAsync<CustomException>(async () => await _authService.VerifyCredentials(credentials));
             Assert.Equal("Email not found", exception.Message);
             _userRepoMock.Verify(x => x.FindByEmail(It.IsAny<string>()), Times.AtLeastOnce);
         }
@@ -98,7 +99,7 @@ namespace Ecommerce.Tests.src.Business.Tests
             var exception = await Assert.ThrowsAsync<AuthenticationException>(async () => await _authService.VerifyCredentials(credentials));
 
             //Assert
-            Assert.ThrowsAsync<AuthenticationException>(async () => await _authService.VerifyCredentials(credentials));
+            await Assert.ThrowsAsync<AuthenticationException>(async () => await _authService.VerifyCredentials(credentials));
             Assert.Equal("Password incorrect", exception.Message);
             _userRepoMock.Verify(x => x.FindByEmail(It.IsAny<string>()), Times.AtLeastOnce);
         }
